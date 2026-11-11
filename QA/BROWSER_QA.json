@@ -1,0 +1,315 @@
+{
+  "source": "inline-document",
+  "viewports": {
+    "desktop": {
+      "states": [
+        {
+          "actualScene": "1",
+          "chapterText": "01 / IDENTITY\nㅅ과 ㄴ.\n여기서 시작합니다.\n\n두 글자 사이에, 하나의 방향을 그립니다.",
+          "width": 1440,
+          "viewport": 1440,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "0.550",
+          "state": "01_identity",
+          "at": 0
+        },
+        {
+          "actualScene": "2",
+          "chapterText": "02 / SPIRAL\n생각이 많아질수록,\n시작은 멀어집니다.\n\n수많은 선택과 걱정이 한곳으로 모입니다.",
+          "width": 1440,
+          "viewport": 1440,
+          "canvasOpacity": 0.981,
+          "bodyOverflow": false,
+          "layerScale": "0.561",
+          "state": "02_spiral",
+          "at": 0.24
+        },
+        {
+          "actualScene": "3",
+          "chapterText": "03 / THE QUESTION\n어디서부터\n사업을 시작해야 하지?\n\n누구나 한 번쯤 마주하는 질문입니다.",
+          "width": 1440,
+          "viewport": 1440,
+          "canvasOpacity": 1,
+          "bodyOverflow": false,
+          "layerScale": "2.463",
+          "state": "03_question",
+          "at": 0.4
+        },
+        {
+          "actualScene": "4",
+          "chapterText": "04 / ONE POINT\n작은 점 하나.\n\n이제 그 자리에서 다시 시작합니다.",
+          "width": 1440,
+          "viewport": 1440,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "04_point",
+          "at": 0.56
+        },
+        {
+          "actualScene": "5",
+          "chapterText": "05 / THE COMPASS\n그 점에서,\n방향이 열립니다.\n\n복잡한 단서 사이에서 판단의 기준을 찾습니다.",
+          "width": 1440,
+          "viewport": 1440,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "05_compass",
+          "at": 0.72
+        },
+        {
+          "actualScene": "6",
+          "chapterText": "06 / LOCALSCOPE\n\nCom(e)pass your concerns.\n\n상권나침반.\n\n숫자는 누구나 봅니다.\n상권나침반은 판정합니다.\n\n내 자리 분석하기\n↗\n분석 방법 보기\n↓\n\nlocalp",
+          "width": 1440,
+          "viewport": 1440,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "06_final",
+          "at": 0.92
+        }
+      ],
+      "reduced": {
+        "reduced": true,
+        "scene": "6",
+        "aria": "false",
+        "link": "https://localscope.co.kr/analyze"
+      },
+      "errors": []
+    },
+    "tablet": {
+      "states": [
+        {
+          "actualScene": "1",
+          "chapterText": "01 / IDENTITY\nㅅ과 ㄴ.\n여기서 시작합니다.\n\n두 글자 사이에, 하나의 방향을 그립니다.",
+          "width": 820,
+          "viewport": 820,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "0.550",
+          "state": "01_identity",
+          "at": 0
+        },
+        {
+          "actualScene": "2",
+          "chapterText": "02 / SPIRAL\n생각이 많아질수록,\n시작은 멀어집니다.\n\n수많은 선택과 걱정이 한곳으로 모입니다.",
+          "width": 820,
+          "viewport": 820,
+          "canvasOpacity": 0.981,
+          "bodyOverflow": false,
+          "layerScale": "0.561",
+          "state": "02_spiral",
+          "at": 0.24
+        },
+        {
+          "actualScene": "3",
+          "chapterText": "03 / THE QUESTION\n어디서부터\n사업을 시작해야 하지?\n\n누구나 한 번쯤 마주하는 질문입니다.",
+          "width": 820,
+          "viewport": 820,
+          "canvasOpacity": 1,
+          "bodyOverflow": false,
+          "layerScale": "2.683",
+          "state": "03_question",
+          "at": 0.4
+        },
+        {
+          "actualScene": "4",
+          "chapterText": "04 / ONE POINT\n작은 점 하나.\n\n이제 그 자리에서 다시 시작합니다.",
+          "width": 820,
+          "viewport": 820,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "04_point",
+          "at": 0.56
+        },
+        {
+          "actualScene": "5",
+          "chapterText": "05 / THE COMPASS\n그 점에서,\n방향이 열립니다.\n\n복잡한 단서 사이에서 판단의 기준을 찾습니다.",
+          "width": 820,
+          "viewport": 820,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "05_compass",
+          "at": 0.72
+        },
+        {
+          "actualScene": "6",
+          "chapterText": "06 / LOCALSCOPE\n\nCom(e)pass your concerns.\n\n상권나침반.\n\n숫자는 누구나 봅니다.\n상권나침반은 판정합니다.\n\n내 자리 분석하기\n↗\n분석 방법 보기\n↓\n\nlocalp",
+          "width": 820,
+          "viewport": 820,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "06_final",
+          "at": 0.92
+        }
+      ],
+      "reduced": {
+        "reduced": true,
+        "scene": "6",
+        "aria": "false",
+        "link": "https://localscope.co.kr/analyze"
+      },
+      "errors": []
+    },
+    "mobile": {
+      "states": [
+        {
+          "actualScene": "1",
+          "chapterText": "01 / IDENTITY\nㅅ과 ㄴ.\n여기서 시작합니다.\n\n두 글자 사이에, 하나의 방향을 그립니다.",
+          "width": 390,
+          "viewport": 390,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "0.550",
+          "state": "01_identity",
+          "at": 0
+        },
+        {
+          "actualScene": "2",
+          "chapterText": "02 / SPIRAL\n생각이 많아질수록,\n시작은 멀어집니다.\n\n수많은 선택과 걱정이 한곳으로 모입니다.",
+          "width": 390,
+          "viewport": 390,
+          "canvasOpacity": 0.982,
+          "bodyOverflow": false,
+          "layerScale": "0.561",
+          "state": "02_spiral",
+          "at": 0.24
+        },
+        {
+          "actualScene": "3",
+          "chapterText": "03 / THE QUESTION\n어디서부터\n사업을 시작해야 하지?\n\n누구나 한 번쯤 마주하는 질문입니다.",
+          "width": 390,
+          "viewport": 390,
+          "canvasOpacity": 1,
+          "bodyOverflow": false,
+          "layerScale": "2.721",
+          "state": "03_question",
+          "at": 0.4
+        },
+        {
+          "actualScene": "4",
+          "chapterText": "04 / ONE POINT\n작은 점 하나.\n\n이제 그 자리에서 다시 시작합니다.",
+          "width": 390,
+          "viewport": 390,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "04_point",
+          "at": 0.56
+        },
+        {
+          "actualScene": "5",
+          "chapterText": "05 / THE COMPASS\n그 점에서,\n방향이 열립니다.\n\n복잡한 단서 사이에서 판단의 기준을 찾습니다.",
+          "width": 390,
+          "viewport": 390,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "05_compass",
+          "at": 0.72
+        },
+        {
+          "actualScene": "6",
+          "chapterText": "06 / LOCALSCOPE\n\nCom(e)pass your concerns.\n\n상권나침반.\n\n숫자는 누구나 봅니다.\n상권나침반은 판정합니다.\n\n내 자리 분석하기\n↗\n분석 방법 보기\n↓\n\nlocalp",
+          "width": 390,
+          "viewport": 390,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "06_final",
+          "at": 0.92
+        }
+      ],
+      "reduced": {
+        "reduced": true,
+        "scene": "6",
+        "aria": "false",
+        "link": "https://localscope.co.kr/analyze"
+      },
+      "errors": []
+    },
+    "small": {
+      "states": [
+        {
+          "actualScene": "1",
+          "chapterText": "01 / IDENTITY\nㅅ과 ㄴ.\n여기서 시작합니다.\n\n두 글자 사이에, 하나의 방향을 그립니다.",
+          "width": 360,
+          "viewport": 360,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "0.550",
+          "state": "01_identity",
+          "at": 0
+        },
+        {
+          "actualScene": "2",
+          "chapterText": "02 / SPIRAL\n생각이 많아질수록,\n시작은 멀어집니다.\n\n수많은 선택과 걱정이 한곳으로 모입니다.",
+          "width": 360,
+          "viewport": 360,
+          "canvasOpacity": 0.982,
+          "bodyOverflow": false,
+          "layerScale": "0.562",
+          "state": "02_spiral",
+          "at": 0.24
+        },
+        {
+          "actualScene": "3",
+          "chapterText": "03 / THE QUESTION\n어디서부터\n사업을 시작해야 하지?\n\n누구나 한 번쯤 마주하는 질문입니다.",
+          "width": 360,
+          "viewport": 360,
+          "canvasOpacity": 1,
+          "bodyOverflow": false,
+          "layerScale": "2.723",
+          "state": "03_question",
+          "at": 0.4
+        },
+        {
+          "actualScene": "4",
+          "chapterText": "04 / ONE POINT\n작은 점 하나.\n\n이제 그 자리에서 다시 시작합니다.",
+          "width": 360,
+          "viewport": 360,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "04_point",
+          "at": 0.56
+        },
+        {
+          "actualScene": "5",
+          "chapterText": "05 / THE COMPASS\n그 점에서,\n방향이 열립니다.\n\n복잡한 단서 사이에서 판단의 기준을 찾습니다.",
+          "width": 360,
+          "viewport": 360,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "05_compass",
+          "at": 0.72
+        },
+        {
+          "actualScene": "6",
+          "chapterText": "06 / LOCALSCOPE\n\nCom(e)pass your concerns.\n\n상권나침반.\n\n숫자는 누구나 봅니다.\n상권나침반은 판정합니다.\n\n내 자리 분석하기\n↗\n분석 방법 보기\n↓\n\nlocalp",
+          "width": 360,
+          "viewport": 360,
+          "canvasOpacity": 0,
+          "bodyOverflow": false,
+          "layerScale": "3.850",
+          "state": "06_final",
+          "at": 0.92
+        }
+      ],
+      "reduced": {
+        "reduced": true,
+        "scene": "6",
+        "aria": "false",
+        "link": "https://localscope.co.kr/analyze"
+      },
+      "errors": []
+    }
+  },
+  "issues": [],
+  "chrome_errors": []
+}

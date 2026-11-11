@@ -1,0 +1,17 @@
+{
+  "project": "LocalScope S05 / Spiral to Compass",
+  "source_s04_sha256": "0ac131175ad5302c917e03e64f353dcc9490093f1f111767bc51ffb9a2a9de98",
+  "output_source_sha256": {
+    "index.html": "a86304ed48aa4723fb1c497243d2fd183d968dcaf2474eb8b61c3cd80794ebf1",
+    "style.css": "e66a14e93c78ebb3cd7d715dc8de2bfc25c0a5df71b9a0e0b5b401e73cb3404a",
+    "motion.js": "a8038ae561be2ad053ac3fae8b32a5b08db9ed7e6594d1a7ea5f2cf5fe972f17"
+  },
+  "backend_files_in_release": 0,
+  "production_deployment": "not performed",
+  "nextjs_integration": "not performed",
+  "api_integration": "not tested",
+  "design_qa": "4 sizes x 6 scroll scenes + reduced motion; QA/BROWSER_QA.json",
+  "stable_product_name": "상권나침반 / LOCALSCOPE",
+  "localpost_status": "naming exploration only",
+  "english_copy_status": "exploratory wordplay, not verified native English slogan"
+}

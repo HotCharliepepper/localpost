@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071521">
+  <meta name="description" content="ㅅㄴ에서 시작해 하나의 질문과 나침반으로 이어지는 상권나침반 시네마틱 랜딩 시안">
+  <title>상권나침반 — Spiral to Compass / S05</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./motion.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#pathways">시네마틱 건너뛰고 분석 방법 보기</a>
+<header class="topbar" aria-label="상권나침반 미리보기 탐색">
+  <a href="#intro" class="brand" aria-label="상권나침반, 맨 처음으로">
+    <span class="brand-mark" aria-hidden="true"><svg width="42" height="36" viewBox="0 0 80 60" fill="none"><path d="M5 51 28 11 51 51 M58 11V51H77" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span>상권나침반<small>LOCALSCOPE · BRAND STUDY S05</small></span>
+  </a>
+  <nav class="navigation" aria-label="페이지 이동">
+    <a class="nav-text" href="#pathways">분석 경로</a>
+    <a href="/analyze" class="nav-cta" id="header-analyze">바로 분석하기 <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>
+<main>
+  <section id="intro" class="cinema" aria-label="ㅅㄴ, 스파이럴, 질문, 나침반으로 이어지는 스크롤 장면">
+    <div class="cinema-stage" id="cinema-stage">
+      <div class="spatial-grid" aria-hidden="true"></div>
+      <div class="glow-halo" aria-hidden="true"></div>
+      <canvas id="vortex" aria-hidden="true"></canvas>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="world" id="world" aria-hidden="true">
+        <svg id="diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="presentation">
+          <defs>
+            <radialGradient id="point-aura"><stop offset="0" stop-color="#F8D18A" stop-opacity=".65"/><stop offset="1" stop-color="#F8D18A" stop-opacity="0"/></radialGradient>
+            <linearGradient id="spiral-ink"><stop offset="0" stop-color="#6ED1CC" stop-opacity="0"/><stop offset=".48" stop-color="#9DD9D0" stop-opacity=".9"/><stop offset=".82" stop-color="#F5D08B" stop-opacity=".8"/><stop offset="1" stop-color="#F8D18A" stop-opacity=".18"/></linearGradient>
+          </defs>
+          <g class="coordinate-hint"><circle cx="500" cy="500" r="290"/><circle cx="500" cy="500" r="389"/><path d="M500 16V984 M16 500H984"/></g>
+          <g class="sn-glyph" id="sn-glyph">
+            <path d="M244 562 L373 339 Q382 323 391 339 L519 562"/>
+            <path d="M608 339 L608 543 Q608 562 629 562 L766 562"/>
+          </g>
+          <g id="spiral-field" class="spiral-field"></g>
+          <g id="point-stage" class="point-stage">
+            <circle class="point-halo" cx="500" cy="500" r="145" fill="url(#point-aura)" />
+            <circle class="point-orbit" cx="500" cy="500" r="72" />
+            <circle class="central-dot" cx="500" cy="500" r="9" />
+          </g>
+          <g class="compass" id="compass">
+            <circle class="compass-outer" cx="500" cy="500" r="300" />
+            <circle class="compass-inner" cx="500" cy="500" r="244" />
+            <circle class="compass-inner" cx="500" cy="500" r="155" />
+            <path class="compass-ticks" d="M500 171V208 M500 792V829 M171 500H208 M792 500H829" />
+            <path class="compass-ticks secondary" d="M283 283L308 308 M692 692L717 717 M283 717L308 692 M692 308L717 283" />
+            <path class="compass-needle-a" d="M500 288L548 508L500 485L452 508Z" />
+            <path class="compass-needle-b" d="M500 712L548 492L500 515L452 492Z" />
+            <circle class="compass-pivot" cx="500" cy="500" r="17" />
+            <circle class="compass-pivot-core" cx="500" cy="500" r="7" />
+            <text x="500" y="139" text-anchor="middle">N</text><text x="500" y="882" text-anchor="middle">S</text>
+            <text x="131" y="507" text-anchor="middle">W</text><text x="868" y="507" text-anchor="middle">E</text>
+          </g>
+        </svg>
+      </div>
+      <div class="quiet-flash" id="quiet-flash" aria-hidden="true"></div>
+      <div class="screen-veil" aria-hidden="true"></div>
+      <div class="narration" aria-live="off">
+        <article class="chapter active" data-chapter="0" aria-hidden="false">
+          <div class="eyebrow">01 / IDENTITY</div>
+          <h1>ㅅ과 ㄴ.<br>여기서 시작합니다.</h1>
+          <p>두 글자 사이에, 하나의 방향을 그립니다.</p>
+        </article>
+        <article class="chapter" data-chapter="1" aria-hidden="true">
+          <div class="eyebrow">02 / SPIRAL</div>
+          <h2>생각이 많아질수록,<br>시작은 멀어집니다.</h2>
+          <p>수많은 선택과 걱정이 한곳으로 모입니다.</p>
+        </article>
+        <article class="chapter chapter-question" data-chapter="2" aria-hidden="true">
+          <div class="eyebrow">03 / THE QUESTION</div>
+          <h2>어디서부터<br>사업을 시작해야 하지?</h2>
+          <p>누구나 한 번쯤 마주하는 질문입니다.</p>
+        </article>
+        <article class="chapter chapter-quiet" data-chapter="3" aria-hidden="true">
+          <div class="eyebrow">04 / ONE POINT</div>
+          <h2>작은 점 하나.</h2>
+          <p>이제 그 자리에서 다시 시작합니다.</p>
+        </article>
+        <article class="chapter" data-chapter="4" aria-hidden="true">
+          <div class="eyebrow">05 / THE COMPASS</div>
+          <h2>그 점에서,<br>방향이 열립니다.</h2>
+          <p>복잡한 단서 사이에서 판단의 기준을 찾습니다.</p>
+        </article>
+        <article class="chapter chapter-final" data-chapter="5" aria-hidden="true">
+          <div class="eyebrow">06 / LOCALSCOPE</div>
+          <p class="wordplay">Com<span>(e)</span>pass your concerns.</p>
+          <h2>상권나침반.</h2>
+          <p class="brand-translation">숫자는 누구나 봅니다.<br>상권나침반은 판정합니다.</p>
+          <div class="actions">
+            <a href="/analyze" class="button primary" id="main-analyze">내 자리 분석하기 <span aria-hidden="true">↗</span></a>
+            <a href="#pathways" class="button ghost">분석 방법 보기 <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="naming-study"><span>localpost</span> / naming study · LOCALSCOPE 공식 명칭 유지</p>
+        </article>
+      </div>
+      <div class="side-note"><span>SPATIAL MOTION / CONCEPT ONLY</span><button id="motion-toggle" type="button" aria-pressed="false">모션 줄이기</button></div>
+      <div class="progress-indicator"><span id="scene-number">01 / 06</span><span class="progress-track"><span id="scroll-progress"></span></span></div>
+      <a class="scroll-cue" href="#pathways" aria-label="스크롤하거나 분석 방법으로 이동하기"><svg width="15" height="28" viewBox="0 0 15 28" fill="none" aria-hidden="true"><path d="M7.5 1V25 M1.5 19L7.5 25L13.5 19" stroke="currentColor" stroke-width="1.4"/></svg><span>SCROLL TO DISCOVER</span></a>
+    </div>
+  </section>
+  <section class="pathways" id="pathways" aria-labelledby="pathways-title">
+    <div class="pathways-inner">
+      <div class="section-overline">FROM CONCERN TO DECISION</div>
+      <h2 id="pathways-title">이제, 나의 자리에서<br>확인할 차례입니다.</h2>
+      <p class="section-lead">업종을 먼저 고를지, 지역을 먼저 고를지. 지금 가진 정보에서 시작하세요. 상권나침반은 확인된 근거와 아직 모르는 사실을 구분합니다.</p>
+      <div class="choices">
+        <a class="choice" href="/explore"><span class="choice-no">01 / INDUSTRY</span><div><h3>업종이 정해졌다면</h3><p>어떤 지역에서 시작할지 살펴봅니다.</p></div><span class="choice-arrow" aria-hidden="true">↗</span></a>
+        <a class="choice" href="/place"><span class="choice-no">02 / LOCATION</span><div><h3>지역이 정해졌다면</h3><p>선택한 동네의 조건을 확인합니다.</p></div><span class="choice-arrow" aria-hidden="true">↗</span></a>
+        <a class="choice" href="/analyze"><span class="choice-no">03 / ANALYSIS</span><div><h3>둘 다 정해졌다면</h3><p>기존 서비스에서 분석을 시작합니다.</p></div><span class="choice-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="disclaimer"><strong>연구용 프런트엔드 시안</strong><p>나침반·좌표·스파이럴은 개념적 시각 연출이며 실제 지도 데이터나 분석 결과가 아닙니다. 이 페이지는 최초 백엔드와 DB에 연결하거나 변경하지 않습니다. localpost와 영문 카피는 네이밍·카피 실험안으로 확정되지 않았습니다.</p></div>
+    </div>
+  </section>
+</main>
+<footer><span>MASHCORE × TGK / LOCALSCOPE S05</span><span>FRONTEND CONCEPT · BACKEND PRESERVED</span></footer>
+</body>
+</html>
