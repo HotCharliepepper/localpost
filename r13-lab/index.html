@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="description" content="상권나침반 R13 가격·결제 전후 경험 연구실. 실제 결제 및 운영 서비스와 무관한 인터랙티브 시안.">
+<title>LocalScope R13 — Pricing Experience Lab</title>
+<style>
+:root{--paper:#f5f2ea;--ink:#173b37;--muted:#61756d;--green:#143e3c;--green2:#1e5952;--sage:#e4ebe2;--line:#ced8ce;--gold:#d0a65f;--red:#c3655c;--shadow:0 20px 65px rgba(25,57,47,.10)}
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Pretendard,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.55;letter-spacing:-.025em}button{font:inherit;cursor:pointer}a{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #b4724b;outline-offset:3px}button[disabled]{opacity:.45;cursor:not-allowed}.skip{position:absolute;left:12px;top:-90px;padding:12px;background:white;z-index:99}.skip:focus{top:12px}
+.shell{width:min(1200px,calc(100% - 48px));margin:auto}.mast{height:78px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid rgba(35,65,59,.16)}.identity{display:flex;align-items:center;gap:13px;text-decoration:none;font-weight:800;letter-spacing:-.06em}.logo{width:37px;height:37px;border:1px solid #63867a;border-radius:50%;display:grid;place-items:center;background:#e5ebe2;color:#2d645a}.identity small{display:block;font-size:10px;letter-spacing:.11em;color:#7b8a80;font-weight:600}.status{display:flex;align-items:center;gap:9px;font-size:12px;color:#5b6c65}.status::before{content:"";width:7px;height:7px;border-radius:50%;background:#b5645b;box-shadow:0 0 0 4px #e9d9d5}.pill{display:inline-flex;border:1px solid #cbdbd0;border-radius:40px;padding:7px 12px;font-size:12px;background:#edf2e9}
+.hero{position:relative;background:radial-gradient(circle at 86% 15%,#35695e 0,transparent 28%),radial-gradient(circle at 9% 85%,#234c48 0,transparent 35%),linear-gradient(140deg,#163b38,#0c272a 82%);color:#f7f5ec;border-radius:25px;overflow:hidden;display:grid;grid-template-columns:1.4fr .6fr;min-height:308px;padding:43px 49px;margin:28px 0 22px;box-shadow:var(--shadow)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.23;background-image:radial-gradient(circle at 18% 35%,rgba(255,255,255,.25) 0 1px,transparent 1.3px);background-size:29px 29px;mask-image:linear-gradient(90deg,transparent 22%,black)}.hero-inner{position:relative;z-index:2}.eyebrow{font-size:12px;letter-spacing:.17em;font-weight:700;color:#bdcfc2;text-transform:uppercase}.hero h1{max-width:800px;font-size:clamp(38px,5vw,69px);line-height:1.13;letter-spacing:-.075em;font-weight:570;margin:25px 0 18px;word-break:keep-all}.hero h1 em{font-style:normal;color:#d3bc8b;font-weight:740}.hero p{max-width:560px;font-size:15px;color:#c9dbd3;line-height:1.8}.instrument{display:flex;align-items:center;justify-content:center;position:relative;min-height:215px}.ring{position:absolute;width:min(250px,100%);aspect-ratio:1;border:1px solid rgba(180,217,198,.5);border-radius:50%;box-shadow:inset 0 0 0 26px rgba(12,39,42,.35),0 0 0 30px rgba(182,218,202,.03),0 0 0 64px rgba(182,218,202,.025);transform:rotate(-24deg)}.ring::before{content:"";position:absolute;inset:25px;border:1px dashed rgba(213,224,211,.3);border-radius:50%}.needle{width:33px;height:153px;position:relative;z-index:1;filter:drop-shadow(0 4px 15px rgba(0,0,0,.3));transform:rotate(17deg)}.needle::before,.needle::after{content:"";position:absolute;left:0;right:0;margin:auto;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent}.needle::before{top:0;border-bottom:76px solid #c46a5f}.needle::after{bottom:0;border-top:76px solid #c4d1b0}
+.step-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 28px}.step-btn{border:1px solid #d2dad1;border-radius:15px;background:#faf8f3;text-align:left;padding:17px 20px;min-height:82px;color:#455c54;display:flex;gap:16px;align-items:center;transition:background .18s,border-color .18s}.step-btn strong{display:block;font-size:14px;color:#203f39}.step-btn small{display:block;font-size:11px;margin-top:2px;color:#75857c}.step-btn .idx{font-family:Georgia,serif;font-size:24px;color:#96a99b}.step-btn[aria-current="step"]{background:#e4ece5;border-color:#5b8978;box-shadow:inset 0 0 0 1px #5b8978}.step-btn[aria-current="step"] .idx{color:#316e5e}
+.panel{display:none;animation:show .26s ease both;padding-bottom:50px}.panel.active{display:block}@keyframes show{from{opacity:.5;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;margin:0 0 23px}.section-head h2{font-weight:620;letter-spacing:-.055em;font-size:clamp(28px,4vw,44px);line-height:1.21;margin:0 0 12px}.section-head p{max-width:740px;color:var(--muted);margin:0;font-size:15px}.section-tag{color:#638078;font-size:12px;letter-spacing:.1em;font-weight:800}
+.controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin:20px 0}.toggle-group{display:flex;flex-wrap:wrap;gap:6px;padding:5px;background:#e6eae2;border-radius:15px;border:1px solid #dce3da}.toggle-group button{border:0;border-radius:10px;background:transparent;padding:10px 16px;min-height:43px;color:#536a5e;font-size:13px;font-weight:700}.toggle-group button[aria-pressed="true"]{background:#fffefa;color:#193f37;box-shadow:0 1px 8px rgba(28,60,40,.12)}.caption{font-size:12px;color:#718278}.caption strong{color:#42685e}.notice{padding:15px 19px;border-left:3px solid var(--gold);background:#eef0e9;border-radius:0 12px 12px 0;font-size:13px;color:#456056;margin:18px 0}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.price-card{display:flex;flex-direction:column;align-items:stretch;border:1px solid #d9e0d7;background:#fdfcf8;border-radius:19px;padding:25px;min-height:360px;transition:box-shadow .2s,transform .2s,border .2s;position:relative}.price-card.selected{border:2px solid #337665;box-shadow:0 16px 50px rgba(24,77,62,.14);padding:24px}.price-card.selected::after{content:"선택 중";position:absolute;top:19px;right:22px;font-size:11px;font-weight:700;color:#307760}.price-card h3{font-size:17px;margin:5px 0 8px}.plan-kicker{font-size:11px;color:#6e8a78;letter-spacing:.12em;font-weight:750}.amount{display:flex;align-items:baseline;gap:4px;font-size:36px;letter-spacing:-.05em;font-weight:740;margin:8px 0}.amount small{font-size:12px;font-weight:400;color:#6d8177;letter-spacing:0}.term-note{font-size:12px;color:#668077}.price-card ul{padding-left:17px;margin:24px 0 20px;color:#52695f;font-size:13px;line-height:2}.price-card .choose{margin-top:auto}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;border:1px solid #24554a;background:#19453d;color:white;border-radius:100px;padding:13px 21px;font-weight:700;font-size:14px;min-height:48px;text-decoration:none}.btn:hover{background:#286454}.btn.ghost{background:transparent;color:#2b5b50;border-color:#a9bdae}.btn.ghost:hover{background:#e6eee5}.btn.light{background:#edf3ea;color:#164137;border-color:#d1e1d4}.btn:focus-visible{outline-offset:4px}.price-card .choose{width:100%}.summary-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:#e9efe6;border:1px solid #d4e0d6;border-radius:15px;padding:17px 21px;margin:18px 0}.summary-row p{margin:0;font-size:13px;color:#42645b}.summary-row strong{color:#184d40}.research{margin-top:26px;border:1px solid #d4ddd2;border-radius:14px;padding:0 20px;background:#faf9f4}.research summary{cursor:pointer;padding:17px 0;font-weight:700}.research-content{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:21px;font-size:13px;color:#536b62}.research-content p{margin:7px 0}.research a{color:#235a4d;text-decoration:underline;text-underline-offset:3px}
+.journey{display:grid;grid-template-columns:270px minmax(0,1fr);gap:18px}.rail{background:#e8eee5;border-radius:17px;padding:20px;height:fit-content}.rail h3{font-size:14px;margin:0 0 18px}.rail ol{padding:0;margin:0;list-style:none;display:grid;gap:8px}.rail li{font-size:13px;padding:13px;border-radius:10px;color:#6b7c72;border:1px solid transparent}.rail li.active{background:white;border-color:#cbd9cf;color:#173f34;font-weight:750}.rail li.done{color:#427363}.story{background:#fdfcf8;border:1px solid #d9e1d9;border-radius:17px;min-height:425px;display:flex;flex-direction:column;padding:34px 37px}.story-kicker{letter-spacing:.12em;color:#4d806b;font-size:11px;font-weight:800}.story h3{font-size:clamp(25px,3.3vw,43px);letter-spacing:-.06em;line-height:1.25;font-weight:650;margin:17px 0}.story .lead{color:#62786e;line-height:1.8;margin:0 0 20px;max-width:650px}.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:10px 0 18px}.proof span{background:#eaf1eb;padding:16px 12px;border-radius:11px;font-size:12px;color:#356357;font-weight:660}.bill{border:1px solid #d8e2d8;border-radius:14px;padding:20px;background:#f4f7f0;margin:0 0 23px}.bill-row{display:flex;justify-content:space-between;gap:12px;margin:10px 0;font-size:14px}.bill-row.total{padding-top:14px;border-top:1px solid #cbd8c9;font-weight:800;font-size:18px}.story-actions{margin-top:auto;display:flex;flex-wrap:wrap;gap:9px;padding-top:15px}.smallprint{font-size:12px;color:#71847a}.verdict{padding:17px 20px;background:#eef0e6;border-left:3px solid #a88b56;border-radius:0 12px 12px 0;font-size:14px;margin-bottom:15px;color:#435c50}.unlocked{background:#e4eee5;border:1px solid #c7d9ca;padding:21px;border-radius:14px}
+.survey-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.survey-card{border:1px solid #d5ded4;border-radius:17px;padding:22px;background:#fbfaf6}.survey-card h3{font-size:16px;margin:0 0 15px}.choice-list{display:grid;gap:8px}.choice-list button{border:1px solid #d7e0d6;background:#fff;border-radius:11px;min-height:48px;text-align:left;padding:12px 14px;color:#526c61}.choice-list button[aria-pressed="true"]{border:2px solid #3d806d;background:#e7f0e9;color:#1b5041;font-weight:750;padding:11px 13px}.outcome{padding:23px;background:#183f38;color:#eef4ea;border-radius:16px;min-height:140px;margin-top:17px}.outcome small{display:block;color:#afc7b8;margin-bottom:12px}.outcome strong{font-size:18px;line-height:1.75}.outcome p{font-size:13px;color:#c4dbcf;margin:12px 0 0}.research-notes{margin:18px 0;font-size:12px;color:#6f8076}.footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px;padding:28px 0 42px;border-top:1px solid #d5ded4;font-size:12px;color:#74857b}.footer strong{color:#36594f}.mobile-only{display:none}
+@media(max-width:950px){.hero{grid-template-columns:1fr .4fr;padding:36px 31px}.instrument{min-height:150px}.ring{width:180px}.cards{gap:10px}.price-card{padding:18px;min-height:370px}.price-card.selected{padding:17px}.amount{font-size:30px}.journey{grid-template-columns:220px minmax(0,1fr)}}
+@media(max-width:700px){.shell{width:min(100% - 30px,560px)}.mast{height:66px}.status{font-size:10px}.hero{grid-template-columns:1fr;padding:29px 25px 19px;margin:15px 0;min-height:0}.hero h1{font-size:clamp(35px,9vw,48px);margin:16px 0}.hero p{font-size:14px}.instrument{display:none}.step-nav{grid-template-columns:1fr;gap:7px;margin:12px 0 23px}.step-btn{min-height:60px;padding:12px 14px}.step-btn .idx{font-size:20px}.step-btn small{display:none}.section-head{display:block}.section-head h2{font-size:30px}.controls{align-items:start;flex-direction:column;gap:9px}.cards{grid-template-columns:1fr}.price-card,.price-card.selected{min-height:0;padding:19px 20px}.price-card ul{margin:7px 0 16px}.amount{font-size:34px}.research-content{grid-template-columns:1fr;gap:5px}.journey{display:block}.rail{margin-bottom:12px;padding:13px}.rail ol{grid-template-columns:repeat(4,1fr);display:grid;gap:5px}.rail li{text-align:center;font-size:11px;padding:9px 3px}.rail h3{display:none}.story{padding:24px 20px;min-height:390px}.story h3{font-size:28px}.proof{grid-template-columns:1fr}.survey-grid{grid-template-columns:1fr}.section-head p{font-size:14px}.summary-row{align-items:start}.footer{padding-bottom:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.panel{animation:none}.step-btn,.price-card{transition:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#lab-start">연구실 바로가기</a>
+<div class="shell">
+<header class="mast">
+<a class="identity" href="#lab-start" aria-label="상권나침반 가격 연구실 처음으로"><span class="logo" aria-hidden="true">N</span><span>상권나침반<small>LOCALSCOPE / EXPERIENCE LAB</small></span></a>
+<div class="status">독립 프런트 시안 · 결제 없음</div>
+</header>
+<section class="hero" aria-label="R13 실험실 소개">
+<div class="hero-inner"><div class="eyebrow">R13 · Pricing Experience Laboratory</div><h1>가격보다 먼저,<br><em>판단을 경험합니다.</em></h1><p>비교하고, 선택하고, 결과를 확인합니다. 고객이 구입하는 것은 숫자가 아니라 자신의 후보지를 더 깊게 검토할 기회입니다.</p></div>
+<div class="instrument" aria-hidden="true"><div class="ring"></div><div class="needle"></div></div>
+</section>
+<main id="lab-start">
+<nav class="step-nav" aria-label="연구 단계">
+<button type="button" class="step-btn" data-go="1" aria-current="step"><span class="idx">01</span><span><strong>가격 판단</strong><small>세 가지 가격과 7일권 비교</small></span></button>
+<button type="button" class="step-btn" data-go="2"><span class="idx">02</span><span><strong>결제 경험</strong><small>무료 판정에서 다음 행동까지</small></span></button>
+<button type="button" class="step-btn" data-go="3"><span class="idx">03</span><span><strong>선택 실험</strong><small>선호와 구매 이유 기록</small></span></button>
+</nav>
+<section id="panel-1" class="panel active" aria-labelledby="p1-title">
+<div class="section-head"><div><div class="section-tag">01 / VALUE BEFORE PRICE</div><h2 id="p1-title" tabindex="-1">무엇을 사는지 먼저,<br>얼마인지 그다음.</h2><p>동일한 상품 역할을 놓고 가격만 바꾸어 봅니다. 아래 금액은 가격 실험용 가설이며 현재 운영 요금 변경안이 아닙니다.</p></div></div>
+<div class="controls"><div class="toggle-group" aria-label="가격 시나리오">
+<button type="button" data-scenario="A" aria-pressed="false">A · 현행</button><button type="button" data-scenario="B" aria-pressed="false">B · 중간</button><button type="button" data-scenario="C" aria-pressed="true">C · 목표</button></div>
+<div class="toggle-group" aria-label="이용 기간"><button type="button" data-term="30" aria-pressed="true">30일 이용권</button><button type="button" data-term="7" aria-pressed="false">7일 집중권 · 가설</button></div></div>
+<div class="cards">
+<article class="price-card" data-plan-card="free"><div class="plan-kicker">FREE / DISCOVERY</div><h3>먼저 판단하기</h3><div class="amount">0<small>원</small></div><div class="term-note">무료 분석 · 현행 제공 조건 확인 필요</div><ul><li>첫 번째 질문을 정리하기</li><li>무료로 가능한 판정 경험</li><li>데이터 기준과 한계 이해</li></ul><button class="btn ghost choose" type="button" data-choose="free">Free 선택</button></article>
+<article class="price-card selected" data-plan-card="basic"><div class="plan-kicker">BASIC / EVIDENCE</div><h3>근거까지 비교하기</h3><div class="amount"><span id="basic-price">29,900</span><small>원</small></div><div class="term-note" id="basic-term">30일 이용권 · 20회 분석(현행 권한 기준)</div><ul><li>상세 판정과 해석</li><li>여러 후보지 비교</li><li>기준과 한계까지 확인</li></ul><button class="btn choose" type="button" data-choose="basic">Basic 선택 중</button></article>
+<article class="price-card" data-plan-card="pro"><div class="plan-kicker">PRO / EXPLORATION</div><h3>더 깊게 찾아보기</h3><div class="amount"><span id="pro-price">59,900</span><small>원</small></div><div class="term-note" id="pro-term">30일 이용권 · 50회 분석(현행 권한 기준)</div><ul><li>넓은 지역 탐색</li><li>격자 지도 등 심화 기능</li><li>세부 위치 비교</li></ul><button class="btn ghost choose" type="button" data-choose="pro">Pro 선택</button></article>
+</div>
+<div class="summary-row"><p id="selected-price-text" aria-live="polite"><strong>Basic · 30일 · 29,900원</strong> 선택 중입니다.</p><button class="btn" type="button" id="to-journey">결제 경험 살펴보기 →</button></div>
+<div id="weekly-warning" class="notice" hidden>7일 이용권은 **실험 가설**입니다. 분석 횟수·AI 한도·갱신·환불·업그레이드 등 권한과 정책은 미확정이며 기존 30일 권한을 그대로 제공한다고 가정하지 않습니다.</div>
+<details class="research"><summary>비교 시장 근거 및 가격 설계 조건 펼치기</summary><div class="research-content"><div><strong>국내 비교 기준</strong><p>상권스캔: 전체 리포트 1건 50,000원, 무료 간략 분석 하루 5곳. <a href="https://www.donspot.com/pricing" target="_blank" rel="noopener noreferrer">공식 요금</a></p><p>여기 돼?: 월 19,900 / 49,000 / 99,000원. <a href="https://www.xn--ok0bz3ittr.kr/pricing" target="_blank" rel="noopener noreferrer">공식 요금</a></p></div><div><strong>가격 변경 전 반드시 확인할 것</strong><p>만덕 승인, AI·데이터 원가, 권한·횟수, 결제·환불 규칙, 기존 결제자의 보호, 실제 고객 인터뷰.</p><p>외부 공개가 변할 수 있으므로 확인일: 2026-11-17. 연구 화면은 실판매 조건이 아닙니다.</p></div></div></details>
+</section>
+<section id="panel-2" class="panel" aria-labelledby="p2-title">
+<div class="section-head"><div><div class="section-tag">02 / RELIEF BEFORE TRANSACTION</div><h2 id="p2-title" tabindex="-1">결제는 벽이 아니라,<br>판단을 더 살피는 선택.</h2><p>실제 데이터·로그인·PG 호출 없이, 사용자 경험만 단계별로 시연합니다. 모든 장소·결과·근거는 예시입니다.</p></div></div>
+<div class="journey">
+<aside class="rail" aria-label="결제 경험의 단계"><h3>EXPERIENCE FLOW</h3><ol id="moment-rail"><li class="active">01 무료 판정</li><li>02 상세 근거</li><li>03 결제 확인</li><li>04 분석 복귀</li></ol></aside>
+<div class="story">
+<div id="moment-content" aria-live="polite"></div>
+<div class="story-actions"><button id="moment-back" class="btn ghost" type="button">← 이전 화면</button><button id="moment-next" class="btn" type="button">상세 근거 살펴보기 →</button></div>
+</div>
+</div>
+<p class="research-notes">이 데모의 결제 완료는 애니메이션·문구만 변합니다. 결제정보·사용자 정보·사용량·권한은 수집하거나 변경하지 않습니다.</p>
+</section>
+<section id="panel-3" class="panel" aria-labelledby="p3-title">
+<div class="section-head"><div><div class="section-tag">03 / CHOICE, NOT PRESSURE</div><h2 id="p3-title" tabindex="-1">고객은 무엇 때문에<br>이용권을 선택할까요?</h2><p>수치만 비교하지 않고 상황·기간·구매 이유를 기록합니다. 응답은 브라우저 내부에서만 표시되며 서버로 전송되지 않습니다.</p></div></div>
+<div class="survey-grid">
+<div class="survey-card"><h3>지금 어떤 상황인가요?</h3><div class="choice-list" data-question="persona"><button type="button" data-value="어느 지역이 좋을지 탐색 중" aria-pressed="true">어느 지역이 좋을지 탐색 중</button><button type="button" data-value="후보지 2~3곳을 비교 중" aria-pressed="false">후보지 2~3곳을 비교 중</button><button type="button" data-value="계약 전에 마지막 확인 중" aria-pressed="false">계약 전에 마지막 확인 중</button></div></div>
+<div class="survey-card"><h3>어떤 이용 기간이 좋나요?</h3><div class="choice-list" data-question="period"><button type="button" data-value="무료부터 시작" aria-pressed="false">무료부터 시작</button><button type="button" data-value="7일 집중 이용권" aria-pressed="false">7일 집중 이용권</button><button type="button" data-value="30일 이용권" aria-pressed="true">30일 이용권</button></div></div>
+<div class="survey-card"><h3>가장 중요한 구매 이유는?</h3><div class="choice-list" data-question="reason"><button type="button" data-value="낮은 초기 결제 부담" aria-pressed="false">낮은 초기 결제 부담</button><button type="button" data-value="판정 근거와 신뢰" aria-pressed="true">판정 근거와 신뢰</button><button type="button" data-value="여러 후보 비교" aria-pressed="false">여러 후보 비교</button><button type="button" data-value="결정하기 전 빠른 확인" aria-pressed="false">결정하기 전 빠른 확인</button></div></div>
+<div class="survey-card"><h3>선택을 바꾸는 마지막 정보는?</h3><div class="choice-list" data-question="hesitation"><button type="button" data-value="실제 기능·분석 횟수" aria-pressed="true">실제 기능·분석 횟수</button><button type="button" data-value="환불·자동결제 조건" aria-pressed="false">환불·자동결제 조건</button><button type="button" data-value="예시 판정·근거 품질" aria-pressed="false">예시 판정·근거 품질</button></div></div>
+</div>
+<div class="outcome" id="survey-summary" aria-live="polite"></div>
+<div class="summary-row"><p>이것은 <strong>개별 사용자 선택 기록</strong>입니다. 설문 모집이나 전환율 실측 결과가 아닙니다.</p><button type="button" class="btn" id="copy-summary">선택 내용 복사</button></div>
+</section>
+</main>
+<footer class="footer"><span><strong>LocalScope / R13</strong> · 프런트 UX 검토용 독립 시안</span><span>기준: localpost/main R10 · 실제 결제/운영 정책 변경 없음 · © Experience Lab</span></footer>
+</div>
+<script>
+(function(){
+"use strict";
+const SCENARIOS={A:{label:"현행",basic:19900,pro:39900},B:{label:"중간",basic:24900,pro:49900},C:{label:"목표",basic:29900,pro:59900}};
+const WEEK_PRICES={basic:9900,pro:19900}; // Hypothesis only. Not an approved product.
+const state={step:1,scenario:"C",term:30,plan:"basic",moment:0,survey:{persona:"어느 지역이 좋을지 탐색 중",period:"30일 이용권",reason:"판정 근거와 신뢰",hesitation:"실제 기능·분석 횟수"}};
+const $=selector=>document.querySelector(selector);
+const $$=selector=>Array.from(document.querySelectorAll(selector));
+const won=n=>n.toLocaleString("ko-KR")+"원";
+function price(plan){if(plan==="free")return 0;return state.term===7?WEEK_PRICES[plan]:SCENARIOS[state.scenario][plan]}
+function periodText(){return state.term===7?"7일 집중권 가설":"30일 이용권"}
+function planName(){return {free:"Free",basic:"Basic",pro:"Pro"}[state.plan]}
+function setStep(step){state.step=step;$$(".panel").forEach((p,i)=>p.classList.toggle("active",i+1===step));$$("[data-go]").forEach(b=>{if(Number(b.dataset.go)===step)b.setAttribute("aria-current","step");else b.removeAttribute("aria-current")});const heading=$("#p"+step+"-title");heading.focus({preventScroll:true});window.scrollTo({top:Math.max(0,$("#lab-start").getBoundingClientRect().top+window.scrollY-8),behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});if(step===2)renderMoment();if(step===3)renderSurvey()}
+function renderPricing(){
+$$("[data-scenario]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.scenario===state.scenario)));
+$$("[data-term]").forEach(b=>b.setAttribute("aria-pressed",String(Number(b.dataset.term)===state.term)));
+$("#basic-price").textContent=price("basic").toLocaleString("ko-KR");
+$("#pro-price").textContent=price("pro").toLocaleString("ko-KR");
+$("#basic-term").textContent=state.term===7?"7일 가설 · 기능·횟수 미확정":"30일 이용권 · 20회 분석(현행 권한 기준)";
+$("#pro-term").textContent=state.term===7?"7일 가설 · 기능·횟수 미확정":"30일 이용권 · 50회 분석(현행 권한 기준)";
+$("#weekly-warning").hidden=state.term!==7;
+$$("[data-plan-card]").forEach(card=>{const selected=card.dataset.planCard===state.plan;card.classList.toggle("selected",selected);const button=card.querySelector("button");button.textContent=planNameFor(card.dataset.planCard)+(selected?" 선택 중":" 선택");button.classList.toggle("ghost",!selected)});
+$("#selected-price-text").innerHTML="<strong>"+planName()+" · "+(state.plan==="free"?"무료":periodText())+" · "+won(price(state.plan))+"</strong> 선택 중입니다.";
+}
+function planNameFor(p){return {free:"Free",basic:"Basic",pro:"Pro"}[p]}
+function renderMoment(){
+const moment=state.moment;
+$$('#moment-rail li').forEach((li,i)=>{li.classList.toggle("active",i===moment);li.classList.toggle("done",i<moment)});
+$("#moment-back").disabled=moment===0;
+const content=$("#moment-content");const total=won(price(state.plan));const term=periodText();
+if(moment===0){
+content.innerHTML='<div class="story-kicker">01 / FREE RESULT · 가상 예시</div><h3>이 자리,<br>좋다고 단정하기 어렵습니다.</h3><p class="lead">예비 카페 창업자가 특정 후보지를 검토한다는 <strong>가상의 상황</strong>입니다. 유동인구 수치만으로는 적합하다고 판단할 수 없습니다.</p><div class="verdict"><strong>판정 예시 · 추가 확인 필요</strong><br>이것은 분석 엔진에서 나온 판정이 아닙니다.</div><div class="proof"><span>수요: 근거 확인 필요</span><span>경쟁: 주변 업종 확인</span><span>임대조건: 현장 확인</span></div><p class="smallprint">무료 단계에서도 확인해야 하는 위험·한계는 감추지 않는다는 UX 원칙을 시연합니다.</p>';
+$("#moment-next").textContent="상세 근거 살펴보기 →";
+}else if(moment===1){
+content.innerHTML='<div class="story-kicker">02 / COMPARE · 가상 예시</div><h3>왜 그런 판단인지,<br>근거를 비교합니다.</h3><p class="lead">상세 근거와 다른 후보지를 비교하는 경험입니다. 아래 카드의 비교 항목은 실제 수치가 아닌 UI 구성 예시입니다.</p><div class="proof"><span>후보 A<br>수요·경쟁 비교</span><span>후보 B<br>유사 상권 비교</span><span>판정 근거<br>출처·기준 시점</span></div><div class="verdict">현재 선택: <strong>'+planName()+' · '+(state.plan==="free"?"무료":term)+'</strong>. '+(state.plan==="free"?"Free로도 가능한 내용을 먼저 확인하고, 유료 확장을 원할 때만 구매 경로로 이동합니다.":"결제 전에 열리는 기능과 기간을 다시 확인합니다.")+'</div>';
+$("#moment-next").textContent=state.plan==="free"?"상품 비교로 돌아가기 →":"결제 조건 확인하기 →";
+}else if(moment===2){
+content.innerHTML='<div class="story-kicker">03 / ORDER REVIEW · 결제 모의화면</div><h3>무엇을 구매하는지<br>명확하게 확인합니다.</h3><p class="lead">결제 버튼은 실제 결제 서비스와 연결되지 않습니다. 상품의 총액과 사용 기간을 눈에 보이게 보여주는 UX만 검토합니다.</p><div class="bill"><div class="bill-row"><span>선택한 이용권</span><strong>'+planName()+'</strong></div><div class="bill-row"><span>이용 기간</span><strong>'+term+'</strong></div><div class="bill-row"><span>자동 갱신</span><strong>'+(state.term===30?"없음 · 현행 30일 정책":"미확정 · 7일 상품 가설")+'</strong></div><div class="bill-row"><span>환불·권한 조건</span><strong>'+(state.term===30?"공식 정책 확인":"만덕 검토 필요")+'</strong></div><div class="bill-row total"><span>가상 총 결제금액</span><strong>'+total+'</strong></div></div><p class="smallprint">실제 할인·정가·결제 혜택 없음. 부가세/환불/사용량 규칙은 운영 원본과 비교 확인 전 변경하지 않습니다.</p>';
+$("#moment-next").textContent="결제 완료 장면 시연 →";
+}else{
+content.innerHTML='<div class="story-kicker">04 / RETURN TO INSIGHT · 가상 완료</div><h3>구매보다 중요한 것은,<br>다음 질문이 보이는 것.</h3><p class="lead">고객이 결제 직후 원래 확인하려던 후보지로 돌아가, 상세 근거를 살펴보는 장면을 시연합니다.</p><div class="unlocked"><strong>'+planName()+' · '+term+'</strong><br>분석 근거 화면으로 복귀하는 UX 목업입니다.<br><span class="smallprint">실제 권한 활성화·결제·후보지 조회는 발생하지 않았습니다.</span></div><div class="proof"><span>판정의 이유</span><span>근거와 기준 시점</span><span>현장 확인할 질문</span></div>';
+$("#moment-next").textContent="선택 실험으로 이동 →";
+}
+}
+function renderSurvey(){
+$$("[data-question]").forEach(group=>{const name=group.dataset.question;group.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",String(state.survey[name]===b.dataset.value)))});
+const lines=["상황: "+state.survey.persona,"선호 기간: "+state.survey.period,"가장 중요한 가치: "+state.survey.reason,"추가 확인할 정보: "+state.survey.hesitation,"시연 당시 선택한 상품: "+planName()+" / "+periodText()+" / "+won(price(state.plan))];
+$("#survey-summary").innerHTML='<small>EXPERIMENT SUMMARY · 이 브라우저에서만 표시</small><strong>'+lines.map(line=>escapeHTML(line)).join("<br>")+'</strong><p>응답은 자동 저장되지 않으며 실제 구매 의향 조사 결과가 아닙니다. 사용자 인터뷰로 이유를 확인해야 합니다.</p>';
+}
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$$("[data-go]").forEach(b=>b.addEventListener("click",()=>setStep(Number(b.dataset.go))));
+$$("[data-scenario]").forEach(b=>b.addEventListener("click",()=>{state.scenario=b.dataset.scenario;renderPricing();renderSurvey()}));
+$$("[data-term]").forEach(b=>b.addEventListener("click",()=>{state.term=Number(b.dataset.term);renderPricing();renderSurvey()}));
+$$("[data-choose]").forEach(b=>b.addEventListener("click",()=>{state.plan=b.dataset.choose;renderPricing();renderSurvey()}));
+$("#to-journey").addEventListener("click",()=>{state.moment=0;setStep(2)});
+$("#moment-back").addEventListener("click",()=>{if(state.moment>0){state.moment--;renderMoment()}});
+$("#moment-next").addEventListener("click",()=>{if(state.moment===1&&state.plan==="free"){setStep(1);return}if(state.moment<3){state.moment++;renderMoment()}else setStep(3)});
+$$("[data-question]").forEach(group=>group.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{state.survey[group.dataset.question]=b.dataset.value;renderSurvey()})));
+$("#copy-summary").addEventListener("click",async()=>{
+const text=["LocalScope R13 개인 선택 메모","가격 시나리오: "+state.scenario+" / "+SCENARIOS[state.scenario].label,"선택 플랜: "+planName(),"기간: "+periodText(),"가상 가격: "+won(price(state.plan)),"상황: "+state.survey.persona,"선호 기간: "+state.survey.period,"선택 이유: "+state.survey.reason,"추가 확인: "+state.survey.hesitation,"비고: 실제 결제·응답 수집 없음"].join("\n");
+try{await navigator.clipboard.writeText(text);$("#copy-summary").textContent="복사 완료"}catch(_){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand("copy");ta.remove();$("#copy-summary").textContent=ok?"복사 완료":"브라우저 복사 권한 확인"}setTimeout(()=>$("#copy-summary").textContent="선택 내용 복사",2500)
+});
+renderPricing();renderMoment();renderSurvey();
+})();
+</script>
+</body>
+</html>
