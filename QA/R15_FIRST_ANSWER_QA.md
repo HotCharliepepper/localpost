@@ -75,4 +75,4 @@ sticky 모션의 예약 스크롤 높이를 빈 페이지처럼 표현하는 ful
 - 기본가와 조건부 프로모션을 구분했습니다. 7일/14일 상품은 승인·판매하지 않습니다.
 - main 병합·운영 배포는 실행하지 않습니다. Draft PR의 main 대비 diff는 미병합 R14 변경을 포함합니다. R15만의 변경 기준은 시작 HEAD입니다.
 
-최종 Draft PR / Preview 확인 결과와 commit SHA는 PR 설명 및 별도 Preview 검증 기록으로 제공합니다.
+[Draft PR #8](https://github.com/HotCharliepepper/localpost/pull/8)과 [Netlify Preview](https://deploy-preview-8--localscopekorea.netlify.app/)가 생성되었습니다. 호스팅 smoke 13개 통과, 주간 왕복 링크 및 자산 대조, 운영 불변을 [Preview 검증 기록](R15_PREVIEW_VERIFICATION.md)에 정리했습니다. 최종 commit SHA는 PR 설명과 완료 보고에서 별도로 제공합니다.

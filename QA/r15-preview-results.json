@@ -1,0 +1,99 @@
+{
+  "smoke": {
+    "url": "https://deploy-preview-8--localscopekorea.netlify.app/",
+    "checks": [
+      {
+        "name": "desktop hero",
+        "pass": true
+      },
+      {
+        "name": "desktop keyboard skip",
+        "pass": true
+      },
+      {
+        "name": "desktop direct anchor",
+        "pass": true
+      },
+      {
+        "name": "desktop result specification",
+        "pass": true
+      },
+      {
+        "name": "mobile hero",
+        "pass": true
+      },
+      {
+        "name": "mobile keyboard skip",
+        "pass": true
+      },
+      {
+        "name": "mobile direct anchor",
+        "pass": true
+      },
+      {
+        "name": "mobile result specification",
+        "pass": true
+      },
+      {
+        "name": "small-reduced hero",
+        "pass": true
+      },
+      {
+        "name": "small-reduced keyboard skip",
+        "pass": true
+      },
+      {
+        "name": "small-reduced direct anchor",
+        "pass": true
+      },
+      {
+        "name": "small-reduced result specification",
+        "pass": true
+      },
+      {
+        "name": "weekly label",
+        "pass": true
+      }
+    ],
+    "errors": [],
+    "hashes": {
+      "index.html": {
+        "status": 200,
+        "sha256": "d874026764444bff027137d81c7cf3e4fed79016d399557dcdeec3927dc74d70"
+      },
+      "r15-first-answer.css": {
+        "status": 200,
+        "sha256": "3547636139c2a382fe296d860913a4df5d4de7412da151131914cd4a70c6c91d"
+      },
+      "r13-weekly/index.html": {
+        "status": 200,
+        "sha256": "fbecfb21db662cc01d2d0195a478e28f584ea22685e2a2bb414d7555c915882d"
+      },
+      "r13-live.css": {
+        "status": 200,
+        "sha256": "87c88d736d053013ad92b10149ca3e8e27d18d2c3f7af0c19eb1578a72f7d8fb"
+      },
+      "r13-live.js": {
+        "status": 200,
+        "sha256": "cf29441edf5842c287449a86bdcb97d8e66bff8f0264ba6295c9cde6cce9320a"
+      },
+      "r14-saas-type.css": {
+        "status": 200,
+        "sha256": "2a84520ec0abda74971d20a61e4d82f4447e8fde570e68e558e1f97afdbfb25a"
+      }
+    }
+  },
+  "roundtrip": {
+    "weeklyUrl": "https://deploy-preview-8--localscopekorea.netlify.app/r13-weekly/",
+    "label": "가격 실험 · 결제 불가",
+    "backUrl": "https://deploy-preview-8--localscopekorea.netlify.app/#decision",
+    "inlineHashes": {
+      "index.html": [
+        "1ca9261f5e3e3097ac54d6f2a7ce077b2472b160d63f4e637de300b11111d578"
+      ],
+      "r13-weekly/index.html": [
+        "f1bb2b1741fddf608f3af05e217a123e99bbc0ca0a1a0bb61eb60546fd72ff0b"
+      ]
+    }
+  }
+}
