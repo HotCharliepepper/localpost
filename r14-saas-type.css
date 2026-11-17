@@ -268,3 +268,11 @@ body.page-weekly .end{color:#4f6a5e}
   body.page-home .path,
   body.page-weekly .steps .step{transition:none}
 }
+
+/* Small-height mobile: protect H1 and primary CTA from the compass artwork. */
+@media(max-width:700px) and (max-height:680px){
+  body.page-home .title{font-size:clamp(35px,10vw,39px);line-height:1.17}
+  body.page-home .subtitle{font-size:14px;line-height:1.64;max-width:305px}
+  body.page-home .scene-overlay h2{font-size:clamp(31px,8vw,37px)}
+  body.page-home .compass-viewport{opacity:.86}
+}
