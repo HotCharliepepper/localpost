@@ -1,0 +1,270 @@
+/* LocalScope R14 — Natural Korean × SaaS reading system.
+   Frontend presentation only. Baseline motion, route contracts, backend and payments untouched. */
+:root {
+  --ls14-ink:#153d3a;
+  --ls14-muted:#48665d;
+  --ls14-deep:#0c2730;
+  --ls14-forest:#194b45;
+  --ls14-teal:#1c7868;
+  --ls14-surface:#f4f7f4;
+  --ls14-surface-soft:#e7f0e9;
+  --ls14-surface-high:#fffefa;
+  --ls14-line:#ccdcd1;
+  --ls14-highlight:#e7cb96;
+}
+body.page-home,
+body.page-weekly {
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  color:var(--ls14-ink);
+  font-family:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
+}
+body.page-home h1,
+body.page-home h2,
+body.page-home h3,
+body.page-weekly h1,
+body.page-weekly h2,
+body.page-weekly h3 {
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  text-wrap:balance;
+}
+body.page-home a,
+body.page-weekly a,
+body.page-home button,
+body.page-weekly button {
+  -webkit-tap-highlight-color:transparent;
+}
+body.page-home :focus-visible,
+body.page-weekly :focus-visible {
+  outline:3px solid #cf985b;
+  outline-offset:4px;
+}
+
+/* Hero: retain the right-cropped red north, reduce the brown/magenta haze.
+   Green appears as a transition to clarity, not as a second competing accent. */
+body.page-home .hero-stage {
+  background:
+    radial-gradient(ellipse at 84% 39%,rgba(116,51,65,.72),transparent 44%),
+    radial-gradient(ellipse at 60% 45%,rgba(25,58,62,.42),transparent 56%),
+    linear-gradient(115deg,#081c28 9%,#0e2831 65%,#162c32 100%);
+}
+body.page-home .hero-stage::before {
+  background:
+    radial-gradient(ellipse at 83% 42%,rgba(64,133,112,.22),transparent 52%),
+    linear-gradient(135deg,#103039,#174d46 54%,#0b373a 100%);
+}
+body.page-home .title {
+  font-weight:400;
+  letter-spacing:-.065em;
+  line-height:1.17;
+  max-width:730px;
+  color:#f6f7f2;
+  text-wrap:balance;
+}
+body.page-home .title strong {font-weight:790;color:#fffefa}
+body.page-home .subtitle {
+  max-width:510px;
+  color:#d0dfd9;
+  font-size:clamp(15px,1.05vw,18px);
+  line-height:1.72;
+  word-break:keep-all;
+}
+body.page-home .nav a:not(.nav-action) {color:#d9e6df;font-size:14px}
+body.page-home .brand small {font-size:12px;color:#b7d0c5}
+body.page-home .btn-tertiary {font-size:13px;color:#d0dfdb;line-height:1.6;min-height:35px;display:inline-flex;align-items:center}
+body.page-home .btn-tertiary:hover {color:white}
+body.page-home .btn-secondary{border-bottom-color:rgba(215,236,222,.5);font-weight:670}
+body.page-home .btn-primary,
+body.page-home .nav-action {
+  background:#f4f6ee;
+  color:#17473f;
+  box-shadow:0 8px 26px rgba(3,12,18,.11);
+}
+body.page-home .btn-primary:hover,
+body.page-home .nav-action:hover {background:white}
+body.page-home .scroll-note{color:#d1e1d9;font-size:13px}
+body.page-home .scene-overlay .eyebrow {
+  color:#f0cd95;
+  font-size:12px;
+  letter-spacing:.095em;
+}
+body.page-home .scene-overlay h2 {
+  color:#f2f7ef;
+  font-weight:410;
+  line-height:1.16;
+}
+body.page-home .scene-overlay h2 strong {color:#e4f1e8;font-weight:780}
+body.page-home .scene-overlay p {color:#d5e4dc;line-height:1.75;font-size:clamp(14px,1.05vw,17px)}
+body.page-home .scene-overlay .btn {background:#f4e7cc;color:#1c493d}
+
+/* Data-first SaaS surfaces: warmer-white cards, visibly nested panels,
+   controlled elevation and dark headers for readability. */
+body.page-home .main-content {
+  background:
+    radial-gradient(ellipse at 89% 8%,rgba(77,137,114,.15),transparent 42%),
+    linear-gradient(150deg,#e7f1ea 0%,#f4f7f4 55%,#fbfaf6 100%);
+}
+body.page-home .main-content:before {opacity:.13}
+body.page-home .kicker {color:#355f53;letter-spacing:.105em;font-size:12px}
+body.page-home .kicker::before {background:#518a74}
+body.page-home .section-title {
+  font-weight:530;
+  line-height:1.23;
+  letter-spacing:-.06em;
+  color:#153b37;
+}
+body.page-home .section-title em {color:#176f5e;font-weight:760}
+body.page-home .lead {color:#45695f;line-height:1.81;font-size:clamp(15px,1.1vw,18px)}
+body.page-home .pathways h3 {color:#173d38}
+body.page-home .path {
+  background:rgba(255,255,252,.94);
+  border-color:#d1dfd5;
+  box-shadow:0 8px 23px rgba(23,64,50,.06);
+}
+body.page-home .path:first-child {
+  background:linear-gradient(160deg,#1e5a50,#16433f);
+  border-color:#1d554c;
+  color:#f8fbf5;
+  box-shadow:0 15px 34px rgba(24,72,56,.16);
+}
+body.page-home .path:not(:first-child) strong {color:#1a4b42}
+body.page-home .path p {color:#4b6a5f;font-size:14px;line-height:1.75}
+body.page-home .path:first-child p {color:#d8eee1}
+body.page-home .path .path-num {color:#456f5d}
+body.page-home .path:first-child .path-num {color:#d9e9d9}
+body.page-home .path-limit {color:#4e6c60;font-size:13px;line-height:1.75}
+body.page-home .card {
+  background:rgba(255,255,253,.9);
+  border:1px solid #d4e1d6;
+  box-shadow:0 11px 32px rgba(28,74,54,.055);
+}
+body.page-home .card .index {color:#4d7763}
+body.page-home .card h3 {color:#1b4840}
+body.page-home .card p {color:#4d6c60;font-size:14px;line-height:1.78}
+body.page-home .demo-label {
+  color:#6c5236;
+  background:#f6eddf;
+  border-left-color:#b18b55;
+  font-size:13px;
+  line-height:1.75;
+}
+body.page-home .route {
+  background:
+    radial-gradient(circle at 92% 13%,rgba(141,188,157,.19),transparent 38%),
+    linear-gradient(125deg,#164b43,#0f3536);
+  box-shadow:0 18px 46px rgba(14,52,41,.13);
+}
+body.page-home .route h3{color:#fffefa}
+body.page-home .route p{color:#d4e6da;font-size:15px;line-height:1.8}
+body.page-home .route .kicker {color:#c7e1d0}
+body.page-home .footer {background:#102f32;color:#d1e1d8;line-height:1.7}
+
+/* Weekly proposal room — make the pricing interface visually related to the
+   landing, but distinctly a non-transactional prototype. */
+body.page-weekly {
+  --ink:#173d39;
+  --ink2:#355a50;
+  --deep:#102f33;
+  --deep2:#1a4e47;
+  --moss:#467a65;
+  --paper:#f4f7f4;
+  --line:#d1ded3;
+  --muted:#4c6a5f;
+  background:var(--paper);
+}
+body.page-weekly .hero {
+  background:
+    radial-gradient(circle at 82% 20%,rgba(116,166,140,.2),transparent 37%),
+    linear-gradient(130deg,#103039,#174942 62%,#123238);
+  border-color:#37695e;
+  box-shadow:0 16px 48px rgba(25,71,57,.13);
+}
+body.page-weekly .hero h1 {color:#f8faf3;font-weight:510;line-height:1.19}
+body.page-weekly .hero h1 em{color:#f2d7a4}
+body.page-weekly .hero p{color:#d5e6da;font-size:15px;line-height:1.75}
+body.page-weekly .top-note{color:#50685f;font-size:12px}
+body.page-weekly .steps .step{
+  min-height:78px;
+  border-color:#c9dacc;
+  background:#fcfef9;
+}
+body.page-weekly .steps .step[aria-current=step]{
+  background:#e4f0e7;
+  border-color:#39806a;
+}
+body.page-weekly .steps .step strong {font-size:14px;color:#224d42}
+body.page-weekly .steps .step small {font-size:12px;color:#506f62}
+body.page-weekly .headline h2 {color:#173e38;font-weight:600;line-height:1.22;letter-spacing:-.057em}
+body.page-weekly .headline p{color:#4c6e60;font-size:15px;line-height:1.8}
+body.page-weekly .eyebrow {color:#356d5b;letter-spacing:.09em;font-size:12px}
+body.page-weekly .questions,
+body.page-weekly .receipt,
+body.page-weekly .price,
+body.page-weekly .plan-splash {
+  border-color:#d2e0d5;
+  box-shadow:0 10px 28px rgba(19,73,53,.045);
+}
+body.page-weekly .choice {
+  color:#315a4d;
+  background:#fffefa;
+  border-color:#cfddd2;
+  font-size:15px;
+  line-height:1.62;
+  word-break:keep-all;
+}
+body.page-weekly .choice[aria-pressed=true]{
+  background:#e3f0e8;
+  border-color:#378069;
+  color:#184d3e;
+}
+body.page-weekly .q-title h3{color:#214b40;letter-spacing:-.025em}
+body.page-weekly .q-title p{font-size:13px;color:#526f60}
+body.page-weekly .canvas {
+  background:
+    radial-gradient(circle at 92% 8%,rgba(96,158,130,.2),transparent 43%),
+    linear-gradient(145deg,#164c43,#102f34);
+}
+body.page-weekly .canvas h3{color:#f5f9f2}
+body.page-weekly .canvas p {color:#d2e3d9;font-size:14px}
+body.page-weekly .canvas-line {color:#e2ede5;font-size:14px}
+body.page-weekly .canvas .statusline {color:#d1e2d5;font-size:13px}
+body.page-weekly .price.current{
+  border-color:#2f8066;
+  background:#fcfef9;
+  box-shadow:0 13px 32px rgba(25,87,60,.12);
+}
+body.page-weekly .price h3{color:#234f43}
+body.page-weekly .price p,
+body.page-weekly .price li{color:#4c6b5e;font-size:14px}
+body.page-weekly .price .subtitle,
+body.page-weekly .plan-tag{color:#3c6d5b}
+body.page-weekly .plan-splash{background:#e8f1e8}
+body.page-weekly .terms{color:#4e6c60;font-size:13px}
+body.page-weekly .receipt p{color:#506e61;font-size:14px}
+body.page-weekly .receipt-row span{color:#45695a}
+body.page-weekly .receipt-row strong{color:#234f42}
+body.page-weekly .closing{
+  background:
+    radial-gradient(circle at 87% 9%,rgba(108,169,131,.22),transparent 43%),
+    linear-gradient(135deg,#16463e,#103038);
+}
+body.page-weekly .closing p{color:#d4e7db;font-size:14px}
+body.page-weekly .hint,
+body.page-weekly .research-note{color:#4b6a5d;font-size:13px}
+body.page-weekly .end{color:#4f6a5e}
+@media(max-width:700px) {
+  body.page-home .title {font-size:clamp(41px,9.7vw,56px);line-height:1.19}
+  body.page-home .subtitle {font-size:15px;max-width:340px}
+  body.page-home .scene-overlay h2 {font-size:clamp(35px,8.8vw,49px)}
+  body.page-home .scene-overlay p {font-size:14px}
+  body.page-home .path{min-height:0}
+  body.page-home .card p{font-size:14px}
+  body.page-weekly .headline p{font-size:14px}
+  body.page-weekly .q-title p{font-size:13px}
+  body.page-weekly .price p,body.page-weekly .price li{font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  body.page-home .path,
+  body.page-weekly .steps .step{transition:none}
+}
