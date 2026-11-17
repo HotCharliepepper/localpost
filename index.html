@@ -1,164 +1,202 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#071521">
-  <meta name="description" content="이 자리, 정말 괜찮을까? 질문에서 방향으로. 나의 시작점을 고르고, 공개 사례와 판정의 근거를 살펴보세요.">
-  <title>상권나침반 — 질문에서 방향으로</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071521'/%3E%3Cpath d='M32 9 43 42 32 36 21 42Z' fill='%23edce93'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./r10-editorial.css">
-  <script src="./motion.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#091b23">
+<meta name="description" content="사람이 많은 자리가 내 업종에도 좋은 자리일까? 상권나침반으로 판정의 의미, 근거, 다음 확인 방법을 알아보세요.">
+<title>상권나침반 — 내 업종에 맞는 자리인지, 결론부터.</title>
+<style>
+:root{--navy:#091923;--wine:#48212c;--cream:#f6f3e8;--sage:#dfe9e1;--ink:#183c37;--muted:#668178;--accent:#e8616d;--teal:#71a99f;--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);background:#e7ece4;color:var(--ink);letter-spacing:-.025em;line-height:1.6}
+a,button{font:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #e8ac78;outline-offset:5px}
+.skip{position:absolute;top:-100px;left:16px;z-index:40;background:var(--cream);padding:12px;color:var(--ink)}
+.skip:focus{top:14px}
+.hero{background:radial-gradient(ellipse at 82% 37%,rgba(104,39,52,.94),transparent 47%),radial-gradient(ellipse at 52% 36%,rgba(33,28,42,.86),transparent 48%),linear-gradient(112deg,#081b24 8%,#101b26 56%,#251d28 100%);color:#f9f7f0;position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 62%,rgba(111,150,153,.08),transparent 29%),radial-gradient(circle at 30% 30%,rgba(255,255,255,.015),transparent 45%);pointer-events:none}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(circle,rgba(234,242,230,.52) .5px,transparent 1px);background-size:42px 43px;mask-image:linear-gradient(105deg,transparent 36%,black)}
+.topbar{height:80px;padding:0 clamp(20px,2.8vw,56px);position:relative;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:13px;color:#f4f0e6;text-decoration:none;font-size:17px;font-weight:760;line-height:1.18;letter-spacing:-.04em}
+.brand svg{width:36px;height:35px;flex:none}
+.brand small{display:block;color:#a8b9b9;font-size:10px;letter-spacing:.07em;font-weight:520;margin-top:3px}
+.nav{display:flex;gap:24px;align-items:center;font-size:13px}
+.nav a{text-decoration:none}
+.nav a:not(.nav-action){color:#d0d8d4}
+.nav-action{display:inline-flex;align-items:center;gap:23px;background:var(--cream);padding:14px 20px;color:#1d443c;min-height:48px;font-weight:700}
+.nav-action:hover{background:#fff}
+.content{z-index:5;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - 80px);padding:6vh clamp(20px,3.2vw,68px) 85px;pointer-events:none}
+.content>*{pointer-events:auto}
+.title{font-weight:330;letter-spacing:-.072em;line-height:1.12;font-size:clamp(48px,4.4vw,85px);max-width:690px;margin:0 0 23px;word-break:keep-all}
+.title strong{display:block;font-weight:800;margin-top:8px}
+.subtitle{margin:0 0 29px;color:#bdcbcc;font-size:clamp(15px,1vw,18px)}
+.actions{display:flex;flex-direction:column;align-items:flex-start;gap:15px;max-width:385px}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;border:1px solid transparent;padding:15px 18px;text-decoration:none;min-height:53px;font-size:14px;font-weight:720}
+.btn-primary{background:#f7f4eb;color:#24463d;min-width:214px}
+.btn-primary:hover{background:#fff}
+.btn-secondary{color:#fff;background:transparent;padding-inline:0;border-bottom:1px solid rgba(224,238,228,.24);min-width:230px}
+.btn-secondary:hover{border-bottom-color:#b9dad0}
+.btn-tertiary{color:#b9c8c8;font-size:12px;text-decoration:none;margin-top:2px}
+.btn-tertiary:hover{color:#fff}
+.btn .arr{font-size:22px;font-weight:370;line-height:1}
+.scroll-note{position:absolute;z-index:5;bottom:24px;left:clamp(20px,3.2vw,68px);color:#b8c9c6;font-size:12px;letter-spacing:.02em;text-decoration:none}
+.motion-notice{position:absolute;z-index:5;bottom:23px;right:clamp(20px,3vw,60px);border:1px solid rgba(210,235,227,.22);color:#b2c7c0;padding:7px 11px;border-radius:30px;font-size:10px;pointer-events:none}
+.compass-viewport{position:absolute;z-index:2;width:min(46.5vw,830px);aspect-ratio:1;right:calc(-1 * clamp(55px,7vw,138px));top:51%;transform:translateY(-50%);pointer-events:none;filter:drop-shadow(0 18px 42px rgba(0,0,0,.1))}
+.compass-viewport:before{content:"";position:absolute;inset:-16%;border-radius:50%;background:radial-gradient(circle,rgba(220,100,114,.14) 0,rgba(172,70,85,.06) 45%,transparent 70%);pointer-events:none}
+.dial{width:100%;height:100%;overflow:visible}
+.dial-ring{fill:none;stroke:#82aca8;stroke-opacity:.64;stroke-width:1.5}
+.dial-ring.fine{stroke-width:.7;stroke-opacity:.25}
+.dial-ring.dashed{stroke:#bbd0c2;stroke-width:1;stroke-opacity:.2;stroke-dasharray:2 8}
+.dial-guide{fill:none;stroke:#a9b7b3;stroke-opacity:.18;stroke-width:.8}
+.ticks{stroke:#a2c5bb;stroke-opacity:.57;stroke-width:1}
+.ticks.major{stroke:#ddc89d;stroke-width:2.4}
+.dial text{fill:#b9c5c2;font:11px var(--font);letter-spacing:1.2px}
+.dial .north-label{fill:#f47279;font-size:31px;font-style:italic;font-weight:800;letter-spacing:0}
+.needle-mover{transform-origin:300px 300px;animation:calibrate 1.75s both cubic-bezier(.17,.68,.26,1)}
+@keyframes calibrate{0%{transform:rotate(20deg)}23%{transform:rotate(49deg)}45%{transform:rotate(34deg)}66%{transform:rotate(43deg)}84%{transform:rotate(38.7deg)}100%{transform:rotate(40deg)}}
+.pivot{filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
+.main-content{position:relative;overflow:hidden;background:linear-gradient(155deg,#e4ede4,#f5f3ea 60%);padding:100px max(24px,calc((100vw - 1200px)/2)) 86px}
+.main-content:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.23;background:repeating-radial-gradient(ellipse at 87% 5%,transparent 0 44px,rgba(49,105,88,.10) 45px 46px,transparent 47px 72px)}
+.main-content>*{position:relative;z-index:1}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.16em;font-weight:800;color:#588574;text-transform:uppercase}
+.kicker:before{content:"";width:19px;height:1px;background:#789987}
+.section-title{font-size:clamp(32px,4.6vw,63px);line-height:1.2;letter-spacing:-.075em;font-weight:550;margin:17px 0 14px}
+.section-title em{font-style:normal;font-weight:760;color:#236752}
+.lead{color:#58746a;font-size:16px;max-width:780px;margin:0 0 35px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:rgba(255,255,255,.67);border:1px solid #d4e0d4;padding:27px 25px;border-radius:18px;min-height:200px;box-shadow:0 16px 40px rgba(30,64,50,.04)}
+.card .index{font:27px Georgia,serif;color:#7a9987}
+.card h3{font-size:21px;letter-spacing:-.045em;margin:22px 0 9px;line-height:1.3}
+.card p{color:#607a6d;font-size:14px;margin:0;word-break:keep-all}
+.dot-transition{height:17px;width:17px;border-radius:50%;background:#d5b783;border:4px solid #245247;margin:-9px auto 40px;box-shadow:0 0 0 14px rgba(71,119,96,.08)}
+.route{background:#103633;color:#f8f5eb;border-radius:23px;padding:42px 46px;margin-top:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;box-shadow:0 20px 50px rgba(20,52,42,.15)}
+.route h3{font-size:clamp(26px,3.2vw,43px);margin:12px 0 10px;letter-spacing:-.055em;line-height:1.25;font-weight:590}
+.route p{color:#c4d8cd;font-size:14px;margin:0;max-width:700px}
+.route .btn{white-space:nowrap;background:#f5e4c0;color:#244b40;border-radius:100px;min-width:225px;justify-content:center}
+.route .btn:hover{background:#fff0d4}
+.route .kicker{color:#b5d3be}
+.footer{background:#0b292c;color:#bfd1ca;padding:27px clamp(20px,3.2vw,68px);display:flex;gap:20px;justify-content:space-between;font-size:12px}
+.footer a{color:#e8ebdf}
+.demo-label{background:#f4e8d8;border-left:3px solid #bb9367;color:#745740;padding:13px 17px;font-size:13px;margin:20px 0 0;border-radius:0 10px 10px 0}
+@media(max-width:1050px){.compass-viewport{width:58vw;right:-14vw;opacity:.85}.title{font-size:clamp(44px,5vw,65px)}.content{padding-bottom:115px}.cards{gap:10px}.card{padding:21px}}
+@media(max-width:700px){.hero{min-height:0}.topbar{height:72px;padding:0 19px}.nav{gap:12px}.nav a:not(.nav-action){display:none}.nav-action{min-height:42px;padding:10px 12px;font-size:11px;gap:8px}.brand{font-size:14px}.brand svg{width:29px}.content{min-height:0;padding:56px 22px 12px}.title{font-size:clamp(43px,10.1vw,56px);max-width:390px}.subtitle{font-size:14px;margin-bottom:22px}.actions{gap:10px}.btn{min-height:48px;font-size:13px}.compass-viewport{position:relative;top:auto;right:auto;transform:none;display:block;width:min(110vw,470px);margin:0 -38px 40px auto;opacity:1}.motion-notice{display:none}.scroll-note{left:22px;bottom:22px}.main-content{padding:65px 18px}.section-title{font-size:34px}.lead{font-size:14px}.cards{grid-template-columns:1fr}.card{min-height:0;padding:19px 21px}.card h3{margin:8px 0 5px;font-size:19px}.route{grid-template-columns:1fr;padding:25px 22px;gap:22px}.route .btn{width:100%}.footer{padding:24px 20px;flex-direction:column}.scroll-note{font-size:11px}}
+@media(max-width:410px){.compass-viewport{width:114vw;margin-right:-40px}.title{font-size:42px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.needle-mover{animation:none;transform:rotate(40deg)}}
+</style>
+<link rel="stylesheet" href="./r13-live.css">
+<script src="./r13-live.js" defer></script>
 </head>
-<body class="r10">
-<a class="skip-link" href="#pathways">이야기 건너뛰고 시작 방법 보기</a>
-<header class="topbar" aria-label="상권나침반 탐색">
-  <a href="#intro" class="brand" aria-label="상권나침반, 처음으로">
-    <svg class="brand-mark" width="42" height="36" viewBox="0 0 80 60" fill="none" aria-hidden="true"><path d="M5 51 28 11 51 51 M58 11V51H77" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <span>상권나침반<small>LocalScope</small></span>
-  </a>
-  <nav class="navigation" aria-label="페이지 이동"><a class="nav-text" href="#pathways">건너뛰기</a><a href="https://localscope.co.kr/analyze" data-service-route="/analyze" class="nav-cta" id="header-analyze">바로 분석 <span aria-hidden="true">↗</span></a></nav>
+<body class="launch">
+<a class="skip" href="#pathways">분석 시작 방법으로 건너뛰기</a>
+<section class="hero" id="intro" aria-label="상권나침반 — 질문에서 방향으로">
+<div class="hero-stage" id="cinema-stage" data-phase="question">
+<header class="topbar">
+<a class="brand" href="#intro" aria-label="상권나침반 처음으로"><svg viewBox="0 0 46 42" fill="none" aria-hidden="true"><path d="M2 36L16 7L31 36M36 7V36H45" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>상권나침반<small>LocalScope</small></span></a>
+<nav class="nav" aria-label="주요 이동"><a href="#proof">판단의 근거</a><a class="nav-action" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" title="별도 공식 서비스로 이동">바로 분석 <span aria-hidden="true">↗</span></a></nav>
 </header>
-<main>
-  <section id="intro" class="cinema" aria-label="질문에서 방향으로 이어지는 상권나침반 이야기">
-    <div class="snap-target" id="step-0" aria-hidden="true"></div><div class="snap-target" id="step-1" aria-hidden="true"></div><div class="snap-target" id="step-2" aria-hidden="true"></div><div class="snap-target" id="step-3" aria-hidden="true"></div><div class="snap-target" id="step-4" aria-hidden="true"></div><div class="snap-target" id="step-5" aria-hidden="true"></div>
-    <div class="cinema-stage" id="cinema-stage">
-      <div class="depth-field" aria-hidden="true"></div><div class="horizon" aria-hidden="true"></div><div class="glow-halo" aria-hidden="true"></div><canvas id="vortex" aria-hidden="true"></canvas><div class="grain" aria-hidden="true"></div>
-      <div class="world" id="world" aria-hidden="true">
-        <svg id="diagram" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="presentation">
-          <defs>
-            <radialGradient id="point-aura"><stop offset="0" stop-color="#f9d994" stop-opacity=".45"/><stop offset=".25" stop-color="#eacb8c" stop-opacity=".08"/><stop offset="1" stop-color="#edce93" stop-opacity="0"/></radialGradient>
-            <radialGradient id="dial-light"><stop offset="0" stop-color="#84c8be" stop-opacity=".05"/><stop offset=".75" stop-color="#4c8d91" stop-opacity=".01"/><stop offset="1" stop-color="#82cdc0" stop-opacity=".09"/></radialGradient>
-            <linearGradient id="spiral-ink" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4c9b9d" stop-opacity=".04"/><stop offset=".36" stop-color="#7fc4bd" stop-opacity=".65"/><stop offset=".75" stop-color="#eed29c" stop-opacity=".85"/><stop offset="1" stop-color="#a4ded1" stop-opacity=".08"/></linearGradient>
-            <linearGradient id="glyph-ink" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#fff8e8"/><stop offset=".55" stop-color="#f1e3c7"/><stop offset="1" stop-color="#7ca9a4"/></linearGradient>
-            <linearGradient id="needle-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff0c9"/><stop offset="1" stop-color="#bd8e48"/></linearGradient><linearGradient id="needle-teal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#93ccc1"/><stop offset="1" stop-color="#2a626b"/></linearGradient>
-            <filter id="core-bloom" x="-150%" y="-150%" width="400%" height="400%"><feGaussianBlur stdDeviation="5"/></filter><path id="needle-shape" d="M500 267 527 500 500 733 473 500Z"/>
-          </defs>
-          <g class="coordinate-hint"><circle cx="500" cy="500" r="338"/><circle cx="500" cy="500" r="425"/><path d="M500 35V89 M500 911V965 M35 500H89 M911 500H965"/></g>
-          <g class="sn-glyph" id="sn-glyph"><path class="glyph-shadow" d="M240 570 372 337Q380 323 389 337L522 570 M613 333V549Q613 570 634 570H773"/><path d="M240 570 372 337Q380 323 389 337L522 570 M613 333V549Q613 570 634 570H773"/></g>
-          <g id="spiral-field" class="spiral-field"></g>
-          <g id="point-stage" class="point-stage"><circle cx="500" cy="500" r="155" fill="url(#point-aura)"/><circle class="central-bloom" cx="500" cy="500" r="8" filter="url(#core-bloom)"/><circle class="central-dot" cx="500" cy="500" r="3.5"/></g>
-          <!-- One instrument, eight construction states, one shared pivot. -->
-          <g class="compass" id="compass">
-            <g class="seed-ring"><circle cx="500" cy="500" r="182"/><circle class="ring-echo" cx="500" cy="500" r="188"/><path class="ring-lead" d="M500 318A182 182 0 0 1 657.6 409"/></g>
-            <g class="compass-axes"><path d="M500 132V868 M132 500H868"/><path class="diagonal" d="M268 268 732 732 M268 732 732 268"/><circle cx="500" cy="500" r="11"/></g>
-            <g class="dial-body"><circle class="dial-surface" cx="500" cy="500" r="338" fill="url(#dial-light)"/><circle class="outer-rim" cx="500" cy="500" r="338"/><circle class="rim-inset" cx="500" cy="500" r="330"/><circle class="inner-rim" cx="500" cy="500" r="302"/><circle class="inner-rim" cx="500" cy="500" r="252"/><circle class="precision-ring" cx="500" cy="500" r="247" stroke-dasharray="1 8"/><g id="dial-ticks"></g><g id="dial-degrees"></g><g class="dial-arcs"><path d="M500 162A338 338 0 0 1 793 331 M500 838A338 338 0 0 1 207 669"/><path class="arc-fine" d="M162 500A338 338 0 0 1 207 331 M838 500A338 338 0 0 1 793 669"/></g><g class="dial-fasteners"><circle cx="500" cy="174" r="2"/><circle cx="826" cy="500" r="2"/><circle cx="500" cy="826" r="2"/><circle cx="174" cy="500" r="2"/></g></g>
-            <g class="direction-marks"><g class="ordinal-marks"><path d="M500 246 507 261H493Z"/><path d="M754 500 739 507V493Z"/><path d="M500 754 493 739H507Z"/><path d="M246 500 261 493V507Z"/></g><g class="cardinal-type"><text class="north" x="500" y="133">N</text><text x="500" y="884">S</text><text x="121" y="508">W</text><text x="879" y="508">E</text></g><path class="north-index" d="M494 149 500 139 506 149"/><g class="rose-lines"><path d="M500 318 500 682 M318 500H682 M371 371 629 629 M371 629 629 371"/></g></g>
-            <g class="needle-trails"><use href="#needle-shape" transform="rotate(-9 500 500)" opacity=".30"/><use href="#needle-shape" transform="rotate(-21 500 500)" opacity=".16"/><use href="#needle-shape" transform="rotate(-36 500 500)" opacity=".07"/></g>
-            <g class="needle"><path class="needle-shadow" d="M500 267 527 500 500 733 473 500Z"/><path fill="url(#needle-gold)" d="M500 267 500 500 473 500Z"/><path fill="#d2ad6f" d="M500 267 527 500 500 500Z"/><path fill="url(#needle-teal)" d="M500 733 500 500 527 500Z"/><path fill="#396c73" d="M500 733 473 500 500 500Z"/><path class="needle-spine" d="M500 277V723"/></g>
-            <g class="compass-pivot"><circle class="pivot-outer" cx="500" cy="500" r="20"/><circle class="pivot-inset" cx="500" cy="500" r="13"/><circle class="pivot-core" cx="500" cy="500" r="5"/></g>
-          </g>
-        </svg>
-      </div>
-      <div class="screen-veil" aria-hidden="true"></div>
-      <div class="narration">
-        <article class="chapter active" data-chapter="0" aria-hidden="false"><h1>이 자리,<br><em>정말 괜찮을까?</em></h1><p>시작은 하나의 질문입니다.</p><a class="story-start" href="#step-1">스크롤하여 이어보기 <span aria-hidden="true">↓</span></a></article>
-        <article class="chapter" data-chapter="1" aria-hidden="true" inert><h2>좋아 보이는 자리는<br><em>많습니다.</em></h2><p>사람이 많고, 경쟁이 적다면 충분할까요?</p></article>
-        <article class="chapter" data-chapter="2" aria-hidden="true" inert><h2>사람이 많아도<br><em>내 손님은 다릅니다.</em></h2><p>같은 거리도 업종에 따라 달라집니다.</p></article>
-        <article class="chapter" data-chapter="3" aria-hidden="true" inert><h2>확인해야 할 건<br><em>하나입니다.</em></h2><p>이 자리에서 무엇을 더 확인할까?</p></article>
-        <article class="chapter chapter-resolution" data-chapter="4" aria-hidden="true" inert><div class="micro-caption"><span id="micro-number">4–1</span><span id="micro-label">한 점에서</span></div><h2>하나의 방향으로.</h2><div class="micro-track" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
-        <article class="chapter chapter-final" data-chapter="5" aria-hidden="true" inert><h2>결론부터.<br><em>근거는 그다음.</em></h2><p>이제 나의 시작점을 골라보세요.</p><div class="actions"><a href="#pathways" class="button primary" id="main-analyze">내 분석 시작하기 <span aria-hidden="true">↓</span></a></div><a href="https://localscope.co.kr/analyze" data-service-route="/analyze" class="pathways-link">후보지가 있다면 바로 분석 <span aria-hidden="true">↗</span></a></article>
-      </div>
-      <div class="side-note"><button id="motion-toggle" type="button" aria-pressed="false">모션 줄이기</button></div>
-      <div class="stage-bottom"><div class="progress-indicator" aria-label="이야기 진행 상황"><span id="scene-number">00 / 05</span><span class="progress-track"><span id="scroll-progress"></span></span><span class="progress-label">질문에서 방향으로</span></div><div class="step-controls" role="group" aria-label="이야기 장면 이동"><button id="prev-step" type="button" aria-label="이전 장면" disabled>←</button><button id="next-step" type="button">다음 장면 ↓</button></div></div>
-      <div class="scene-rail" aria-label="이야기 바로가기"><a href="#step-0" aria-label="질문"><span class="sr-only">질문</span></a><a href="#step-1" aria-label="나선"><span class="sr-only">나선</span></a><a href="#step-2" aria-label="의문"><span class="sr-only">의문</span></a><a href="#step-3" aria-label="한 점"><span class="sr-only">한 점</span></a><a href="#step-4" aria-label="방향"><span class="sr-only">방향</span></a></div>
-    </div>
-  </section>
-<section class="r10-section r10-pathways" id="pathways" aria-labelledby="pathways-title" tabindex="-1">
-  <div class="r10-wrap">
-    <div class="r10-intro">
-      <h2 id="pathways-title">어디부터<br><em>알아볼까요?</em></h2>
-      <p class="r10-lead">이미 정해진 것부터 시작하세요.<br>나머지는 함께 살펴봅니다.</p>
-    </div>
-    <ul class="r10-choice-list" aria-label="상권 분석 시작 경로">
-      <li><a class="r10-choice" data-service-route="/explore" href="https://localscope.co.kr/explore">
-        <h3>지역 찾기</h3><p class="r10-choice-condition">업종이 정해졌다면</p>
-        <p>내 업종에 맞는 동네를 살펴봐요.</p>
-        <svg class="r10-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg>
-      </a></li>
-      <li><a class="r10-choice" data-service-route="/place" href="https://localscope.co.kr/place">
-        <h3>업종 찾기</h3><p class="r10-choice-condition">자리가 정해졌다면</p>
-        <p>이 자리에서 어떤 업종을 볼까요?</p>
-        <svg class="r10-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg>
-      </a></li>
-      <li><a class="r10-choice r10-choice-primary" data-service-route="/analyze" href="https://localscope.co.kr/analyze">
-        <h3>바로 분석하기</h3><p class="r10-choice-condition">둘 다 정해졌다면</p>
-        <p>내 후보지의 판정을 확인해요.</p>
-        <svg class="r10-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg>
-      </a></li>
-    </ul>
-  </div>
-</section>
+<div class="content">
+<h1 class="title">사람이 많은 자리면<br><strong>잘될까?</strong></h1>
+<p class="subtitle">내 업종에 맞는 자리를 찾는 상권 분석.</p>
+<div class="actions">
+<a class="btn btn-primary" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer">내 후보지 분석하기 <span class="arr" aria-hidden="true">↗</span></a>
+<a class="btn btn-secondary" href="#motion-start">나침반 이야기 따라가기 <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn-tertiary" href="#proof">바로 판단 기준 확인하기 ↓</a>
 
-<section class="r10-section r10-proof" id="proof" aria-labelledby="proof-title">
-  <div class="r10-wrap">
-    <div class="r10-intro">
-      <h2 id="proof-title">같은 동네,<br>업종이 다르면<br><em>답도 달라집니다.</em></h2>
-      <p class="r10-lead">잠실6동을 두 업종으로 살펴본 공개 사례입니다. <strong>‘적다’는 사실만으로 좋고 나쁨을 정할 수 없습니다.</strong></p>
-    </div>
-    <div class="r10-verdict-pair">
-      <article class="r10-case r10-case-caution">
-        <div class="r10-case-head"><span>서울 잠실6동 · 주점</span><strong>주의</strong></div>
-        <p class="r10-myth">“술집이 적으니 블루오션이다”</p>
-        <h3>저녁 손님이 머물지 않는<br>낮 상권</h3>
-        <div class="r10-fact"><span>근거</span><p>음식점 중 주점 1.4% (전국 11.6%)<br>직장인 66,393명</p></div>
-      </article>
-      <article class="r10-case r10-case-positive">
-        <div class="r10-case-head"><span>서울 잠실6동 · 백반</span><strong>좋은 판정</strong></div>
-        <p class="r10-myth">“저녁에 사람이 없으면 장사가 안 된다”</p>
-        <h3>점심·낮 손님이<br>있는 동네</h3>
-        <div class="r10-fact"><span>근거</span><p>음식점 중 주점 1.4%<br>직장인이 주민의 4.1배</p></div>
-      </article>
-    </div>
-    <div class="r10-evidence">
-      <p class="r10-source-date">공개 사례 · <time datetime="2026-10-25">2026.10.25</time></p>
-      <p>기준: 원본 코드의 2026.10.25 판정 사례 · 각 행정동 대표 지점 반경 500m. 과거 사례로서 현재 영업 환경을 보장하지 않으며, 매출·성공 확률을 예측하지 않습니다.</p>
-      <a class="r10-text-link" data-service-route="/sample" href="https://localscope.co.kr/sample">기존 상세 사례 보기 <svg class="r10-inline-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
-    </div>
-  </div>
+</div>
+</div>
+<div class="compass-viewport" aria-hidden="true">
+<svg class="dial" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="dial-aura"><stop stop-color="#b75462" stop-opacity=".21"/><stop offset="1" stop-color="#b75462" stop-opacity="0"/></radialGradient><linearGradient id="metal"><stop stop-color="#f47b83"/><stop offset="1" stop-color="#c44452"/></linearGradient><linearGradient id="teal"><stop stop-color="#9bc9bd"/><stop offset="1" stop-color="#477b77"/></linearGradient></defs>
+<circle cx="300" cy="300" r="296" fill="url(#dial-aura)"/>
+<circle cx="300" cy="300" r="268" class="dial-ring fine"/>
+<circle cx="300" cy="300" r="230" class="dial-ring"/>
+<circle cx="300" cy="300" r="218" class="dial-ring fine"/>
+<circle cx="300" cy="300" r="191" class="dial-ring dashed"/>
+<circle cx="300" cy="300" r="151" class="dial-ring fine"/>
+<circle cx="300" cy="300" r="112" class="dial-ring"/>
+<path d="M300 16V584 M16 300H584 M100 100L500 500M100 500L500 100" class="dial-guide"/>
+<g class="ticks" id="marks"></g>
+<g stroke="#8cb4aa" stroke-opacity=".26"><path d="M300 69L305 80 295 80Z" fill="#e5d5b5"/><path d="M530 300L520 295 520 305Z" fill="#e5d5b5"/><path d="M300 531L295 521 305 521Z" fill="#e5d5b5"/></g>
+<text x="399" y="94" class="north-label" transform="rotate(15 399 94)">N</text>
+<text x="76" y="318">W</text><text x="278" y="560">S</text>
+<text x="168" y="134" font-size="9">330</text><text x="84" y="237" font-size="9">300</text><text x="75" y="392" font-size="9">240</text>
+<g class="needle-mover">
+<path d="M300 80L327 300L300 279L273 300Z" fill="url(#metal)"/>
+<path d="M300 80L300 279L273 300Z" fill="#fc98a0" opacity=".86"/>
+<path d="M300 520L327 300L300 321L273 300Z" fill="url(#teal)"/>
+<path d="M300 520L300 321L273 300Z" fill="#9dd2c0" opacity=".8"/>
+</g>
+<g class="pivot"><circle cx="300" cy="300" r="17" fill="#102b30" stroke="#f4e1b3" stroke-width="2.5"/><circle cx="300" cy="300" r="9.5" fill="#234b4b" stroke="#91b4ac"/><circle cx="300" cy="300" r="4" fill="#eed49f"/></g>
+</svg>
+</div>
+<a class="scroll-note" href="#motion-start">스크롤하여 관점 바꾸기 ↓</a>
+<div class="motion-meter" aria-hidden="true"><span></span></div>
+<div class="scene-overlay" id="scene-overlay" aria-hidden="true" inert>
+  <div class="eyebrow">BANG → CLARITY</div>
+  <h2>사람이 많아도<br><strong>내 손님은 다릅니다.</strong></h2>
+  <p>나침반이 멈춘 다음에야 시작되는 질문. 내 업종과 후보지의 조건을 확인해야 합니다.</p>
+  <a class="btn" href="#pathways">나의 시작점 선택하기 <span class="arr" aria-hidden="true">↓</span></a>
+</div>
+</div>
+<div class="motion-anchor" id="motion-start" aria-hidden="true"></div>
 </section>
-
-<section class="r10-section r10-method" id="method" aria-labelledby="method-title">
-  <div class="r10-wrap">
-    <div class="r10-intro">
-      <h2 id="method-title">결론부터.<br><em>근거는 그다음.</em></h2>
-      <p class="r10-lead">판정하지 못하는 경우도 있습니다.<br>그 이유까지 알려주는 것이 중요합니다.</p>
-    </div>
-    <ol class="r10-method-steps">
-      <li><strong>흔한 생각</strong><p>내가 믿고 있는 가정</p></li>
-      <li><strong>판정</strong><p>그 가정에 대한 답</p></li>
-      <li><strong>근거</strong><p>숫자·출처·기준 시점</p></li>
-      <li><strong>그래서</strong><p>현장에서 확인할 것</p></li>
-    </ol>
-    <div class="r10-limit">
-      <p><strong>판정은 창업 성공을 보장하지 않습니다.</strong><br>자료가 부족하거나 엇갈리면 판정을 보류할 수 있습니다. 실제 임대조건과 영업 현장은 직접 확인해야 합니다.</p>
-    </div>
-  </div>
+<section class="main-content" id="story" aria-labelledby="story-heading">
+<div class="dot-transition" aria-hidden="true"></div>
+<span class="kicker">FROM UNCERTAINTY TO A QUESTION</span>
+<h2 class="section-title" id="story-heading">사람이 많아도<br><em>내 손님은 다릅니다.</em></h2>
+<p class="lead">좋아 보이는 자리가 모두 같은 가치를 갖는 건 아닙니다. 내가 하려는 업종과 후보지의 조건이 맞는지 확인할 때, 막연했던 고민은 구체적인 질문으로 바뀝니다.</p>
+<div class="pathways" id="pathways" tabindex="-1">
+<span class="kicker">CHOOSE YOUR STARTING POINT</span>
+<h3>지금 무엇이 정해졌나요?</h3>
+<div class="path-grid">
+  <a class="path" href="https://localscope.co.kr/explore" target="_blank" rel="noopener noreferrer" aria-label="업종을 정했어요 — 공식 서비스에서 지역 탐색">
+    <span class="path-num">01</span><strong>업종을 정했어요</strong>
+    <p>내 업종에 맞는 지역을 찾아봅니다.</p><span class="path-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="path" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리를 정했어요 — 공식 서비스에서 업종 탐색">
+    <span class="path-num">02</span><strong>자리를 정했어요</strong>
+    <p>선택한 지역과 어울리는 업종을 살펴봅니다.</p><span class="path-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="path" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-label="업종과 자리 모두 정했어요 — 공식 서비스에서 분석">
+    <span class="path-num">03</span><strong>둘 다 정했어요</strong>
+    <p>해당 조건을 바탕으로 분석을 시작합니다.</p><span class="path-arrow" aria-hidden="true">↗</span>
+  </a>
+</div>
+<p class="path-limit">선택하면 상권나침반 공식 분석 서비스가 새 탭에서 열립니다. 실제 판정은 데이터와 지역의 한계를 함께 확인해야 합니다.</p>
+</div>
+<div class="cards" id="proof">
+<article class="card"><span class="index">01</span><h3>먼저 판정의 의미</h3><p>좋음·주의·판정 보류의 차이를 이해합니다. 정렬된 나침반 자체가 실제 판정 결과를 뜻하지는 않습니다.</p></article>
+<article class="card"><span class="index">02</span><h3>근거를 확인</h3><p>업종·위치에 따라 수요, 경쟁, 데이터 기준일과 한계를 확인해야 합니다.</p></article>
+<article class="card"><span class="index">03</span><h3>다음 행동을 선택</h3><p>후보지를 더 비교할지, 현장에서 무엇을 확인할지 스스로 결정합니다.</p></article>
+</div>
+<p class="demo-label">설명은 실제 후보지에 대한 판정이나 매출 보장이 아닙니다. 실제 판정·근거·자료 기준 시점은 공식 분석 화면에서 확인할 수 있습니다.</p>
+<div class="route" id="decision">
+<div><span class="kicker">WEEKLY DECISION ROOM</span><h3>이용권을 고르는 과정도<br>명확해야 합니다.</h3><p>7일·14일 이용권은 검토 중인 가격 가설입니다. 구매 기능 없이 Q1~Q3 선택과 결제 전후 UI를 시연할 수 있습니다.</p></div>
+<a class="btn" href="./r13-weekly/index.html">주간 이용권 시연 보기 <span aria-hidden="true">↗</span></a>
+</div>
 </section>
-
-<section class="r10-section r10-closing" id="closing" aria-labelledby="closing-title">
-  <div class="r10-wrap">
-    <h2 id="closing-title">이제 내 자리를<br><em>확인할 차례입니다.</em></h2>
-    <p class="r10-lead">숫자보다 중요한 건, 이 자리의 판단.</p>
-    <div class="r10-closing-actions">
-      <a class="r10-button r10-button-primary" data-service-route="/analyze" href="https://localscope.co.kr/analyze">내 후보지 분석하기 <svg class="r10-inline-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg></a>
-      <a class="r10-button r10-button-secondary" href="#pathways">다른 방법으로 시작하기 <svg class="r10-inline-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 20V4M5 11l7-7 7 7"/></svg></a>
-    </div>
-    <p class="r10-closing-link"><a class="r10-text-link" data-service-route="/#pricing" href="https://localscope.co.kr/#pricing">기존 요금제·FAQ 확인 <svg class="r10-inline-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M5 19 19 5M5 5h14v14"/></svg></a></p>
-  </div>
-</section>
-</main>
-<footer class="r10-footer">
-  <div class="r10-wrap r10-footer-inner">
-    <a class="r10-footer-brand" href="#intro">상권나침반</a>
-    <div class="r10-footer-notes">
-      <p>판정은 창업 성공이나 매출을 보장하지 않습니다.</p>
-      <p>이 화면은 실시간 판정을 생성하지 않습니다. 분석은 연결된 LocalScope 공식 서비스에서 진행합니다.</p>
-      <p>이 이야기는 방향을 찾아가는 과정을 표현한 시각적 콘셉트입니다.</p>
-    </div>
-  </div>
-</footer>
-<noscript><style>.cinema{height:100svh!important}.chapter{display:none!important}.chapter[data-chapter="0"]{display:block!important;visibility:visible!important;opacity:1!important;transform:translateY(-50%)!important}.side-note,.stage-bottom,.scene-rail,.story-start,.snap-target{display:none!important}@media(max-width:700px){.chapter[data-chapter="0"]{transform:none!important}}</style><p class="noscript-note">스크롤 모션은 JavaScript가 필요합니다. 분석 방법과 공식 서비스 링크는 그대로 이용할 수 있습니다.</p></noscript>
+<footer class="footer"><span>상권나침반 · R13.3 Compass × Clarity</span><span>서비스 판정·결제 시스템 변경 없음 · <a href="./r13-weekly/index.html">주간 이용권 UX 연구실 (구매 불가)</a></span></footer>
+<script>
+(function(){
+"use strict";
+const marks=document.getElementById("marks");
+if(!marks)return;
+const NS="http://www.w3.org/2000/svg";
+const fragment=document.createDocumentFragment();
+for(let i=0;i<120;i++){
+ const t=(i*3-90)*Math.PI/180, major=i%10===0;
+ const r=major?209:214, end=222;
+ const line=document.createElementNS(NS,"line");
+ line.setAttribute("x1",String(300+r*Math.cos(t)));
+ line.setAttribute("y1",String(300+r*Math.sin(t)));
+ line.setAttribute("x2",String(300+end*Math.cos(t)));
+ line.setAttribute("y2",String(300+end*Math.sin(t)));
+ if(major)line.setAttribute("class","major");
+ fragment.appendChild(line);
+}
+marks.appendChild(fragment);
+})();
+</script>
 </body>
 </html>
