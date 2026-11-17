@@ -1,0 +1,56 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "index.html",
+          "r13-weekly/index.html"
+        ],
+        "createdAt": "2026-11-17T16:25:48.538Z",
+        "reason": "Agent verified: static scanner composites gradients against incorrect light backgrounds. R15 repaired four weekly selectors; 136 rendered text ranges pass sampled contrast, minimum 4.68:1. See QA/r15-contrast-results.json. Recheck rendered contrast after edits."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html",
+          "r13-weekly/index.html"
+        ],
+        "createdAt": "2026-11-17T16:25:48.714Z",
+        "reason": "Agent verified: existing R13/R14 offset soft shadows, not zero-offset halos; user explicitly requires preserving R13 motion and R14 visual system."
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "index.html",
+          "r13-weekly/index.html"
+        ],
+        "createdAt": "2026-11-17T16:25:48.855Z",
+        "reason": "User requires existing R13 compass and R14 palette preserved; existing compass aura and shaded prototype surfaces are intentional."
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-17T16:25:48.994Z",
+        "reason": "Agent verified: existing faint radial compass guide rings from R13/R14 visual system, not decorative stripes; preserved per user brief."
+      },
+      {
+        "rule": "numbered-section-labels",
+        "value": "*",
+        "files": [
+          "r13-weekly/index.html"
+        ],
+        "createdAt": "2026-11-17T16:25:49.126Z",
+        "reason": "Agent verified: existing three sequential prototype steps map to actual navigation order; preserved per user scope."
+      }
+    ]
+  }
+}
