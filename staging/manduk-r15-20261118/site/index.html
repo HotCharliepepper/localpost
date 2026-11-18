@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#091b23">
+<meta name="description" content="이 자리, 내 업종에도 맞을까? 업종과 후보지의 조건을 판정과 근거로 확인해 보세요.">
+<title>상권나침반 — 내 업종에 맞는 자리인지 먼저 확인하세요.</title>
+<style>
+:root{--navy:#091923;--wine:#48212c;--cream:#f6f3e8;--sage:#dfe9e1;--ink:#183c37;--muted:#668178;--accent:#e8616d;--teal:#71a99f;--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);background:#e7ece4;color:var(--ink);letter-spacing:-.025em;line-height:1.6}
+a,button{font:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid #e8ac78;outline-offset:5px}
+.skip{position:absolute;top:-100px;left:16px;z-index:40;background:var(--cream);padding:12px;color:var(--ink)}
+.skip:focus{top:14px}
+.hero{background:radial-gradient(ellipse at 82% 37%,rgba(104,39,52,.94),transparent 47%),radial-gradient(ellipse at 52% 36%,rgba(33,28,42,.86),transparent 48%),linear-gradient(112deg,#081b24 8%,#101b26 56%,#251d28 100%);color:#f9f7f0;position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 62%,rgba(111,150,153,.08),transparent 29%),radial-gradient(circle at 30% 30%,rgba(255,255,255,.015),transparent 45%);pointer-events:none}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(circle,rgba(234,242,230,.52) .5px,transparent 1px);background-size:42px 43px;mask-image:linear-gradient(105deg,transparent 36%,black)}
+.topbar{height:80px;padding:0 clamp(20px,2.8vw,56px);position:relative;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:13px;color:#f4f0e6;text-decoration:none;font-size:17px;font-weight:760;line-height:1.18;letter-spacing:-.04em}
+.brand svg{width:36px;height:35px;flex:none}
+.brand small{display:block;color:#a8b9b9;font-size:10px;letter-spacing:.07em;font-weight:520;margin-top:3px}
+.nav{display:flex;gap:24px;align-items:center;font-size:13px}
+.nav a{text-decoration:none}
+.nav a:not(.nav-action){color:#d0d8d4}
+.nav-action{display:inline-flex;align-items:center;gap:23px;background:var(--cream);padding:14px 20px;color:#1d443c;min-height:48px;font-weight:700}
+.nav-action:hover{background:#fff}
+.content{z-index:5;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - 80px);padding:6vh clamp(20px,3.2vw,68px) 85px;pointer-events:none}
+.content>*{pointer-events:auto}
+.title{font-weight:330;letter-spacing:-.072em;line-height:1.12;font-size:clamp(48px,4.4vw,85px);max-width:690px;margin:0 0 23px;word-break:keep-all}
+.title strong{display:block;font-weight:800;margin-top:8px}
+.subtitle{margin:0 0 29px;color:#bdcbcc;font-size:clamp(15px,1vw,18px)}
+.actions{display:flex;flex-direction:column;align-items:flex-start;gap:15px;max-width:385px}
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;border:1px solid transparent;padding:15px 18px;text-decoration:none;min-height:53px;font-size:14px;font-weight:720}
+.btn-primary{background:#f7f4eb;color:#24463d;min-width:214px}
+.btn-primary:hover{background:#fff}
+.btn-secondary{color:#fff;background:transparent;padding-inline:0;border-bottom:1px solid rgba(224,238,228,.24);min-width:230px}
+.btn-secondary:hover{border-bottom-color:#b9dad0}
+.btn-tertiary{color:#b9c8c8;font-size:12px;text-decoration:none;margin-top:2px}
+.btn-tertiary:hover{color:#fff}
+.btn .arr{font-size:22px;font-weight:370;line-height:1}
+.scroll-note{position:absolute;z-index:5;bottom:24px;left:clamp(20px,3.2vw,68px);color:#b8c9c6;font-size:12px;letter-spacing:.02em;text-decoration:none}
+.motion-notice{position:absolute;z-index:5;bottom:23px;right:clamp(20px,3vw,60px);border:1px solid rgba(210,235,227,.22);color:#b2c7c0;padding:7px 11px;border-radius:30px;font-size:10px;pointer-events:none}
+.compass-viewport{position:absolute;z-index:2;width:min(46.5vw,830px);aspect-ratio:1;right:calc(-1 * clamp(55px,7vw,138px));top:51%;transform:translateY(-50%);pointer-events:none;filter:drop-shadow(0 18px 42px rgba(0,0,0,.1))}
+.compass-viewport:before{content:"";position:absolute;inset:-16%;border-radius:50%;background:radial-gradient(circle,rgba(220,100,114,.14) 0,rgba(172,70,85,.06) 45%,transparent 70%);pointer-events:none}
+.dial{width:100%;height:100%;overflow:visible}
+.dial-ring{fill:none;stroke:#82aca8;stroke-opacity:.64;stroke-width:1.5}
+.dial-ring.fine{stroke-width:.7;stroke-opacity:.25}
+.dial-ring.dashed{stroke:#bbd0c2;stroke-width:1;stroke-opacity:.2;stroke-dasharray:2 8}
+.dial-guide{fill:none;stroke:#a9b7b3;stroke-opacity:.18;stroke-width:.8}
+.ticks{stroke:#a2c5bb;stroke-opacity:.57;stroke-width:1}
+.ticks.major{stroke:#ddc89d;stroke-width:2.4}
+.dial text{fill:#b9c5c2;font:11px var(--font);letter-spacing:1.2px}
+.dial .north-label{fill:#f47279;font-size:31px;font-style:italic;font-weight:800;letter-spacing:0}
+.needle-mover{transform-origin:300px 300px;animation:calibrate 1.75s both cubic-bezier(.17,.68,.26,1)}
+@keyframes calibrate{0%{transform:rotate(20deg)}23%{transform:rotate(49deg)}45%{transform:rotate(34deg)}66%{transform:rotate(43deg)}84%{transform:rotate(38.7deg)}100%{transform:rotate(40deg)}}
+.pivot{filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
+.main-content{position:relative;overflow:hidden;background:linear-gradient(155deg,#e4ede4,#f5f3ea 60%);padding:100px max(24px,calc((100vw - 1200px)/2)) 86px}
+.main-content:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.23;background:repeating-radial-gradient(ellipse at 87% 5%,transparent 0 44px,rgba(49,105,88,.10) 45px 46px,transparent 47px 72px)}
+.main-content>*{position:relative;z-index:1}
+.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.16em;font-weight:800;color:#588574;text-transform:uppercase}
+.kicker:before{content:"";width:19px;height:1px;background:#789987}
+.section-title{font-size:clamp(32px,4.6vw,63px);line-height:1.2;letter-spacing:-.075em;font-weight:550;margin:17px 0 14px}
+.section-title em{font-style:normal;font-weight:760;color:#236752}
+.lead{color:#58746a;font-size:16px;max-width:780px;margin:0 0 35px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:rgba(255,255,255,.67);border:1px solid #d4e0d4;padding:27px 25px;border-radius:18px;min-height:200px;box-shadow:0 16px 40px rgba(30,64,50,.04)}
+.card .index{font:27px Georgia,serif;color:#7a9987}
+.card h3{font-size:21px;letter-spacing:-.045em;margin:22px 0 9px;line-height:1.3}
+.card p{color:#607a6d;font-size:14px;margin:0;word-break:keep-all}
+.dot-transition{height:17px;width:17px;border-radius:50%;background:#d5b783;border:4px solid #245247;margin:-9px auto 40px;box-shadow:0 0 0 14px rgba(71,119,96,.08)}
+.route{background:#103633;color:#f8f5eb;border-radius:23px;padding:42px 46px;margin-top:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;box-shadow:0 20px 50px rgba(20,52,42,.15)}
+.route h3{font-size:clamp(26px,3.2vw,43px);margin:12px 0 10px;letter-spacing:-.055em;line-height:1.25;font-weight:590}
+.route p{color:#c4d8cd;font-size:14px;margin:0;max-width:700px}
+.route .btn{white-space:nowrap;background:#f5e4c0;color:#244b40;border-radius:100px;min-width:225px;justify-content:center}
+.route .btn:hover{background:#fff0d4}
+.route .kicker{color:#b5d3be}
+.footer{background:#0b292c;color:#bfd1ca;padding:27px clamp(20px,3.2vw,68px);display:flex;gap:20px;justify-content:space-between;font-size:12px}
+.footer a{color:#e8ebdf}
+.demo-label{background:#f4e8d8;border-left:3px solid #bb9367;color:#745740;padding:13px 17px;font-size:13px;margin:20px 0 0;border-radius:0 10px 10px 0}
+@media(max-width:1050px){.compass-viewport{width:58vw;right:-14vw;opacity:.85}.title{font-size:clamp(44px,5vw,65px)}.content{padding-bottom:115px}.cards{gap:10px}.card{padding:21px}}
+@media(max-width:700px){.hero{min-height:0}.topbar{height:72px;padding:0 19px}.nav{gap:12px}.nav a:not(.nav-action){display:none}.nav-action{min-height:42px;padding:10px 12px;font-size:11px;gap:8px}.brand{font-size:14px}.brand svg{width:29px}.content{min-height:0;padding:56px 22px 12px}.title{font-size:clamp(43px,10.1vw,56px);max-width:390px}.subtitle{font-size:14px;margin-bottom:22px}.actions{gap:10px}.btn{min-height:48px;font-size:13px}.compass-viewport{position:relative;top:auto;right:auto;transform:none;display:block;width:min(110vw,470px);margin:0 -38px 40px auto;opacity:1}.motion-notice{display:none}.scroll-note{left:22px;bottom:22px}.main-content{padding:65px 18px}.section-title{font-size:34px}.lead{font-size:14px}.cards{grid-template-columns:1fr}.card{min-height:0;padding:19px 21px}.card h3{margin:8px 0 5px;font-size:19px}.route{grid-template-columns:1fr;padding:25px 22px;gap:22px}.route .btn{width:100%}.footer{padding:24px 20px;flex-direction:column}.scroll-note{font-size:11px}}
+@media(max-width:410px){.compass-viewport{width:114vw;margin-right:-40px}.title{font-size:42px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.needle-mover{animation:none;transform:rotate(40deg)}}
+</style>
+<link rel="stylesheet" href="./r13-live.css">
+<link rel="stylesheet" href="./r14-saas-type.css">
+<link rel="stylesheet" href="./r15-first-answer.css">
+<script src="./r13-live.js" defer></script>
+</head>
+<body class="launch page-home">
+<a class="skip" href="#pathways">분석 시작 방법으로 건너뛰기</a>
+<section class="hero" id="intro" aria-label="상권나침반 — 질문에서 방향으로">
+<div class="hero-stage" id="cinema-stage" data-phase="question">
+<header class="topbar">
+<a class="brand" href="#intro" aria-label="상권나침반 처음으로"><svg viewBox="0 0 46 42" fill="none" aria-hidden="true"><path d="M2 36L16 7L31 36M36 7V36H45" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>상권나침반<small>LocalScope</small></span></a>
+<nav class="nav" aria-label="주요 이동"><a href="#first-answer">실제 판정 사례</a><a class="nav-action" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-label="무료 분석 — 별도 공식 서비스, 새 탭">무료 분석 <span aria-hidden="true">↗</span></a></nav>
+</header>
+<div class="content">
+<h1 class="title">사람이 많은 자리면<br><strong>잘될까?</strong></h1>
+<p class="subtitle">내 업종에 맞는 자리인지, 판정과 근거로 확인해 보세요.</p>
+<div class="actions">
+<a class="btn btn-primary" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-describedby="official-entry-note">무료로 내 자리 확인하기 <span class="arr" aria-hidden="true">↗</span></a>
+<p class="official-entry-note" id="official-entry-note">별도 공식 서비스 · 새 탭에서 열립니다.</p>
+<a class="btn btn-secondary" href="#first-answer">실제 판정 사례 먼저 보기 <span class="arr" aria-hidden="true">→</span></a>
+<a class="btn-tertiary" href="#pathways">내 상황에 맞게 바로 시작하기 ↓</a>
+
+</div>
+</div>
+<div class="compass-viewport" aria-hidden="true">
+<svg class="dial" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs><radialGradient id="dial-aura"><stop stop-color="#b75462" stop-opacity=".21"/><stop offset="1" stop-color="#b75462" stop-opacity="0"/></radialGradient><linearGradient id="metal"><stop stop-color="#f47b83"/><stop offset="1" stop-color="#c44452"/></linearGradient><linearGradient id="teal"><stop stop-color="#9bc9bd"/><stop offset="1" stop-color="#477b77"/></linearGradient></defs>
+<circle cx="300" cy="300" r="296" fill="url(#dial-aura)"/>
+<circle cx="300" cy="300" r="268" class="dial-ring fine"/>
+<circle cx="300" cy="300" r="230" class="dial-ring"/>
+<circle cx="300" cy="300" r="218" class="dial-ring fine"/>
+<circle cx="300" cy="300" r="191" class="dial-ring dashed"/>
+<circle cx="300" cy="300" r="151" class="dial-ring fine"/>
+<circle cx="300" cy="300" r="112" class="dial-ring"/>
+<path d="M300 16V584 M16 300H584 M100 100L500 500M100 500L500 100" class="dial-guide"/>
+<g class="ticks" id="marks"></g>
+<g stroke="#8cb4aa" stroke-opacity=".26"><path d="M300 69L305 80 295 80Z" fill="#e5d5b5"/><path d="M530 300L520 295 520 305Z" fill="#e5d5b5"/><path d="M300 531L295 521 305 521Z" fill="#e5d5b5"/></g>
+<text x="399" y="94" class="north-label" transform="rotate(15 399 94)">N</text>
+<text x="76" y="318">W</text><text x="278" y="560">S</text>
+<text x="168" y="134" font-size="9">330</text><text x="84" y="237" font-size="9">300</text><text x="75" y="392" font-size="9">240</text>
+<g class="needle-mover">
+<path d="M300 80L327 300L300 279L273 300Z" fill="url(#metal)"/>
+<path d="M300 80L300 279L273 300Z" fill="#fc98a0" opacity=".86"/>
+<path d="M300 520L327 300L300 321L273 300Z" fill="url(#teal)"/>
+<path d="M300 520L300 321L273 300Z" fill="#9dd2c0" opacity=".8"/>
+</g>
+<g class="pivot"><circle cx="300" cy="300" r="17" fill="#102b30" stroke="#f4e1b3" stroke-width="2.5"/><circle cx="300" cy="300" r="9.5" fill="#234b4b" stroke="#91b4ac"/><circle cx="300" cy="300" r="4" fill="#eed49f"/></g>
+</svg>
+</div>
+<a class="scroll-note" href="#motion-start">스크롤해 관점 바꾸기 ↓</a>
+<div class="motion-meter" aria-hidden="true"><span></span></div>
+<div class="scene-overlay" id="scene-overlay" aria-hidden="true" inert>
+  <div class="eyebrow">질문에서 근거로</div>
+  <h2>사람이 많아도<br><strong>내 손님은 다릅니다.</strong></h2>
+  <p>사람이 많다는 사실만으로 충분할까요? 업종에 필요한 수요와 경쟁 조건을 따로 살펴봐야 합니다.</p>
+  <a class="btn" href="#first-answer">실제 판정 사례 확인하기 <span class="arr" aria-hidden="true">↓</span></a>
+</div>
+</div>
+<div class="motion-anchor" id="motion-start" aria-hidden="true"></div>
+</section>
+<main class="main-content r15-content" id="story">
+<div class="dot-transition" aria-hidden="true"></div>
+<section class="first-answer" id="first-answer" aria-labelledby="first-answer-heading" tabindex="-1">
+<h2 class="section-title" id="first-answer-heading">좋다고 생각한 이유,<br><em>맞는지 확인해 볼까요?</em></h2>
+<p class="case-label">공개된 실제 판정 사례 · <strong>내 후보지 결과가 아닙니다.</strong></p>
+<article class="case-report" aria-labelledby="case-heading">
+  <header class="case-header"><h3 id="case-heading">서울 잠실6동 <span>· 주점</span></h3><span class="case-verdict">공식 공개 판정 <strong>주의</strong></span></header>
+  <div class="case-body">
+    <div class="case-reading">
+      <h4>처음에는 이렇게 생각할 수 있어요</h4>
+      <p class="case-belief">주점이 적으니,<br>경쟁도 적지 않을까?</p>
+      <h4>공식 사례는 다르게 읽었습니다</h4>
+      <p>공식 사례는 이 지역을 저녁 손님이 머물지 않는 낮 상권으로 해석합니다. 경쟁이 적어 보인다는 이유만으로 주점에 유리한 자리라고 판단하기 어렵습니다.</p>
+    </div>
+    <figure class="case-evidence">
+      <figcaption>음식점 중 주점 비중</figcaption>
+      <dl class="case-comparison">
+        <div><dt>잠실6동</dt><dd><strong>1.4<span>%</span></strong><span class="comparison-track" aria-hidden="true"><span class="comparison-local"></span></span></dd></div>
+        <div><dt>전국</dt><dd><strong>11.6<span>%</span></strong><span class="comparison-track" aria-hidden="true"><span class="comparison-national"></span></span></dd></div>
+      </dl>
+      <p>낮은 비중이 곧 기회라는 뜻은 아닙니다. 이 숫자만으로 저녁 수요의 유무를 확정할 수는 없습니다.</p>
+      <a class="source-link" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">공식 홈페이지의 잠실6동 사례 확인 <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a>
+      <p class="case-source-date">공식 사례 묶음 표기: 2026년 10월 · 각 동 대표 지점 반경 500m<br>공개 페이지 재확인: 2026년 11월 18일</p>
+    </figure>
+  </div>
+  <div class="case-next">
+    <div><h4>자료는 여기까지 말해 줍니다</h4><p>대표 지점 주변의 공개 사례이며, 잠실6동 전체나 개별 점포의 현재 상황을 뜻하지 않습니다. 개별 원자료의 기준일은 이 발췌에서 확인되지 않았습니다. 매출이나 창업 성공을 보장하지 않습니다.</p></div>
+    <div><h4>그래서 현장에서는</h4><p>후보지의 저녁 시간대에 손님이 실제로 머무는지 살펴보세요. 주변 주점의 영업 시간과 보행 동선도 함께 확인하세요.</p></div>
+  </div>
+</article>
+<details class="r15-details"><summary>이 사례를 내 후보지에도 적용할 수 있나요?</summary><p>그대로 적용할 수는 없습니다. 업종, 위치, 자료 시점이 달라지면 판정도 달라질 수 있습니다. 아래에서 내 상황에 맞는 경로를 골라 공식 서비스의 실제 분석을 시작하세요.</p></details>
+</section>
+<section class="pathways" id="pathways" tabindex="-1" aria-labelledby="pathways-heading">
+<h2 class="section-title" id="pathways-heading">이제 내 자리도<br><em>확인해 볼까요?</em></h2>
+<p class="lead">정해진 것부터 시작하세요. 아래 세 경로는 별도 공식 서비스 <strong>localscope.co.kr</strong>의 새 탭으로 열립니다.</p>
+<div class="path-grid">
+  <a class="path" href="https://localscope.co.kr/explore" target="_blank" rel="noopener noreferrer" aria-label="업종을 정했어요 — 공식 서비스에서 지역 탐색, 새 탭">
+    <strong>업종을 정했어요</strong><p>정한 업종에 맞는 지역을 찾아보세요.</p><span class="path-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="path" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리를 정했어요 — 공식 서비스에서 업종 탐색, 새 탭">
+    <strong>자리를 정했어요</strong><p>그 자리에서 고려할 업종을 살펴보세요.</p><span class="path-arrow" aria-hidden="true">↗</span>
+  </a>
+  <a class="path" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-label="둘 다 정했어요 — 공식 서비스에서 업종과 후보지 분석, 새 탭">
+    <strong>둘 다 정했어요</strong><p>고른 업종과 후보지로 분석을 시작하세요.</p><span class="path-arrow" aria-hidden="true">↗</span>
+  </a>
+</div>
+<p class="path-limit">공식 안내상 가입 없이 분석에 진입할 수 있습니다. 가입 후 Free는 월 5회 분석, 판정 1개 전체 공개를 제공합니다. 나머지 판정은 제한된 미리보기이며, 실제 제공 범위는 공식 서비스에서 확인하세요.</p>
+</section>
+<section class="verdict-guide" id="proof" aria-labelledby="proof-heading" tabindex="-1">
+<div class="guide-intro"><h2 id="proof-heading">판정은 출발점입니다.<br>매출을 약속하지 않습니다.</h2><p>좋음·주의뿐 아니라 판단할 수 없는 경우도 확인하세요. 자료가 말해 주는 범위와 현장에서 확인할 일을 함께 알아야 다음 선택이 쉬워집니다.</p></div>
+<ol class="reading-order">
+  <li><h3>판정과 근거를 함께 읽기</h3><p>한 줄 결론 옆에서 근거의 단위, 출처, 기준 시점을 확인하세요.</p></li>
+  <li><h3>어디까지 알 수 있는지 확인하기</h3><p>지역별 제공 범위와 자료의 시차를 살펴보세요. 추정과 관측은 구분해야 합니다.</p></li>
+  <li><h3>현장에서 확인할 일 정하기</h3><p>임대료, 시간대별 동선, 주변 점포의 영업 상황을 직접 살펴보세요.</p></li>
+</ol>
+<details class="r15-details result-spec"><summary>결과 화면의 구성 제안 보기 · 실제 결과 아님</summary>
+<p>아래는 향후 공식 서비스 연동을 위한 정적 구성 제안입니다. 이 페이지에서는 분석을 실행하거나 이용 권한을 부여하지 않습니다.</p>
+<ol><li>한 줄 판정. 근거가 부족하면 ‘판단할 수 없음’을 명시합니다.</li><li>판정 옆에 근거 단위, 출처와 기준 시점을 표시합니다.</li><li>지역 범위, 자료 시차, 추정과 관측의 차이를 설명합니다.</li><li>다음 현장 확인 항목을 제안합니다.</li><li>필요한 경우에만 다른 후보 비교, 상세 근거, 세부 구역 탐색을 안내합니다. 제공 범위는 공식 정책을 따릅니다.</li></ol>
+<dl class="integration-states"><div><dt>불러오는 중</dt><dd>향후 연동 상태: 진행 안내와 중단·재시도 동작은 실제 서비스 계약 확인이 필요합니다.</dd></div><div><dt>결과 없음</dt><dd>향후 연동 상태: 자료가 없는 조건을 알리고 다른 위치·업종을 확인하도록 안내합니다.</dd></div><div><dt>오류</dt><dd>향후 연동 상태: 실패 이유와 가능한 다음 행동을 안내합니다. 분석 횟수 차감 여부는 서버 정책 확인이 필요합니다.</dd></div><div><dt>판단할 수 없음</dt><dd>향후 연동 상태: 부족한 근거와 추가 확인 항목을 제시합니다. 유료 구매로 판정이 보장되지 않습니다.</dd></div></dl>
+</details>
+</section>
+<section class="optional-depth" id="optional-depth" aria-labelledby="depth-heading">
+<h2 class="section-title" id="depth-heading">더 비교해 보고 싶다면,<br><em>필요한 범위를 선택하세요.</em></h2>
+<p class="lead">먼저 무료로 확인해 보세요. 다른 후보나 더 자세한 근거가 필요할 때 이용권을 비교해도 됩니다.</p>
+<div class="access-options">
+<article><h3>Free</h3><p class="access-price">무료</p><p>첫 분석을 시작하고 판정 하나를 끝까지 확인할 때.</p><ul><li>가입 후 월 5회 분석</li><li>판정 1개 전체 공개</li><li>나머지 판정은 제한된 미리보기</li></ul></article>
+<article><h3>Basic</h3><p class="access-price">19,900원 <small>/ 30일 · 기본가</small></p><p>후보와 판정 근거를 더 비교하고 싶을 때.</p><p class="access-note">상세 제공 범위와 적용 가격은 공식 서비스에서 확인하세요.</p></article>
+<article><h3>Pro</h3><p class="access-price">39,900원 <small>/ 30일 · 기본가</small></p><p>더 세밀한 탐색이 필요한지 검토할 때.</p><p class="access-note">상세 제공 범위와 적용 가격은 공식 서비스에서 확인하세요.</p></article>
+</div>
+<p class="pricing-source">공식 공개 기본가 · 2026년 11월 18일 확인 · 자동 갱신 없음. 적용 가능한 프로모션과 최종 결제 조건은 공식 서비스에서 확인하세요.</p>
+<div class="depth-actions"><a class="r15-free-link" href="https://localscope.co.kr/explore" target="_blank" rel="noopener noreferrer">무료로 계속 탐색하기 <span aria-hidden="true">↗</span><span class="sr-only"> (공식 서비스, 새 탭)</span></a><a class="source-link" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">공식 이용권 안내 확인 <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a><a class="source-link" href="https://localscope.co.kr/refund" target="_blank" rel="noopener noreferrer">공식 가격·환불 조건 <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a></div>
+</section>
+<section class="weekly-experiment" id="decision" aria-labelledby="decision-heading">
+<div><h2 id="decision-heading">짧은 기간의 이용권도 살펴보고 싶다면</h2><p>7일·14일 이용권은 아직 승인되지 않은 가격 실험입니다. 별도 시안에서 선택 흐름만 살펴볼 수 있습니다.</p></div>
+<a class="experiment-link" href="./r13-weekly/index.html">7일·14일 시안 보기 <span>가격 실험 · 결제 불가</span></a>
+</section>
+</main>
+<footer class="footer"><span>상권나침반 · FIRST ANSWER</span><span>실제 분석은 별도 공식 서비스에서 진행합니다 · <a href="#intro">처음으로</a></span></footer>
+<script>
+(function(){
+"use strict";
+const marks=document.getElementById("marks");
+if(!marks)return;
+const NS="http://www.w3.org/2000/svg";
+const fragment=document.createDocumentFragment();
+for(let i=0;i<120;i++){
+ const t=(i*3-90)*Math.PI/180, major=i%10===0;
+ const r=major?209:214, end=222;
+ const line=document.createElementNS(NS,"line");
+ line.setAttribute("x1",String(300+r*Math.cos(t)));
+ line.setAttribute("y1",String(300+r*Math.sin(t)));
+ line.setAttribute("x2",String(300+end*Math.cos(t)));
+ line.setAttribute("y2",String(300+end*Math.sin(t)));
+ if(major)line.setAttribute("class","major");
+ fragment.appendChild(line);
+}
+marks.appendChild(fragment);
+})();
+</script>
+</body>
+</html>
