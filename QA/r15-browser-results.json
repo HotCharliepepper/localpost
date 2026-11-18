@@ -1,0 +1,989 @@
+{
+  "url": "http://127.0.0.1:8765/",
+  "checks": [
+    {
+      "name": "desktop first viewport",
+      "pass": true,
+      "detail": {
+        "width": 1440,
+        "height": 900,
+        "overflow": false,
+        "primaryVisible": true,
+        "secondaryVisible": true,
+        "fastPathVisible": true,
+        "northVisible": true,
+        "northOverlapsText": false,
+        "compassCropped": true
+      }
+    },
+    {
+      "name": "desktop case anchor",
+      "pass": true
+    },
+    {
+      "name": "desktop public proof visible",
+      "pass": true
+    },
+    {
+      "name": "desktop content width",
+      "pass": true
+    },
+    {
+      "name": "desktop anchor back",
+      "pass": true
+    },
+    {
+      "name": "desktop .first-answer details open",
+      "pass": true
+    },
+    {
+      "name": "desktop .first-answer details focus ring",
+      "pass": true
+    },
+    {
+      "name": "desktop .first-answer details expanded width",
+      "pass": true
+    },
+    {
+      "name": "desktop .first-answer details close",
+      "pass": true
+    },
+    {
+      "name": "desktop .result-spec open",
+      "pass": true
+    },
+    {
+      "name": "desktop .result-spec focus ring",
+      "pass": true
+    },
+    {
+      "name": "desktop .result-spec expanded width",
+      "pass": true
+    },
+    {
+      "name": "desktop .result-spec close",
+      "pass": true
+    },
+    {
+      "name": "desktop first Tab skip",
+      "pass": true
+    },
+    {
+      "name": "desktop skip focus destination",
+      "pass": true
+    },
+    {
+      "name": "desktop skip next path",
+      "pass": true
+    },
+    {
+      "name": "tablet first viewport",
+      "pass": true,
+      "detail": {
+        "width": 768,
+        "height": 1024,
+        "overflow": false,
+        "primaryVisible": true,
+        "secondaryVisible": true,
+        "fastPathVisible": true,
+        "northVisible": true,
+        "northOverlapsText": false,
+        "compassCropped": true
+      }
+    },
+    {
+      "name": "tablet case anchor",
+      "pass": true
+    },
+    {
+      "name": "tablet public proof visible",
+      "pass": true
+    },
+    {
+      "name": "tablet content width",
+      "pass": true
+    },
+    {
+      "name": "tablet anchor back",
+      "pass": true
+    },
+    {
+      "name": "tablet .first-answer details open",
+      "pass": true
+    },
+    {
+      "name": "tablet .first-answer details focus ring",
+      "pass": true
+    },
+    {
+      "name": "tablet .first-answer details expanded width",
+      "pass": true
+    },
+    {
+      "name": "tablet .first-answer details close",
+      "pass": true
+    },
+    {
+      "name": "tablet .result-spec open",
+      "pass": true
+    },
+    {
+      "name": "tablet .result-spec focus ring",
+      "pass": true
+    },
+    {
+      "name": "tablet .result-spec expanded width",
+      "pass": true
+    },
+    {
+      "name": "tablet .result-spec close",
+      "pass": true
+    },
+    {
+      "name": "tablet first Tab skip",
+      "pass": true
+    },
+    {
+      "name": "tablet skip focus destination",
+      "pass": true
+    },
+    {
+      "name": "tablet skip next path",
+      "pass": true
+    },
+    {
+      "name": "mobile first viewport",
+      "pass": true,
+      "detail": {
+        "width": 390,
+        "height": 844,
+        "overflow": false,
+        "primaryVisible": true,
+        "secondaryVisible": true,
+        "fastPathVisible": true,
+        "northVisible": true,
+        "northOverlapsText": false,
+        "compassCropped": true
+      }
+    },
+    {
+      "name": "mobile case anchor",
+      "pass": true
+    },
+    {
+      "name": "mobile public proof visible",
+      "pass": true
+    },
+    {
+      "name": "mobile content width",
+      "pass": true
+    },
+    {
+      "name": "mobile anchor back",
+      "pass": true
+    },
+    {
+      "name": "mobile .first-answer details open",
+      "pass": true
+    },
+    {
+      "name": "mobile .first-answer details focus ring",
+      "pass": true
+    },
+    {
+      "name": "mobile .first-answer details expanded width",
+      "pass": true
+    },
+    {
+      "name": "mobile .first-answer details close",
+      "pass": true
+    },
+    {
+      "name": "mobile .result-spec open",
+      "pass": true
+    },
+    {
+      "name": "mobile .result-spec focus ring",
+      "pass": true
+    },
+    {
+      "name": "mobile .result-spec expanded width",
+      "pass": true
+    },
+    {
+      "name": "mobile .result-spec close",
+      "pass": true
+    },
+    {
+      "name": "mobile first Tab skip",
+      "pass": true
+    },
+    {
+      "name": "mobile skip focus destination",
+      "pass": true
+    },
+    {
+      "name": "mobile skip next path",
+      "pass": true
+    },
+    {
+      "name": "small first viewport",
+      "pass": true,
+      "detail": {
+        "width": 360,
+        "height": 780,
+        "overflow": false,
+        "primaryVisible": true,
+        "secondaryVisible": true,
+        "fastPathVisible": true,
+        "northVisible": true,
+        "northOverlapsText": false,
+        "compassCropped": true
+      }
+    },
+    {
+      "name": "small case anchor",
+      "pass": true
+    },
+    {
+      "name": "small public proof visible",
+      "pass": true
+    },
+    {
+      "name": "small content width",
+      "pass": true
+    },
+    {
+      "name": "small anchor back",
+      "pass": true
+    },
+    {
+      "name": "small .first-answer details open",
+      "pass": true
+    },
+    {
+      "name": "small .first-answer details focus ring",
+      "pass": true
+    },
+    {
+      "name": "small .first-answer details expanded width",
+      "pass": true
+    },
+    {
+      "name": "small .first-answer details close",
+      "pass": true
+    },
+    {
+      "name": "small .result-spec open",
+      "pass": true
+    },
+    {
+      "name": "small .result-spec focus ring",
+      "pass": true
+    },
+    {
+      "name": "small .result-spec expanded width",
+      "pass": true
+    },
+    {
+      "name": "small .result-spec close",
+      "pass": true
+    },
+    {
+      "name": "small first Tab skip",
+      "pass": true
+    },
+    {
+      "name": "small skip focus destination",
+      "pass": true
+    },
+    {
+      "name": "small skip next path",
+      "pass": true
+    },
+    {
+      "name": "short first viewport",
+      "pass": true,
+      "detail": {
+        "width": 360,
+        "height": 640,
+        "overflow": false,
+        "primaryVisible": true,
+        "secondaryVisible": true,
+        "fastPathVisible": true,
+        "northVisible": true,
+        "northOverlapsText": false,
+        "compassCropped": true
+      }
+    },
+    {
+      "name": "short case anchor",
+      "pass": true
+    },
+    {
+      "name": "short public proof visible",
+      "pass": true
+    },
+    {
+      "name": "short content width",
+      "pass": true
+    },
+    {
+      "name": "short anchor back",
+      "pass": true
+    },
+    {
+      "name": "short .first-answer details open",
+      "pass": true
+    },
+    {
+      "name": "short .first-answer details focus ring",
+      "pass": true
+    },
+    {
+      "name": "short .first-answer details expanded width",
+      "pass": true
+    },
+    {
+      "name": "short .first-answer details close",
+      "pass": true
+    },
+    {
+      "name": "short .result-spec open",
+      "pass": true
+    },
+    {
+      "name": "short .result-spec focus ring",
+      "pass": true
+    },
+    {
+      "name": "short .result-spec expanded width",
+      "pass": true
+    },
+    {
+      "name": "short .result-spec close",
+      "pass": true
+    },
+    {
+      "name": "short first Tab skip",
+      "pass": true
+    },
+    {
+      "name": "short skip focus destination",
+      "pass": true
+    },
+    {
+      "name": "short skip next path",
+      "pass": true
+    },
+    {
+      "name": "official destination .btn-primary",
+      "pass": true,
+      "detail": {
+        "href": "https://localscope.co.kr/analyze",
+        "url": "https://localscope.co.kr/analyze",
+        "intercepted": true
+      }
+    },
+    {
+      "name": "safe new tab .btn-primary",
+      "pass": true
+    },
+    {
+      "name": "official destination .path[href$=\"/explore\"]",
+      "pass": true,
+      "detail": {
+        "href": "https://localscope.co.kr/explore",
+        "url": "https://localscope.co.kr/explore",
+        "intercepted": true
+      }
+    },
+    {
+      "name": "safe new tab .path[href$=\"/explore\"]",
+      "pass": true
+    },
+    {
+      "name": "official destination .path[href$=\"/place\"]",
+      "pass": true,
+      "detail": {
+        "href": "https://localscope.co.kr/place",
+        "url": "https://localscope.co.kr/place",
+        "intercepted": true
+      }
+    },
+    {
+      "name": "safe new tab .path[href$=\"/place\"]",
+      "pass": true
+    },
+    {
+      "name": "official destination .path[href$=\"/analyze\"]",
+      "pass": true,
+      "detail": {
+        "href": "https://localscope.co.kr/analyze",
+        "url": "https://localscope.co.kr/analyze",
+        "intercepted": true
+      }
+    },
+    {
+      "name": "safe new tab .path[href$=\"/analyze\"]",
+      "pass": true
+    },
+    {
+      "name": "R13 scroll phase 0.25",
+      "pass": true,
+      "detail": {
+        "phase": "question",
+        "needle": "26.114deg",
+        "contentInert": false,
+        "revealInert": true
+      }
+    },
+    {
+      "name": "R13 scroll phase 0.6",
+      "pass": true,
+      "detail": {
+        "phase": "question",
+        "needle": "70.562deg",
+        "contentInert": false,
+        "revealInert": true
+      }
+    },
+    {
+      "name": "R13 scroll phase 0.98",
+      "pass": true,
+      "detail": {
+        "phase": "clarity",
+        "needle": "1080.000deg",
+        "contentInert": true,
+        "revealInert": false
+      }
+    },
+    {
+      "name": "R13 scroll phase 0",
+      "pass": true,
+      "detail": {
+        "phase": "question",
+        "needle": "40.000deg",
+        "contentInert": false,
+        "revealInert": true
+      }
+    },
+    {
+      "name": "runtime reduced motion after clarity",
+      "pass": true,
+      "detail": {
+        "contentVisible": "visible",
+        "opacity": "1",
+        "inert": false,
+        "animation": "none",
+        "scroll": "auto",
+        "overlay": "none"
+      }
+    },
+    {
+      "name": "desktop reduced first viewport",
+      "pass": true
+    },
+    {
+      "name": "desktop reduced direct proof",
+      "pass": true
+    },
+    {
+      "name": "mobile reduced first viewport",
+      "pass": true
+    },
+    {
+      "name": "mobile reduced direct proof",
+      "pass": true
+    },
+    {
+      "name": "small reduced first viewport",
+      "pass": true
+    },
+    {
+      "name": "small reduced direct proof",
+      "pass": true
+    },
+    {
+      "name": "weekly non-purchase label",
+      "pass": true
+    },
+    {
+      "name": "weekly cannot advance unanswered",
+      "pass": true
+    },
+    {
+      "name": "weekly prices 7",
+      "pass": true
+    },
+    {
+      "name": "weekly mock completion 7",
+      "pass": true
+    },
+    {
+      "name": "weekly summary 7",
+      "pass": true
+    },
+    {
+      "name": "weekly mobile width 7",
+      "pass": true
+    },
+    {
+      "name": "weekly prices 14",
+      "pass": true
+    },
+    {
+      "name": "weekly mock completion 14",
+      "pass": true
+    },
+    {
+      "name": "weekly summary 14",
+      "pass": true
+    },
+    {
+      "name": "weekly mobile width 14",
+      "pass": true
+    },
+    {
+      "name": "weekly prices free",
+      "pass": true
+    },
+    {
+      "name": "weekly mock completion free",
+      "pass": true
+    },
+    {
+      "name": "weekly summary free",
+      "pass": true
+    },
+    {
+      "name": "weekly mobile width free",
+      "pass": true
+    },
+    {
+      "name": "weekly returns to experiment",
+      "pass": true
+    },
+    {
+      "name": "no POST requests",
+      "pass": true
+    },
+    {
+      "name": "no API or remote page requests",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript errors",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "public proof works without JS",
+      "pass": true
+    }
+  ],
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "primaryVisible": true,
+      "secondaryVisible": true,
+      "fastPathVisible": true,
+      "northVisible": true,
+      "northOverlapsText": false,
+      "compassCropped": true
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "primaryVisible": true,
+      "secondaryVisible": true,
+      "fastPathVisible": true,
+      "northVisible": true,
+      "northOverlapsText": false,
+      "compassCropped": true
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "primaryVisible": true,
+      "secondaryVisible": true,
+      "fastPathVisible": true,
+      "northVisible": true,
+      "northOverlapsText": false,
+      "compassCropped": true
+    },
+    {
+      "name": "small",
+      "width": 360,
+      "height": 780,
+      "overflow": false,
+      "primaryVisible": true,
+      "secondaryVisible": true,
+      "fastPathVisible": true,
+      "northVisible": true,
+      "northOverlapsText": false,
+      "compassCropped": true
+    },
+    {
+      "name": "short",
+      "width": 360,
+      "height": 640,
+      "overflow": false,
+      "primaryVisible": true,
+      "secondaryVisible": true,
+      "fastPathVisible": true,
+      "northVisible": true,
+      "northOverlapsText": false,
+      "compassCropped": true
+    }
+  ],
+  "officialIntercepts": [
+    "https://localscope.co.kr/analyze",
+    "https://localscope.co.kr/explore",
+    "https://localscope.co.kr/place",
+    "https://localscope.co.kr/analyze"
+  ],
+  "errors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-weekly/index.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/index.html",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r14-saas-type.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r15-first-answer.css",
+      "method": "GET"
+    },
+    {
+      "url": "http://127.0.0.1:8765/r13-live.js",
+      "method": "GET"
+    }
+  ],
+  "failed": []
+}

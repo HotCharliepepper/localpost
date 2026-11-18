@@ -1,0 +1,954 @@
+﻿[
+    {
+        "screen":  "home",
+        "text":  "상권나침반",
+        "ratio":  15.15,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "LocalScope",
+        "ratio":  10.64,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "실제 판정 사례",
+        "ratio":  11.54,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "무료 분석",
+        "ratio":  9.59,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "사람이 많은 자리면",
+        "ratio":  14.29,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "잘될까?",
+        "ratio":  16.59,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "내 업종에 맞는 자리인지, 판정과 근거로 확인해 보세요.",
+        "ratio":  11.64,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "무료로 내 자리 확인하기",
+        "ratio":  9.59,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "별도 공식 서비스 · 새 탭에서 열립니다.",
+        "ratio":  12.27,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "실제 판정 사례 먼저 보기",
+        "ratio":  16.74,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "내 상황에 맞게 바로 시작하기 ↓",
+        "ratio":  12.17,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "home",
+        "text":  "스크롤해 관점 바꾸기 ↓",
+        "ratio":  12.21,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "좋다고 생각한 이유,",
+        "ratio":  10.72,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "맞는지 확인해 볼까요?",
+        "ratio":  5.29,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공개된 실제 판정 사례 ·",
+        "ratio":  5.4,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "내 후보지 결과가 아닙니다.",
+        "ratio":  5.47,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "서울 잠실6동",
+        "ratio":  11.82,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "· 주점",
+        "ratio":  11.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공식 공개 판정",
+        "ratio":  7.07,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "주의",
+        "ratio":  6.17,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "처음에는 이렇게 생각할 수 있어요",
+        "ratio":  11.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "주점이 적으니,",
+        "ratio":  11.82,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "경쟁도 적지 않을까?",
+        "ratio":  11.82,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공식 사례는 다르게 읽었습니다",
+        "ratio":  11.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공식 사례는 이 지역을 저녁 손님이 머물지 않는 낮 상권으로 해석합니다. 경쟁이 적어 보인다는 이유만으로 주점에 유리한 자리라고 판단하기 어렵습",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공식 사례는 이 지역을 저녁 손님이 머물지 않는 낮 상권으로 해석합니다. 경쟁이 적어 보인다는 이유만으로 주점에 유리한 자리라고 판단하기 어렵습",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "음식점 중 주점 비중",
+        "ratio":  11.02,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "잠실6동",
+        "ratio":  11.02,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "1.4",
+        "ratio":  11.02,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "%",
+        "ratio":  11.02,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "전국",
+        "ratio":  11.02,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "11.6",
+        "ratio":  11.02,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "%",
+        "ratio":  11.02,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "낮은 비중이 곧 기회라는 뜻은 아닙니다. 이 숫자만으로 저녁 수요의 유무를 확정할 수는 없습니다.",
+        "ratio":  5.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "낮은 비중이 곧 기회라는 뜻은 아닙니다. 이 숫자만으로 저녁 수요의 유무를 확정할 수는 없습니다.",
+        "ratio":  5.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공식 홈페이지의 잠실6동 사례 확인",
+        "ratio":  7.05,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공식 사례 묶음 표기: 2026년 10월 · 각 동 대표 지점 반경 500m",
+        "ratio":  5.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "공개 페이지 재확인: 2026년 11월 18일",
+        "ratio":  5.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "자료는 여기까지 말해 줍니다",
+        "ratio":  11.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "대표 지점 주변의 공개 사례이며, 잠실6동 전체나 개별 점포의 현재 상황을 뜻하지 않습니다. 개별 원자료의 기준일은 이 발췌에서 확인되지 않았습",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "대표 지점 주변의 공개 사례이며, 잠실6동 전체나 개별 점포의 현재 상황을 뜻하지 않습니다. 개별 원자료의 기준일은 이 발췌에서 확인되지 않았습",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "대표 지점 주변의 공개 사례이며, 잠실6동 전체나 개별 점포의 현재 상황을 뜻하지 않습니다. 개별 원자료의 기준일은 이 발췌에서 확인되지 않았습",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "그래서 현장에서는",
+        "ratio":  11.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "후보지의 저녁 시간대에 손님이 실제로 머무는지 살펴보세요. 주변 주점의 영업 시간과 보행 동선도 함께 확인하세요.",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "case",
+        "text":  "후보지의 저녁 시간대에 손님이 실제로 머무는지 살펴보세요. 주변 주점의 영업 시간과 보행 동선도 함께 확인하세요.",
+        "ratio":  6.24,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "이제 내 자리도",
+        "ratio":  11.09,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "확인해 볼까요?",
+        "ratio":  5.43,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "정해진 것부터 시작하세요. 아래 세 경로는 별도 공식 서비스",
+        "ratio":  5.44,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "localscope.co.kr",
+        "ratio":  5.44,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "의 새 탭으로 열립니다.",
+        "ratio":  5.38,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "업종을 정했어요",
+        "ratio":  7.96,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "정한 업종에 맞는 지역을 찾아보세요.",
+        "ratio":  7.13,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "자리를 정했어요",
+        "ratio":  9.76,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "그 자리에서 고려할 업종을 살펴보세요.",
+        "ratio":  5.89,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "둘 다 정했어요",
+        "ratio":  9.76,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "고른 업종과 후보지로 분석을 시작하세요.",
+        "ratio":  5.89,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "공식 안내상 가입 없이 분석에 진입할 수 있습니다. 가입 후 Free는 월 5회 분석, 판정 1개 전체 공개를 제공합니다. 나머지 판정은 제한된",
+        "ratio":  4.82,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "판정은 출발점입니다.",
+        "ratio":  10.93,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "매출을 약속하지 않습니다.",
+        "ratio":  10.93,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "좋음·주의뿐 아니라 판단할 수 없는 경우도 확인하세요. 자료가 말해 주는 범위와 현장에서 확인할 일을 함께 알아야 다음 선택이 쉬워집니다.",
+        "ratio":  5.73,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "좋음·주의뿐 아니라 판단할 수 없는 경우도 확인하세요. 자료가 말해 주는 범위와 현장에서 확인할 일을 함께 알아야 다음 선택이 쉬워집니다.",
+        "ratio":  5.78,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "판정과 근거를 함께 읽기",
+        "ratio":  10.96,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "한 줄 결론 옆에서 근거의 단위, 출처, 기준 시점을 확인하세요.",
+        "ratio":  5.67,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "어디까지 알 수 있는지 확인하기",
+        "ratio":  11.05,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "지역별 제공 범위와 자료의 시차를 살펴보세요. 추정과 관측은 구분해야 합니다.",
+        "ratio":  5.84,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "지역별 제공 범위와 자료의 시차를 살펴보세요. 추정과 관측은 구분해야 합니다.",
+        "ratio":  5.77,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "현장에서 확인할 일 정하기",
+        "ratio":  10.96,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "임대료, 시간대별 동선, 주변 점포의 영업 상황을 직접 살펴보세요.",
+        "ratio":  5.84,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "paths",
+        "text":  "임대료, 시간대별 동선, 주변 점포의 영업 상황을 직접 살펴보세요.",
+        "ratio":  5.84,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "지역 범위, 자료 시차, 추정과 관측의 차이를 설명합니다.",
+        "ratio":  5.85,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "다음 현장 확인 항목을 제안합니다.",
+        "ratio":  5.83,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "필요한 경우에만 다른 후보 비교, 상세 근거, 세부 구역 탐색을 안내합니다. 제공 범위는 공식 정책을 따릅니다.",
+        "ratio":  5.85,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "불러오는 중",
+        "ratio":  11.03,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "향후 연동 상태: 진행 안내와 중단·재시도 동작은 실제 서비스 계약 확인이 필요합니다.",
+        "ratio":  5.86,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "결과 없음",
+        "ratio":  11.07,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "향후 연동 상태: 자료가 없는 조건을 알리고 다른 위치·업종을 확인하도록 안내합니다.",
+        "ratio":  5.84,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "오류",
+        "ratio":  11.05,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "향후 연동 상태: 실패 이유와 가능한 다음 행동을 안내합니다. 분석 횟수 차감 여부는 서버 정책 확인이 필요합니다.",
+        "ratio":  5.86,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "판단할 수 없음",
+        "ratio":  11.07,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "향후 연동 상태: 부족한 근거와 추가 확인 항목을 제시합니다. 유료 구매로 판정이 보장되지 않습니다.",
+        "ratio":  5.86,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "더 비교해 보고 싶다면,",
+        "ratio":  11.16,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "필요한 범위를 선택하세요.",
+        "ratio":  5.55,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "먼저 무료로 확인해 보세요. 다른 후보나 더 자세한 근거가 필요할 때 이용권을 비교해도 됩니다.",
+        "ratio":  5.67,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "Free",
+        "ratio":  11.05,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "무료",
+        "ratio":  10.98,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "첫 분석을 시작하고 판정 하나를 끝까지 확인할 때.",
+        "ratio":  5.8,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "가입 후 월 5회 분석",
+        "ratio":  5.9,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "판정 1개 전체 공개",
+        "ratio":  5.89,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "나머지 판정은 제한된 미리보기",
+        "ratio":  5.91,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "Basic",
+        "ratio":  11.07,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "19,900원",
+        "ratio":  11.18,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "/ 30일 · 기본가",
+        "ratio":  11.18,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "후보와 판정 근거를 더 비교하고 싶을 때.",
+        "ratio":  5.91,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "상세 제공 범위와 적용 가격은 공식 서비스에서 확인하세요.",
+        "ratio":  5.91,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "Pro",
+        "ratio":  11.19,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "39,900원",
+        "ratio":  10.98,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "/ 30일 · 기본가",
+        "ratio":  11,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "더 세밀한 탐색이 필요한지 검토할 때.",
+        "ratio":  5.85,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "상세 제공 범위와 적용 가격은 공식 서비스에서 확인하세요.",
+        "ratio":  5.92,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "공식 공개 기본가 · 2026년 11월 18일 확인 · 자동 갱신 없음. 적용 가능한 프로모션과 최종 결제 조건은 공식 서비스에서 확인하세요.",
+        "ratio":  5.89,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "무료로 계속 탐색하기",
+        "ratio":  9.75,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "공식 이용권 안내 확인",
+        "ratio":  7.09,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "공식 가격·환불 조건",
+        "ratio":  7.17,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "짧은 기간의 이용권도 살펴보고 싶다면",
+        "ratio":  11.19,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "7일·14일 이용권은 아직 승인되지 않은 가격 실험입니다. 별도 시안에서 선택 흐름만 살펴볼 수 있습니다.",
+        "ratio":  5.81,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "7일·14일 이용권은 아직 승인되지 않은 가격 실험입니다. 별도 시안에서 선택 흐름만 살펴볼 수 있습니다.",
+        "ratio":  5.81,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "7일·14일 시안 보기",
+        "ratio":  11.2,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "depth",
+        "text":  "가격 실험 · 결제 불가",
+        "ratio":  11.32,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "상권나침반",
+        "ratio":  11.05,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "LOCAL SCOPE · WEEKLY ROOM",
+        "ratio":  5.84,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "가격 실험 · 결제 불가",
+        "ratio":  5.58,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "7일·14일 이용권 시안",
+        "ratio":  7.08,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "내 후보지,",
+        "ratio":  11.75,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "이번 주에 확인해 볼까요?",
+        "ratio":  7.77,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "정해진 것이 많지 않아도 괜찮습니다. 지금 상황을 고르면 필요한 확인 항목과 이용 기간을 함께 살펴볼 수 있습니다.",
+        "ratio":  8.14,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "정해진 것이 많지 않아도 괜찮습니다. 지금 상황을 고르면 필요한 확인 항목과 이용 기간을 함께 살펴볼 수 있습니다.",
+        "ratio":  9.75,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "01",
+        "ratio":  4.77,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "나의 상황",
+        "ratio":  7.88,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "선택에 따라 안내가 달라집니다",
+        "ratio":  4.68,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "02",
+        "ratio":  5.55,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "기간과 이용권 비교",
+        "ratio":  9.11,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "Free / 7일 / 14일",
+        "ratio":  5.41,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "03",
+        "ratio":  5.55,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "결제 전후 살펴보기",
+        "ratio":  9.11,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "총액과 다음 행동 확인",
+        "ratio":  5.41,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "01 / DISCOVER YOUR QUESTION",
+        "ratio":  5.58,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "무엇부터 확인할지,",
+        "ratio":  10.92,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "세 가지만 골라 주세요.",
+        "ratio":  10.92,
+        "threshold":  3,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "선택에 따라 확인 항목과 추천 이용권이 달라집니다. 응답은 서버에 저장하지 않습니다.",
+        "ratio":  5.25,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "Q1",
+        "ratio":  5.86,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "지금 창업 준비의 어느 단계인가요?",
+        "ratio":  9.63,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "창업 준비 상황을 알려주세요.",
+        "ratio":  5.43,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "창업할 지역을 아직 못 정했어요",
+        "ratio":  7.71,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "선택 미리보기 · 가상 장면",
+        "ratio":  5.47,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "아직 선택 전",
+        "ratio":  6.2,
+        "threshold":  4.5,
+        "pass":  true
+    },
+    {
+        "screen":  "weekly",
+        "text":  "내 질문에 맞춰",
+        "ratio":  9.68,
+        "threshold":  3,
+        "pass":  true
+    }
+]
