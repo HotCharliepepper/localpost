@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#15232a">
-  <meta name="description" content="상권나침반 히어로 UX 8틱 독립 연구 시안. 불편한 확신에서 근거 있는 판정으로 움직이는 스크롤 경험.">
-  <title>상권나침반 — From Friction to Clarity | UX Study R1</title>
+  <meta name="description" content="상권나침반 R1.3 독립 UX 연구 시안. 8단계 스크롤, 절제된 2.5D 나침반, 근거 확인과 빠른 진입.">
+  <title>상권나침반 — 감으로만 고르지 않도록 | UX Study R1.3</title>
   <style>
     :root{color-scheme:light;--dark:#121e26;--cream:#f2f0e7;--forest:#153c36;--rust:#e77165;--ink:#f7f1e9;--muted:#d8baba;--accent:#ec7568;--dial-stroke:rgba(242,222,214,.43);--dial-faint:rgba(255,237,229,.12);--comfort:0;--tension:1;--phase:0;--evidence:0;--glass:rgba(25,35,42,.45);--mobile-shift:0px}
     *{box-sizing:border-box}
@@ -110,32 +110,219 @@
     @media (max-width:390px){.copy-column{left:22px;width:calc(100% - 42px)}.copy-panel h1,.copy-panel h2{font-size:clamp(33px,9vw,40px)}.copy-panel .subcopy{max-width:298px;font-size:12.5px}.dial-holder{right:calc(-320px + var(--mobile-shift));top:62%;opacity:.63}.brand-name{font-size:13px}.copy-meta{font-size:9px}.scroll-cue{font-size:9px}}
     @media (max-height:650px) and (min-width:751px){.copy-column{top:50%;min-height:370px}.copy-panels{height:270px}.copy-panel h1,.copy-panel h2{font-size:clamp(40px,4.4vw,66px)}.copy-meta{margin-bottom:13px}.stage-skip{top:76px}.signal{bottom:12%}}
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#journey{height:100svh;min-height:620px}.stage{min-height:620px}.copy-panel,.copy-panel.is-active,.next-hint,.dial-holder,.red-sweep,.red-haze,.copy-column{transition:none!important;animation:none!important}.stage-skip,.ticks,.scroll-cue{display:none!important}.reduce-note{display:inline}.next-hint{opacity:1;transform:none;pointer-events:auto}.copy-panel:not(:last-child){display:none}.copy-panel:last-child{opacity:1;transform:none;filter:none}}
-  </style>
+
+    /* Mid-transition readability layer: keeps the left text region legible while the compass palette turns light. */
+    .contrast-veil{position:absolute;inset:0;z-index:8;background:linear-gradient(90deg,rgba(10,24,33,.88),rgba(10,24,33,.75) 38%,rgba(10,24,33,.28) 61%,transparent 78%);opacity:var(--veil,0);pointer-events:none}
+    .copy-column{color:var(--copy-ink,#f7f1e9)}
+    .copy-meta,.copy-panel .title-accent{color:var(--copy-accent,#ff8175)}
+    .stage-header .brand{color:var(--copy-ink,#f7f1e9)}
+    .top-cta{background:rgba(15,33,39,.84);color:#f9f6ed;border-color:rgba(235,241,233,.32)}
+    .top-cta:hover{background:#f4f6ee;color:#153c36}
+    .stage-skip{background:rgba(15,33,39,.78);color:#f6f3eb;border:1px solid rgba(234,240,233,.23);border-radius:50px;padding:8px 12px}
+    .depth-toggle{background:rgba(15,33,39,.78)!important;color:#f6f3eb!important;border-color:rgba(234,240,233,.23)!important}
+    .copy-panel h1,.copy-panel h2{ text-shadow:var(--copy-shadow,none) }
+    .copy-panel .subcopy{ text-shadow:var(--copy-shadow,none) }
+    .copy-panel .subcopy,.copy-footer{color:var(--copy-muted,#e1bfb8)}
+    @media(max-width:750px){.contrast-veil{background:linear-gradient(180deg,rgba(10,24,33,.88),rgba(10,24,33,.70) 53%,rgba(10,24,33,.15) 80%,transparent)}}
+    /* R1.1 study-only text-depth layer (toggled for A/B comparison) */
+    .depth-toggle{position:absolute;z-index:23;top:156px;right:clamp(25px,5vw,90px);display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--dial-stroke);border-radius:999px;background:rgba(20,30,37,.06);color:var(--muted);font-size:10px;font-weight:620;line-height:1.5;letter-spacing:-.025em;cursor:pointer;transition:background .2s,color .2s}
+    .depth-toggle strong{font-size:10px;letter-spacing:.04em;color:var(--accent)}
+    .depth-toggle:hover{background:rgba(150,163,146,.12);color:var(--ink)}
+    .depth-on .copy-panels{perspective:1050px;transform-style:preserve-3d}
+    .depth-on .copy-panel .line{--line-shift:0px;transform-origin:left center;backface-visibility:hidden}
+    .depth-on .copy-panel .line:nth-of-type(2){--line-shift:calc(var(--tension) * -18px)}
+    .depth-on .copy-panel.is-active .line{animation:line-arrive .82s cubic-bezier(.19,.72,.21,1) both}
+    .depth-on .copy-panel.is-active .line:nth-of-type(2){animation-delay:.075s}
+    .depth-on .copy-panel.is-active .subcopy{animation:detail-arrive .72s cubic-bezier(.19,.72,.21,1) .13s both}
+    .depth-on .copy-panel.is-active .caption{animation:caption-arrive .6s cubic-bezier(.19,.72,.21,1) both}
+    .depth-on .copy-meta{transform:translate3d(calc(var(--tension) * -5px),0,0)}
+    @keyframes line-arrive{0%{opacity:.58;transform:translate3d(calc(var(--line-shift) - 8px),15px,-38px) rotateX(3deg)}100%{opacity:1;transform:translate3d(var(--line-shift),0,0) rotateX(0deg)}}
+    @keyframes detail-arrive{0%{opacity:0;transform:translate3d(-6px,11px,-22px)}100%{opacity:1;transform:translate3d(0,0,0)}}
+    @keyframes caption-arrive{0%{opacity:.1;transform:translate3d(-5px,6px,-18px)}100%{opacity:.77;transform:translate3d(0,0,0)}}
+    @media (max-width:750px){.depth-toggle{top:124px;right:23px;padding:7px 10px;font-size:9px}.depth-on .copy-panel .line:nth-of-type(2){--line-shift:calc(var(--tension) * -9px)}}
+    @media (max-height:650px) and (min-width:751px){.depth-toggle{top:110px}}
+    @media (prefers-reduced-motion:reduce){.depth-toggle{display:none!important}.depth-on .copy-panel.is-active .line,.depth-on .copy-panel.is-active .subcopy,.depth-on .copy-panel.is-active .caption{animation:none!important;transform:none!important}}
+
+    /* R1.2 / visually grounded field: an abstract land surface, not a literal green-space photograph. */
+    .field-world{position:absolute;inset:0;z-index:1;opacity:calc(var(--comfort) * .97);overflow:hidden;pointer-events:none;
+      background:linear-gradient(180deg,transparent 45%,rgba(212,231,202,.025) 56%,rgba(176,207,158,.14) 77%,rgba(145,179,131,.26) 100%)}
+    .field-horizon{position:absolute;left:-16%;right:-16%;bottom:-27%;height:78%;
+      border-radius:54% 46% 0 0/35% 34% 0 0;transform:rotate(-3deg) translateZ(0);transform-origin:center bottom;
+      background:radial-gradient(ellipse at 58% 0%,rgba(255,255,237,.58),transparent 56%),
+                 linear-gradient(174deg,rgba(235,246,217,.04) 0%,rgba(167,196,151,.16) 41%,rgba(130,167,116,.34) 100%);
+      box-shadow:inset 0 28px 66px rgba(255,255,245,.33),0 -24px 110px rgba(192,221,185,.16)}
+    .field-grass{position:absolute;left:-6%;right:-6%;bottom:-2%;height:39%;opacity:.25;
+      background-image:repeating-linear-gradient(107deg,transparent 0px,transparent 11px,rgba(74,123,84,.25) 12px,transparent 13px,transparent 24px),
+        repeating-linear-gradient(67deg,transparent 0px,transparent 17px,rgba(109,151,94,.24) 18px,transparent 20px,transparent 32px);
+      background-size:97px 68px,113px 76px;mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.18) 26%,#000 100%);
+      -webkit-mask-image:linear-gradient(to bottom,transparent,rgba(0,0,0,.18) 26%,#000 100%);transform:rotate(-2deg)}
+    .field-light{position:absolute;inset:44% 5% -18% 33%;background:radial-gradient(ellipse at 63% 39%,rgba(255,251,225,.34),transparent 64%)}
+    .field-anchor{position:absolute;left:67%;bottom:13%;width:25%;height:7%;border-radius:50%;
+      transform:rotate(-5deg);filter:blur(22px);background:radial-gradient(ellipse,rgba(57,99,74,.32),transparent 72%)}
+    /* Quick choice: visitors need not complete all eight scroll ticks to start. */
+    .quick-start{margin-top:17px;display:flex;align-items:center;flex-wrap:wrap;gap:12px;pointer-events:auto;position:relative;z-index:35}
+    .quick-label{font-size:11px;font-weight:670;letter-spacing:-.02em;line-height:1.5;color:var(--copy-muted,#e1bfb8)}
+    .quick-buttons{display:flex;flex-wrap:wrap;gap:7px}
+    .quick-buttons a{color:var(--copy-ink,#f7f1e9);border:1px solid currentColor;background:rgba(34,61,53,.09);
+      padding:8px 12px;min-height:38px;display:inline-flex;gap:10px;align-items:center;justify-content:center;
+      border-radius:99px;font-size:11px;font-weight:750;letter-spacing:-.02em;transition:background .18s,transform .18s,border-color .18s}
+    .quick-buttons a:hover{background:rgba(107,158,115,.22);transform:translateY(-2px)}
+    .quick-buttons a:focus-visible{outline:3px solid #e69d4b;outline-offset:3px}
+    .card:target{outline:3px solid #6b9a83;outline-offset:4px;background:#fff}
+    @media(max-width:750px){
+      .field-world{background:linear-gradient(180deg,transparent 43%,rgba(177,203,161,.08) 69%,rgba(146,182,128,.31) 100%)}
+      .field-horizon{height:62%;bottom:-26%;left:-55%;right:-22%}.field-anchor{left:67%;bottom:23%;width:29%}
+      .field-grass{height:28%;opacity:.20}.quick-start{margin-top:9px;gap:6px;max-width:340px}
+      .quick-label{display:block;width:100%;font-size:10px}.quick-buttons{gap:6px}
+      .quick-buttons a{font-size:10px;min-height:34px;padding:6px 10px}
+    }
+    @media(max-height:700px) and (max-width:750px){
+      .quick-start{position:absolute;top:336px;left:0;margin:0;max-width:340px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .quick-buttons a{transition:none!important}.field-world,.field-horizon,.field-grass,.field-anchor{transition:none!important}
+    }
+  
+    /* R1.3: restrained dimensional compass inspired by the supplied visual reference.
+       Decorative planes and blue/coral light recede as evidence becomes clear. */
+    .tech-field{position:absolute;z-index:3;inset:0;overflow:hidden;pointer-events:none;opacity:calc(var(--tension)*.95)}
+    .track{position:absolute;display:block;border:1px solid rgba(204,223,233,.31);border-radius:12px;transform:rotate(-13deg) skewY(7deg);box-shadow:0 2px 0 rgba(255,255,255,.06)}
+    .track-a{height:72%;width:48%;left:44%;top:-16%}
+    .track-b{height:79%;width:50%;left:57%;top:19%;transform:rotate(13deg) skewY(7deg)}
+    .track-c{height:2px;width:76%;left:28%;top:62%;transform:rotate(-9deg);border:0;background:linear-gradient(90deg,transparent,rgba(242,242,242,.5),transparent)}
+    .blue-bloom{position:absolute;right:-13vw;top:-27%;width:46vw;height:60vw;max-height:650px;background:radial-gradient(ellipse at center,rgba(67,98,248,.51),rgba(49,85,206,.18) 33%,transparent 66%);filter:blur(38px)}
+    .red-bloom{position:absolute;right:8%;bottom:-41%;width:31vw;height:47vw;background:radial-gradient(ellipse,rgba(244,112,107,.10),transparent 70%);filter:blur(35px)}
+    .dial-holder{transform:translate3d(calc((1 - var(--phase)) * 13%), -50%,0) rotateX(calc(var(--tension)*10deg)) rotateY(calc(var(--tension)*-14deg)) rotateZ(calc(var(--tension)*-8deg)) scale(calc(1.02 - var(--phase) * .12));transform-style:preserve-3d;perspective:1200px}
+    .dial{filter:drop-shadow(0 27px 31px rgba(5,15,30,.22)) drop-shadow(0 4px 5px rgba(255,255,255,.06))}
+    .dial .ring{stroke-width:1.65;filter:drop-shadow(0 0 6px rgba(255,255,255,.08))}
+    .dial .ring.faint{stroke-width:1.1}
+    .needle-light{opacity:calc(var(--tension)*.95)}
+    .north-half,.south-half{stroke:rgba(255,252,246,.82);stroke-width:2.5;stroke-linejoin:round}
+    .north-half{opacity:calc(1 - var(--comfort)*.93)}
+    .south-half{opacity:calc(1 - var(--comfort)*.93)}
+    .calm-half,.calm-tail{opacity:var(--comfort);stroke:rgba(255,255,255,.65);stroke-width:2}
+    .needle-edge{fill:none;stroke:rgba(252,255,250,.42);stroke-width:1.7;stroke-linejoin:round}
+    .dial-holder::after{content:"";position:absolute;inset:18%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 50% 50%,rgba(82,116,247,.11),transparent 43%);opacity:var(--tension)}
+    /* First-action usability. Official /place route is verified; unknown routes stay on the official landing page. */
+    .quick-start{margin-top:23px;gap:9px;align-items:center}
+    .quick-label{font-size:13px;font-weight:780}
+    .quick-label small{display:block;margin-top:2px;font-size:11px;letter-spacing:-.035em;font-weight:530;opacity:.84}
+    .quick-buttons{gap:8px}
+    .quick-buttons a{min-height:46px;min-width:86px;padding:10px 16px;font-size:13px;background:rgba(26,46,52,.28);border-color:rgba(235,240,235,.56);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .quick-buttons a:hover{background:rgba(114,169,147,.23)}
+    .depth-toggle{display:none}
+    /* Keep a high-contrast copy island even when the background color is midway. */
+    .copy-panel h1,.copy-panel h2{font-weight:790;line-height:1.14}
+    .copy-column{will-change:transform}
+    .copy-panel .subcopy{font-size:clamp(14px,1.16vw,17px);line-height:1.77}
+    .stage-skip{min-height:44px;display:inline-flex;align-items:center}
+    .top-cta{min-height:44px;display:inline-flex;align-items:center}
+    .tick-button{width:26px;height:44px}
+    .copy-column .quick-start a{pointer-events:auto}
+    /* Official case teaser sits after the main routes; it never delays the initial CTA. */
+    .proof a:focus-visible{outline:3px solid #24584b;outline-offset:6px}
+    .proof{background:#e7eee7;padding:clamp(58px,7vw,104px) clamp(24px,7.3vw,130px);color:#153e38}
+    .proof-shell{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(24px,6vw,98px);align-items:center}
+    .proof-eyebrow{color:#678b79;letter-spacing:.12em;font:730 10px/1.5 ui-monospace,monospace}
+    .proof-intro h2{font-size:clamp(36px,4.2vw,64px);line-height:1.19;letter-spacing:-.07em;word-break:keep-all;margin:22px 0 20px}
+    .proof-intro h2 em{font-style:normal;color:#397965}
+    .proof-intro p{max-width:480px;line-height:1.9;color:#566e66;font-size:15px}
+    .proof-link{display:inline-flex;min-height:44px;align-items:center;gap:12px;border-bottom:1px solid #397965;font-size:14px;font-weight:740;margin-top:19px}
+    .proof-example{background:rgba(255,255,255,.8);border:1px solid #cbdbcf;padding:clamp(23px,4.3vw,49px);border-radius:20px;box-shadow:0 28px 50px rgba(40,79,63,.06)}
+    .proof-location{font-size:12px;line-height:1.7;color:#698477;font-weight:750}
+    .proof-myth{font-size:clamp(18px,2vw,25px);letter-spacing:-.055em;margin:25px 0 21px;color:#7a847d}
+    .proof-answer{border-top:1px solid #d9e4d9;border-bottom:1px solid #d9e4d9;padding:24px 0;display:grid;gap:9px}
+    .proof-answer span,.proof-data span{font-size:11px;font-weight:750;color:#507663}
+    .proof-answer strong{font-size:clamp(23px,2.5vw,35px);line-height:1.27;letter-spacing:-.065em;word-break:keep-all}
+    .proof-data{display:flex;flex-wrap:wrap;gap:8px 15px;align-items:center;margin-top:24px}
+    .proof-data strong{font-size:17px;letter-spacing:-.045em}
+    .proof-data small{font-size:12px;color:#72887b}
+    .proof-caution{color:#687d71;font-size:12px;line-height:1.7;margin:27px 0 0}
+    @media(max-width:1100px){.proof-shell{gap:24px}}
+    @media(max-width:750px){
+      .tech-field{opacity:calc(var(--tension)*.63)}
+      .track-a{left:30%;width:73%;top:-18%}.track-b{left:55%;width:60%;top:22%}
+      .blue-bloom{right:-46%;top:-13%;width:100%;height:420px}
+      .copy-column{top:41.5%;min-height:0}
+      .copy-meta{font-size:11px}
+      .copy-panel .caption{font-size:13px}
+      .copy-panel .subcopy{font-size:14px;line-height:1.68}
+      .copy-footer{font-size:11px;line-height:1.55}
+      .quick-start{margin-top:14px;gap:7px;max-width:350px}
+      .quick-label{font-size:12px}
+      .quick-label small{display:inline;margin:0 0 0 5px;font-size:11px}
+      .quick-buttons{gap:7px}
+      .quick-buttons a{min-height:44px;min-width:86px;padding:10px 12px;font-size:12px}
+      .stage-foot{bottom:16px}
+      .stage-skip{min-height:44px;top:78px}
+      .proof-shell{grid-template-columns:1fr;gap:25px}
+      .proof-intro h2{font-size:37px;margin:16px 0}
+    }
+    @media(max-width:390px){
+      .copy-column{top:40%;left:23px;width:calc(100% - 45px)}
+      .copy-panel h1,.copy-panel h2{font-size:clamp(31px,8.3vw,37px)}
+      .copy-panel .subcopy{font-size:13.5px}
+      .quick-label small{display:block;margin:1px 0 0}
+      .quick-buttons a{min-width:83px;padding:9px 11px}
+    }
+    @media(max-height:700px) and (max-width:750px){
+      /* Keep the first sentence below the skip control on short devices.
+         Save vertical space within the story, not by hiding the actual CTA. */
+      .copy-column{top:52%}
+      .copy-meta{margin-bottom:9px}
+      .copy-panel .caption{margin-bottom:9px}
+      .copy-panel .subcopy{margin-top:13px;line-height:1.45}
+      .copy-panels{height:196px}
+      .copy-footer{margin-top:7px;line-height:1.4}
+      .quick-start{position:relative;top:auto;left:auto;margin-top:7px}
+      .quick-label small{display:none}
+      .next-hint{display:none!important}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .dial-holder{transform:none!important;right:-7vw;top:50%}
+      .tech-field{opacity:0!important}
+      .needle-light{opacity:0!important}
+      .quick-buttons a,.proof-link{transition:none!important}
+    }
+</style>
 </head>
 <body>
   <a class="jump-link" href="#choose">이야기 건너뛰고 분석 경로 보기</a>
   <main>
-    <p class="sr-only">상권나침반은 업종과 후보지를 둘러싼 통념을 공공데이터와 비교하고, 판단에 필요한 근거와 한계 및 다음 확인 행동을 안내합니다. 분석은 매출이나 창업 성공을 보장하지 않습니다. 원한다면 이야기 건너뛰기 링크로 세 가지 시작 경로를 선택할 수 있습니다.</p>
+    <p class="sr-only">상권나침반은 상권을 감으로만 고르지 않도록, 업종과 후보지에 관한 판단의 근거와 한계, 다음 확인할 일을 안내합니다. 분석은 매출이나 창업 성공을 보장하지 않습니다. 원한다면 이야기 건너뛰기 링크로 세 가지 시작 경로를 선택할 수 있습니다.</p>
     <section id="journey" aria-label="상권나침반 서비스 소개 — 8단계 스크롤 스토리">
-      <div class="stage" id="stage" data-step="0">
+      <div class="stage depth-on" id="stage" data-step="0">
         <div class="light-wash" aria-hidden="true"></div>
+        <!-- R1.2 study-only terrain. Emotional reassurance, NOT a claim of commercial success. -->
+        <div class="field-world" aria-hidden="true">
+          <div class="field-horizon"></div>
+          <div class="field-grass"></div>
+          <div class="field-light"></div>
+          <div class="field-anchor"></div>
+        </div>
         <div class="grid-lines" aria-hidden="true"></div>
         <div class="red-haze" aria-hidden="true"></div>
         <div class="red-sweep" aria-hidden="true"></div>
-        <div class="ghost-words" aria-hidden="true"><span>손님이 많으니까?</span><span>경쟁이 적으니까?</span><span>왠지 잘될 것 같아서?</span></div>
+        <div class="tech-field" aria-hidden="true"><i class="track track-a"></i><i class="track track-b"></i><i class="track track-c"></i><i class="blue-bloom"></i><i class="red-bloom"></i></div>
+        <div class="contrast-veil" aria-hidden="true"></div>
+        <div class="ghost-words" aria-hidden="true"><span>사람이 많으니까?</span><span>경쟁이 적으니까?</span><span>왠지 괜찮겠지?</span></div>
         <header class="stage-header">
           <div class="brand" aria-label="상권나침반 LocalScope">
             <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width=".8" opacity=".6"/><path d="M20 3V8M20 32v5M3 20h5M32 20h5" stroke="currentColor" stroke-width="1"/><path d="M20 8L15.5 22.4L20 19L24.5 22.4Z" fill="var(--accent)"/><path d="M20 32L24.5 17.6L20 21L15.5 17.6Z" fill="currentColor" opacity=".5"/></svg></span>
             <span class="brand-name">상권나침반<small>LOCALSCOPE</small></span>
           </div>
-          <div class="header-right"><span class="study-tag">UX STUDY · R1 / 독립 시안</span><a class="top-cta" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" title="상권나침반 공식 홈페이지 새 창으로 열기">공식 사이트에서 분석 ↗</a></div>
+          <div class="header-right"><span class="study-tag">UX STUDY · R1.3 / 독립 시안</span><a class="top-cta" href="#choose" title="업종 또는 자리가 정해진 상태에 맞춰 분석 시작 경로 선택하기">내 조건으로 시작 ↗</a></div>
         </header>
         <button id="skipStory" class="stage-skip" type="button">스토리 건너뛰기 <span aria-hidden="true">↗</span></button>
+        
         <div class="dial-holder" id="dialHolder" aria-hidden="true">
           <svg viewBox="0 0 700 700" class="dial" role="presentation">
             <defs>
               <radialGradient id="centerglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e4fcdd" stop-opacity=".10"/><stop offset="1" stop-color="#e4fcdd" stop-opacity="0"/></radialGradient>
-              <linearGradient id="rubyFill" x1=".5" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#ffb0a4" stop-opacity=".83"/><stop offset="1" stop-color="#e85f65" stop-opacity=".45"/></linearGradient>
+              <linearGradient id="rubyFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd3bb"/><stop offset=".52" stop-color="#fd947d"/><stop offset="1" stop-color="#b95682"/></linearGradient>
+              <linearGradient id="blueFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7bd5ff"/><stop offset=".58" stop-color="#4668fa"/><stop offset="1" stop-color="#3959b8"/></linearGradient>
+              <linearGradient id="coolFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a2d8bf"/><stop offset="1" stop-color="#316f61"/></linearGradient>
+              <filter id="needleBlur"><feGaussianBlur stdDeviation="7"/></filter>
             </defs>
             <circle cx="350" cy="350" r="302" class="ring faint"/><circle cx="350" cy="350" r="276" class="ring"/><circle cx="350" cy="350" r="255" class="orbital"/><circle cx="350" cy="350" r="220" class="ring faint"/><circle cx="350" cy="350" r="165" class="ring faint"/><circle cx="350" cy="350" r="104" class="ring faint"/>
             <path d="M350 18V682M18 350H682" class="cross"/><path d="M116 116L584 584M584 116L116 584" class="cross" opacity=".25"/>
@@ -143,12 +330,18 @@
             <text class="dial-index" x="355" y="52" text-anchor="middle">N · 00°</text><text class="dial-index" x="654" y="354" text-anchor="middle">E</text><text class="dial-index" x="350" y="658" text-anchor="middle">S</text><text class="dial-index" x="53" y="354" text-anchor="middle">W</text>
             <circle cx="350" cy="350" r="148" fill="url(#centerglow)"/>
             <g id="needleGroup" class="needle-wrap">
-              <path d="M350 84L314 344L350 328Z" class="needle-ruby"/><path d="M350 84L386 344L350 328Z" fill="var(--accent)" opacity=".63"/>
-              <path d="M350 616L313 358L350 373Z" class="needle-cool"/><path d="M350 616L387 358L350 373Z" class="needle-shadow"/>
-              <path d="M84 350L344 315L329 350Z" class="needle-shadow"/><path d="M616 350L356 315L371 350Z" class="needle-shadow"/>
+              <g class="needle-light" filter="url(#needleBlur)">
+                <path d="M350 97L301 347L350 329L399 347Z" fill="#ff957c" opacity=".55"/>
+                <path d="M350 602L300 353L350 370L400 353Z" fill="#416bf8" opacity=".6"/>
+              </g>
+              <path d="M350 97L303 346L350 328L397 346Z" fill="url(#rubyFill)" class="north-half"/>
+              <path d="M350 603L303 354L350 372L397 354Z" fill="url(#blueFill)" class="south-half"/>
+              <path d="M350 97L303 346L350 328L397 346Z" fill="url(#coolFill)" class="calm-half"/>
+              <path d="M350 603L303 354L350 372L397 354Z" fill="#426d64" class="calm-tail"/>
+              <path d="M350 97L303 346L350 328L397 346Z" class="needle-edge"/>
+              <path d="M350 603L303 354L350 372L397 354Z" class="needle-edge"/>
             </g>
-            <circle cx="350" cy="350" r="25" class="needle-core"/><circle cx="350" cy="350" r="10" fill="var(--accent)"/>
-            <circle cx="350" cy="350" r="4" fill="var(--ink)"/>
+            <circle cx="350" cy="350" r="24" class="needle-core"/><circle cx="350" cy="350" r="14" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="350" cy="350" r="5" fill="var(--ink)"/>
           </svg>
           <div class="dial-vignette"></div>
         </div>
@@ -158,60 +351,68 @@
           <div class="copy-meta"><span id="chapterLabel">01 / 질문의 시작</span></div>
           <div class="copy-panels" id="copyPanels">
             <article class="copy-panel is-active" data-index="0" aria-hidden="true">
-              <p class="caption">상권나침반은 업종과 후보지를 공공데이터로 판정합니다.</p>
-              <h1><span class="line">이 자리,</span><span class="line"><em class="title-accent" style="font-style:normal">감으로</em> 정해도 될까?</span></h1>
-              <p class="subcopy">사람도 많고 가게도 많은데.<br>정작 내 업종에 맞는 자리인지는 아직 모르겠습니다.</p>
+              <p class="caption">가게를 열 자리, 어떻게 고르시나요?</p>
+              <h1><span class="line">상권을 <em class="title-accent" style="font-style:normal">감으로만</em></span><span class="line">고르지 않도록.</span></h1>
+              <p class="subcopy">사람이 많아도, 주변에 가게가 적어도.<br>그 이유를 보기 전에는 내게 맞는 자리인지 알기 어렵습니다.</p>
             </article>
             <article class="copy-panel" data-index="1" aria-hidden="true">
-              <p class="caption">첫 번째로 떠오르는 생각</p>
-              <h2><span class="line">사람이 많으니까,</span><span class="line">괜찮겠지.</span></h2>
-              <p class="subcopy">하지만 지나가는 사람이 모두 내 고객이 되는 건 아닙니다.</p>
+              <p class="caption">사람이 많아 보이는 거리</p>
+              <h2><span class="line">사람이 많으면,</span><span class="line">장사도 잘될까?</span></h2>
+              <p class="subcopy">오가는 사람이 많아도, 실제로 찾아올 고객은 다를 수 있습니다.</p>
             </article>
             <article class="copy-panel" data-index="2" aria-hidden="true">
-              <p class="caption">두 번째로 떠오르는 생각</p>
-              <h2><span class="line">경쟁이 적으니까,</span><span class="line">기회일 거야.</span></h2>
-              <p class="subcopy">가게가 적다는 사실과 수요가 충분하다는 해석은 다를 수 있습니다.</p>
+              <p class="caption">비슷한 가게가 적은 곳</p>
+              <h2><span class="line">경쟁이 적으면,</span><span class="line">기회가 더 클까?</span></h2>
+              <p class="subcopy">가게가 적다고 해서, 필요한 손님까지 많다는 뜻은 아닙니다.</p>
             </article>
             <article class="copy-panel" data-index="3" aria-hidden="true">
-              <p class="caption">그 익숙한 계산에 질문 하나</p>
-              <h2><span class="line">그런데,</span><span class="line"><em class="title-accent" style="font-style:normal">내 자리에도</em> 맞을까?</span></h2>
-              <p class="subcopy">동네 전체의 분위기가 내 업종, 내 후보지에서도 같을까요?</p>
+              <p class="caption">이제 내 상황에서 다시 묻습니다.</p>
+              <h2><span class="line">좋아 보이는 동네,</span><span class="line"><em class="title-accent" style="font-style:normal">내 가게에도</em> 맞을까?</span></h2>
+              <p class="subcopy">같은 상권도 업종과 위치에 따라 살펴봐야 할 것이 달라집니다.</p>
             </article>
             <article class="copy-panel" data-index="4" aria-hidden="true">
-              <p class="caption">질문이 분명해지면</p>
-              <h2><span class="line">감각 대신,</span><span class="line">비교할 <em class="title-accent" style="font-style:normal">기준부터.</em></span></h2>
-              <p class="subcopy">업종과 후보지를 정하고, 서로 다른 지표를 같은 질문 아래 모읍니다.</p>
+              <p class="caption">좋아 보인다는 예상에서 벗어나</p>
+              <h2><span class="line">추측은 줄이고,</span><span class="line">비교할 <em class="title-accent" style="font-style:normal">기준부터.</em></span></h2>
+              <p class="subcopy">내가 정한 업종이나 자리에서 무엇을 확인할지 정리합니다.</p>
             </article>
             <article class="copy-panel" data-index="5" aria-hidden="true">
-              <p class="caption">기준 다음에는 확인 가능한 근거</p>
-              <h2><span class="line">답에는,</span><span class="line"><em class="title-accent" style="font-style:normal">이유가</em> 따라야 하니까.</span></h2>
-              <p class="subcopy">경쟁·수요·점포 흐름을 살펴보고, 사용한 근거와 기준 시점을 함께 봅니다.</p>
+              <p class="caption">결론을 보았다면, 그다음은</p>
+              <h2><span class="line">결론만 보지 말고,</span><span class="line"><em class="title-accent" style="font-style:normal">이유까지.</em></span></h2>
+              <p class="subcopy">경쟁 가게와 수요 흐름을 살펴보고, 어떤 자료를 언제 기준으로 썼는지 확인합니다.</p>
             </article>
             <article class="copy-panel" data-index="6" aria-hidden="true">
-              <p class="caption">필요하면 판단을 유보할 수도 있습니다.</p>
-              <h2><span class="line">맞으면 맞다.</span><span class="line">아니면, <em class="title-accent" style="font-style:normal">다시 본다.</em></span></h2>
-              <p class="subcopy">근거가 부족하거나 엇갈릴 때는 섣불리 확신하지 않습니다.</p>
+              <p class="caption">자료가 부족하거나 서로 다르다면</p>
+              <h2><span class="line">확실하지 않다면,</span><span class="line"><em class="title-accent" style="font-style:normal">결론을 미룹니다.</em></span></h2>
+              <p class="subcopy">정보가 모자라거나 엇갈릴 때는, 무리하게 답을 내리지 않습니다.</p>
             </article>
             <article class="copy-panel" data-index="7" aria-hidden="true">
-              <p class="caption">상권나침반 · 숫자를 판단의 근거로</p>
-              <h2><span class="line">더 많은 숫자보다,</span><span class="line"><em class="title-accent" style="font-style:normal">더 명확한 판단.</em></span></h2>
-              <p class="subcopy">한 줄 판정, 확인할 수 있는 근거, 그리고 다음 행동까지.<br>내 업종과 내 자리를 더 정확한 질문으로 살펴보세요.</p>
+              <p class="caption">상권나침반 · 내가 판단할 수 있도록</p>
+              <h2><span class="line">내 업종, 이 자리.</span><span class="line"><em class="title-accent" style="font-style:normal">근거부터 확인하세요.</em></span></h2>
+              <p class="subcopy">판정과 그 이유, 한계와 다음에 확인할 일까지.<br>내 상황에 맞춰 차근차근 살펴보세요.</p>
             </article>
           </div>
-          <div class="copy-footer"><span aria-hidden="true"></span>상권을 해석하는 참고 도구이며, 개별 매출이나 성공을 보장하지 않습니다.</div>
+          <div class="copy-footer"><span aria-hidden="true"></span>상권을 살펴보는 참고 도구입니다. 매출이나 창업 성공을 보장하지 않습니다.</div>
+          <nav class="quick-start" aria-label="기다리지 않고 바로 시작하는 세 가지 경로">
+            <span class="quick-label">바로 시작하기 <small>지금 어디까지 정해졌나요?</small></span>
+            <div class="quick-buttons">
+              <a href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종을 정했어요: 공식 홈페이지에서 지역 탐색 선택, 새 창">업종만 <span aria-hidden="true">↗</span></a>
+              <a href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리를 정했어요: 공식 업종 탐색 바로 열기, 새 창">자리만 <span aria-hidden="true">↗</span></a>
+              <a href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종과 자리가 모두 있어요: 공식 홈페이지에서 후보지 분석 선택, 새 창">둘 다 <span aria-hidden="true">↗</span></a>
+            </div>
+          </nav>
         </div>
-        <div id="nextHint" class="next-hint"><a href="#choose">내 상황에 맞게 시작하기 <span aria-hidden="true">↘</span></a></div>
+        <div id="nextHint" class="next-hint"><a href="#choose">내 상황에 맞춰 살펴보기 <span aria-hidden="true">↘</span></a></div>
         <footer class="stage-foot">
-          <div class="scroll-cue"><span class="arrow" aria-hidden="true">↓</span><span>천천히 내려보세요<span class="reduce-note"> · 모션 최소화 모드</span></span></div>
+          <div class="scroll-cue"><span class="arrow" aria-hidden="true">↓</span><span>내려가며 이유를 확인하세요<span class="reduce-note"> · 모션 최소화 모드</span></span></div>
           <div class="ticks" role="group" aria-label="8개 장면 바로 이동">
-            <button class="tick-button" aria-label="1번째 단계, 질문의 시작" aria-current="step" data-go="0" type="button"></button>
-            <button class="tick-button" aria-label="2번째 단계, 익숙한 계산 하나" data-go="1" type="button"></button>
-            <button class="tick-button" aria-label="3번째 단계, 익숙한 계산 둘" data-go="2" type="button"></button>
-            <button class="tick-button" aria-label="4번째 단계, 질문의 전환" data-go="3" type="button"></button>
-            <button class="tick-button" aria-label="5번째 단계, 기준을 정하다" data-go="4" type="button"></button>
-            <button class="tick-button" aria-label="6번째 단계, 근거 확인" data-go="5" type="button"></button>
-            <button class="tick-button" aria-label="7번째 단계, 판단과 한계" data-go="6" type="button"></button>
-            <button class="tick-button" aria-label="8번째 단계, 다음 행동" data-go="7" type="button"></button>
+            <button class="tick-button" aria-label="1번째 단계, 감으로만 고르지 않도록" aria-current="step" data-go="0" type="button"></button>
+            <button class="tick-button" aria-label="2번째 단계, 사람이 많으면?" data-go="1" type="button"></button>
+            <button class="tick-button" aria-label="3번째 단계, 경쟁이 적으면?" data-go="2" type="button"></button>
+            <button class="tick-button" aria-label="4번째 단계, 내 가게에도 맞을까?" data-go="3" type="button"></button>
+            <button class="tick-button" aria-label="5번째 단계, 비교할 기준" data-go="4" type="button"></button>
+            <button class="tick-button" aria-label="6번째 단계, 결론과 이유" data-go="5" type="button"></button>
+            <button class="tick-button" aria-label="7번째 단계, 확실하지 않다면" data-go="6" type="button"></button>
+            <button class="tick-button" aria-label="8번째 단계, 근거부터 확인하세요" data-go="7" type="button"></button>
           </div>
           <div class="step-readout" aria-hidden="true"><b id="currentStep">01</b> / 08</div>
         </footer>
@@ -221,26 +422,43 @@
     <section class="choices" id="choose" tabindex="-1" aria-labelledby="chooseHeading">
       <div class="choices-head">
         <div><span class="sup">YOUR NEXT STEP / 08 →</span><h2 id="chooseHeading">지금, 어디까지<br>정해졌나요?</h2></div>
-        <p class="choices-intro">좋은 답은 상황에 따라 달라집니다.<br>내가 이미 알고 있는 것부터 선택하세요. 상권나침반이 검토할 질문을 좁혀줍니다.</p>
+        <p class="choices-intro">시작하는 상황에 따라 살펴볼 것이 달라집니다.<br>업종부터 정했는지, 자리가 먼저 정해졌는지에 따라 출발점이 달라집니다. 알고 있는 것부터 선택하세요.</p>
       </div>
       <div class="cards">
-        <a class="card" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종은 정했지만 지역을 못 정한 경우. 공식 홈페이지에서 탐색 경로 선택하기, 새 창">
+        <a class="card" id="route-industry" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종은 정했지만 지역을 못 정한 경우. 공식 홈페이지에서 탐색 경로 선택하기, 새 창">
           <span class="card-num">01 — INDUSTRY FIRST</span>
-          <div><h3>업종은 정했어요.</h3><p>어느 지역을 살펴보면 좋을까요?<br>업종 기준으로 동네를 탐색합니다.</p></div>
+          <div><h3>업종은 정했어요.</h3><p>내 업종은 어느 지역에서 살펴볼까요?<br>업종을 기준으로 후보 지역을 찾아봅니다.</p></div>
           <div><div class="card-bottom"><span>공식 홈페이지에서 경로 선택</span><i aria-hidden="true">↗</i></div><div class="card-note">프리뷰: 지역 탐색의 정확한 URL 미확인</div></div>
         </a>
-        <a class="card" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리는 정했지만 업종을 못 정한 경우. 공식 업종 탐색 열기, 새 창">
+        <a class="card" id="route-place" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리는 정했지만 업종을 못 정한 경우. 공식 업종 탐색 열기, 새 창">
           <span class="card-num">02 — PLACE FIRST</span>
-          <div><h3>자리는 정했어요.</h3><p>이 상권은 어떤 업종과 맞을까요?<br>자리에서 업종을 탐색합니다.</p></div>
+          <div><h3>자리는 정했어요.</h3><p>이 자리에서 어떤 업종을 살펴볼까요?<br>정해진 위치를 기준으로 찾아봅니다.</p></div>
           <div><div class="card-bottom"><span>자리 기준 업종 찾기</span><i aria-hidden="true">↗</i></div><div class="card-note">공식 공개 경로 /place 연결</div></div>
         </a>
-        <a class="card" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종과 자리가 모두 정해진 경우. 공식 홈페이지에서 분석 경로 선택하기, 새 창">
+        <a class="card" id="route-both" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종과 자리가 모두 정해진 경우. 공식 홈페이지에서 분석 경로 선택하기, 새 창">
           <span class="card-num">03 — READY TO CHECK</span>
-          <div><h3>둘 다 정했어요.</h3><p>이 후보지가 내 업종에 맞을까요?<br>판정과 근거를 확인합니다.</p></div>
+          <div><h3>둘 다 정했어요.</h3><p>이 자리가 내 업종에 맞을까요?<br>분석 결과와 그 이유를 확인합니다.</p></div>
           <div><div class="card-bottom"><span>공식 홈페이지에서 분석 시작</span><i aria-hidden="true">↗</i></div><div class="card-note">프리뷰: 후보지 분석의 정확한 URL 미확인</div></div>
         </a>
       </div>
-      <div class="choices-tail"><span>이 화면은 브랜드·히어로 UX의 독립 연구 시안입니다. 실제 데이터/API·요금·권한·로그인과 연동하지 않습니다.</span><span>상권나침반 공식 서비스: <a href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">localscope.co.kr ↗</a></span></div>
+      <div class="choices-tail"><span>이 화면은 브랜드·히어로 UX의 독립 연구 시안입니다. 실제 데이터/API·요금·권한·로그인과 연동하지 않습니다. 업종만·둘 다 경로는 공식 홈페이지에서 한 번 더 선택합니다.</span><span>상권나침반 공식 서비스: <a href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">localscope.co.kr ↗</a></span></div>
+    </section>
+    <section class="proof" aria-labelledby="proofTitle">
+      <div class="proof-shell">
+        <div class="proof-intro">
+          <span class="proof-eyebrow">REAL CASE · 공식 공개 사례 · 2026.10</span>
+          <h2 id="proofTitle">좋아 보이는 이유보다,<br><em>확인된 근거부터.</em></h2>
+          <p>실제 판정은 한 줄로 끝나지 않습니다. 무엇을 비교했는지, 언제의 자료인지까지 확인해야 합니다.</p>
+          <a class="proof-link" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">공식 공개 사례 보기 <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="proof-example">
+          <span class="proof-location">서울 잠실6동 · 주점 · 2026년 10월 공개 사례</span>
+          <p class="proof-myth">“술집이 적으니 블루오션이다”</p>
+          <div class="proof-answer"><span>공개된 판정</span><strong>술집 공백이 아니라,<br>저녁 손님이 머물지 않는 낮 상권</strong></div>
+          <div class="proof-data"><span>판정 근거 예시</span><strong>음식점 중 주점 1.4%</strong><small>공식 공개 페이지의 비교값: 전국 11.6%</small></div>
+          <p class="proof-caution">공식 홈페이지의 2026년 10월 사례를 인용한 설명 카드입니다. 개별 점포의 매출이나 성공 가능성을 예측하지 않습니다.</p>
+        </div>
+      </div>
     </section>
   </main>
   <script>
@@ -254,8 +472,9 @@
       const currentStep = document.getElementById('currentStep');
       const needle = document.getElementById('needleGroup');
       const nextHint = document.getElementById('nextHint');
+
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const labels = ['질문의 시작','익숙한 계산 하나','익숙한 계산 둘','질문의 전환','기준을 정하다','근거 확인','판단과 한계','다음 행동'];
+      const labels = ['상권을 고르는 첫 질문','사람이 많으면?','경쟁이 적으면?','내 업종에도 맞을까?','비교할 기준','결론과 이유','모를 땐 유보','근거 확인과 선택'];
       let target = 0, shown = 0, lastStep = -1, running = false;
       const clamp=(a,min=0,max=1)=>Math.max(min,Math.min(max,a));
       const smooth=(a,b,v)=>{ const t=clamp((v-a)/(b-a)); return t*t*(3-2*t); };
@@ -280,13 +499,20 @@
       };
       const paint=(p)=>{
         const comfort=smooth(.24,.87,p),tension=1-smooth(.13,.79,p),evidence=smooth(.58,.84,p);
+        const veil=smooth(.29,.44,p)*(1-smooth(.615,.64,p));
+        const copyIsLight=p<.64;
+        stage.style.setProperty('--veil',veil.toFixed(4));
+        stage.style.setProperty('--copy-ink',copyIsLight?'#f7f1e9':'#1c453d');
+        stage.style.setProperty('--copy-muted',copyIsLight?'#e1bfb8':'#4e6c62');
+        stage.style.setProperty('--copy-accent',copyIsLight?'#ff8175':'#3a8975');
+        stage.style.setProperty('--copy-shadow',copyIsLight?'0 2px 15px rgba(9,21,30,.34)':'none');
         stage.style.setProperty('--phase',p.toFixed(4));stage.style.setProperty('--mobile-shift',`${Math.round(p*90)}px`);stage.style.setProperty('--comfort',comfort.toFixed(4));stage.style.setProperty('--tension',tension.toFixed(4));stage.style.setProperty('--evidence',evidence.toFixed(4));
         stage.style.setProperty('--ink',mixColor('#f7f1e9','#1c453d',comfort));
         stage.style.setProperty('--muted',mixColor('#e1bfb8','#4e6c62',comfort));
         stage.style.setProperty('--accent',mixColor('#ff8175','#3a8975',comfort));
         stage.style.setProperty('--dial-stroke',mixColor('#806f74','#a7b9ac',comfort));
         stage.style.setProperty('--dial-faint',mixColor('#3c454d','#d6e1d8',comfort));
-        needle.style.transform=`rotate(${(-75 + 75*smooth(.01,.95,p)).toFixed(2)}deg)`;
+        needle.style.transform=`rotate(${(59 - 59*smooth(.05,.96,p)).toFixed(2)}deg)`;
       };
       const readScroll=()=>{
         const top=journey.getBoundingClientRect().top + window.scrollY;
@@ -309,9 +535,15 @@
         window.scrollTo({top:top+distance*i/7,behavior:'smooth'});
       };
       buttons.forEach((b)=>b.addEventListener('click',()=>goto(Number(b.dataset.go))));
-      document.getElementById('skipStory').addEventListener('click',()=>document.getElementById('choose').scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth'}));
+      const choose = document.getElementById('choose');
+      const jumpToChoices = () => {
+        choose.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+        choose.focus({preventScroll:true});
+      };
+      document.getElementById('skipStory').addEventListener('click',jumpToChoices);
+      document.querySelector('.jump-link').addEventListener('click', (event) => {event.preventDefault();jumpToChoices();});
       window.addEventListener('scroll',readScroll,{passive:true});window.addEventListener('resize',readScroll,{passive:true});
-      reduceMotion.addEventListener('change',()=>{shown=target=reduceMotion.matches?1:0;readScroll()});
+      reduceMotion.addEventListener('change',()=>{running=false;shown=target=reduceMotion.matches?1:shown;lastStep=-1;readScroll()});
       paint(reduceMotion.matches?1:0);updateStep(reduceMotion.matches?7:0);readScroll();
     })();
   </script>
