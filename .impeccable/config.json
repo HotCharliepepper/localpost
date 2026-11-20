@@ -50,6 +50,15 @@
         ],
         "createdAt": "2026-11-17T16:25:49.126Z",
         "reason": "Agent verified: existing three sequential prototype steps map to actual navigation order; preserved per user scope."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-20T12:09:08.838Z",
+        "reason": "Agent verified: rgb(242,240,231) is the unchanged R1.3 body fallback. R1.4 preserves the existing hero identity and uses deliberate sage section surfaces. Keep the supplied palette; evidence in ../hero-r14-review/qa/hook-padding-measurements.json."
       }
     ]
   }

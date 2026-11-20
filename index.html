@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#15232a">
-  <meta name="description" content="상권나침반 R1.3 독립 UX 연구 시안. 8단계 스크롤, 절제된 2.5D 나침반, 근거 확인과 빠른 진입.">
-  <title>상권나침반 — 감으로만 고르지 않도록 | UX Study R1.3</title>
+  <meta name="description" content="상권나침반 R1.4 독립 UI/UX 개선 시안. 마지막 장면 정보 과밀 해소와 경로·근거 영역의 절제된 2.5D 깊이.">
+  <title>상권나침반 — 감으로만 고르지 않도록 | UX Study R1.4</title>
   <style>
     :root{color-scheme:light;--dark:#121e26;--cream:#f2f0e7;--forest:#153c36;--rust:#e77165;--ink:#f7f1e9;--muted:#d8baba;--accent:#ec7568;--dial-stroke:rgba(242,222,214,.43);--dial-faint:rgba(255,237,229,.12);--comfort:0;--tension:1;--phase:0;--evidence:0;--glass:rgba(25,35,42,.45);--mobile-shift:0px}
     *{box-sizing:border-box}
@@ -284,6 +284,113 @@
       .needle-light{opacity:0!important}
       .quick-buttons a,.proof-link{transition:none!important}
     }
+
+
+    /* R1.4: one final action. Steps 1–7 keep their original story and routes. */
+    .final-action{display:none;align-items:center;justify-content:center;gap:20px;width:max-content;max-width:100%;min-height:48px;padding:12px 20px;margin-top:24px;border-radius:999px;background:#1f5045;color:#fff;font-size:15px;font-weight:740;letter-spacing:-.03em;line-height:1.4;pointer-events:auto;transition:background .18s ease-out}
+    .final-action:hover{background:#153e35}
+    .final-action:focus-visible{outline:3px solid #163e33;outline-offset:5px}
+    .final-action span{font-size:18px;line-height:1}
+    .stage[data-step="7"] .copy-column{top:50%;min-height:0;transform:translateY(-50%)}
+    .stage[data-step="7"] .copy-panels{height:auto}
+    .stage[data-step="7"] .copy-panel.is-active{position:relative;inset:auto;transform:none}
+    .stage[data-step="7"] .copy-panel h2{font-size:clamp(39px,4.65vw,72px);line-height:1.17;letter-spacing:-.04em}
+    .stage[data-step="7"] .copy-panel .subcopy{margin:20px 0 0;max-width:none;color:#1c453d;font-size:15px;line-height:1.6}
+    .stage[data-step="7"] .final-action{display:inline-flex}
+    .stage[data-step="7"] .copy-meta,.stage[data-step="7"] .caption,
+    .stage[data-step="7"] .copy-footer,.stage[data-step="7"] .quick-start,
+    .stage[data-step="7"] .signal,.stage[data-step="7"] .signal-label{display:none}
+    .stage[data-step="7"] .scroll-cue{visibility:hidden}
+    .stage[data-step="7"] .title-accent{color:#285f4b}
+    .stage[data-step="7"] .step-readout,.stage[data-step="7"] .step-readout b{color:#365544}
+    .stage[data-step="7"] .copy-panel .line,.stage[data-step="7"] .copy-panel .subcopy{animation:none!important}
+    .copy-panel[inert]{pointer-events:none}
+    .brand-name small,.study-tag,.card-note{font-size:12px}
+    .copy-meta,.scroll-cue,.step-readout,.top-cta,.stage-skip,.copy-footer,.quick-label small{font-size:12px}
+    .brand-name small{opacity:1;letter-spacing:.12em}.study-tag{opacity:.9}
+    .quick-buttons a{min-height:46px}
+    .choices:focus{outline:none}
+    #chooseHeading{width:fit-content;max-width:100%}
+    .choices:focus #chooseHeading{outline:3px solid #275f4a;outline-offset:8px}
+
+    /* Three abstract coordinate routes on a map plane. These marks represent no data. */
+    .choices{isolation:isolate;overflow:hidden;background:linear-gradient(155deg,#f3f4eb,#e6eee3 76%,#dce7dd)}
+    .choices::before{content:"";position:absolute;z-index:-1;left:-17%;right:-17%;bottom:-32%;height:80%;pointer-events:none;background-image:linear-gradient(90deg,rgba(74,124,101,.10) 1px,transparent 1px),linear-gradient(rgba(74,124,101,.08) 1px,transparent 1px);background-size:70px 70px;transform:perspective(950px) rotateX(66deg);transform-origin:50% 80%;mask-image:linear-gradient(to bottom,transparent,black 60%,transparent 95%);opacity:.64}
+    .choices::after{content:"";position:absolute;z-index:-1;right:-12%;top:-40%;width:66vw;aspect-ratio:1;max-width:920px;border:1px solid rgba(78,130,106,.12);border-radius:50%;pointer-events:none}
+    .choices-head,.cards,.choices-tail{position:relative;z-index:1}
+    .cards{perspective:1400px;gap:clamp(14px,1.5vw,22px);padding:8px 0 28px}
+    .card{min-height:360px;gap:20px;border:0;border-radius:16px;overflow:hidden;background:linear-gradient(145deg,#fffefa,#edf6ed);box-shadow:0 16px 30px rgba(26,48,36,.12),0 3px 6px rgba(26,48,36,.05);transform:none;transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s ease-out}
+    .card::before{top:-52px;right:-58px;width:200px;height:200px;border:1px solid rgba(98,155,119,.18);box-shadow:none;pointer-events:none}
+    .card::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(130deg,transparent 58%,rgba(116,179,138,.055));pointer-events:none}
+    .card > :not(.route-glyph){position:relative;z-index:2}
+    .card-num{min-height:56px;padding-right:84px;font-size:12px;line-height:1.6;color:#4b6859}
+    .card h3{letter-spacing:-.04em}.card p{color:#486252}
+    .card-note,.choices-tail{color:#4b6859;font-size:12px}
+    .choices .sup{color:#4b6859;font-size:12px}
+    .card:hover{transform:none;background:linear-gradient(145deg,#fffefa,#edf6ed)}
+    .card:focus-visible{outline:3px solid #275f4a;outline-offset:5px;transform:none}
+    .route-glyph{position:absolute;top:23px;right:22px;width:72px;height:72px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(140deg,#ffffff,#dfefdf);box-shadow:0 9px 18px rgba(29,54,40,.10);transform:perspective(500px) rotateX(18deg) rotateZ(-8deg);pointer-events:none;z-index:1}
+    .route-glyph svg{width:55px;height:55px;overflow:visible;fill:none;stroke:#527f68;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+    .route-glyph svg circle{fill:#e7f4eb;stroke:#527f68;stroke-width:2.2}
+    .route-glyph--industry svg circle:last-child,.route-glyph--place svg circle:nth-child(3),.route-glyph--both svg circle{fill:#38806b;stroke:#fff}
+    .route-glyph--both svg{stroke:#557f88}
+    .card-bottom i{display:grid;place-items:center;min-width:38px;height:38px;border:1px solid #bdd5c2;border-radius:50%;background:#e9f2e8}
+    @media(min-width:751px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+      .card:hover:not(:focus-visible){transform:translateY(-5px) rotateX(.8deg) rotateY(-.8deg);box-shadow:0 23px 38px rgba(26,48,36,.16),0 4px 8px rgba(26,48,36,.05)}
+      .card:nth-child(2):hover:not(:focus-visible){transform:translateY(-5px) rotateX(.8deg)}
+      .card:nth-child(3):hover:not(:focus-visible){transform:translateY(-5px) rotateX(.8deg) rotateY(.8deg)}
+    }
+
+    /* Evidence stays readable on a still front plate. Two silent layers give depth. */
+    .proof{position:relative;overflow:hidden;background:linear-gradient(120deg,#dfeade,#e9f0e7)}
+    .proof-shell{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+    .proof-assembly{position:relative;isolation:isolate;margin:8px 20px 24px 0}
+    .proof-layer{position:absolute;inset:0;border-radius:16px;pointer-events:none}
+    .proof-layer--back{z-index:-2;background:linear-gradient(140deg,#b2cbbb,#87af9b);transform:translate(22px,24px) rotate(-1.4deg);box-shadow:0 25px 45px rgba(28,50,37,.14)}
+    .proof-layer--mid{z-index:-1;background:linear-gradient(140deg,#e7efe1,#c8decc);transform:translate(11px,12px) rotate(-.6deg)}
+    .proof-example{position:relative;z-index:1;background:linear-gradient(150deg,#fff,#f2f7f0);border:0;border-radius:16px;box-shadow:0 12px 28px rgba(28,50,37,.10);transform:none;transition:none}
+    .proof-location,.proof-answer span,.proof-data span,.proof-data small,.proof-caution{color:#486251;font-size:12px}
+    .proof-myth{color:#55685b}.proof-eyebrow{font-size:12px;color:#486251}
+    .proof-intro p{color:#486251}
+    .proof-intro h2{letter-spacing:-.04em}.proof-answer strong{letter-spacing:-.04em}
+    .proof-data small{font-size:12px}.proof-caution{line-height:1.85}
+    @media(max-width:1100px){
+      .cards{grid-template-columns:1fr}.card{min-height:300px}
+      .proof-shell{grid-template-columns:1fr;max-width:760px;gap:28px}
+    }
+    @media(max-width:750px){
+      .stage[data-step="7"] .copy-column{top:50%;left:24px;width:calc(100% - 48px)}
+      .stage[data-step="7"] .copy-panel h2{font-size:clamp(27px,8.1vw,48px);line-height:1.22;letter-spacing:-.04em}
+      .stage[data-step="7"] .copy-panel .subcopy{font-size:13px;line-height:1.6;margin-top:18px;white-space:nowrap;letter-spacing:-.04em}
+      .final-action{min-height:46px;margin-top:22px;font-size:14px;padding:12px 18px}
+      .quick-buttons{width:100%;flex-wrap:nowrap;gap:6px}
+      .quick-buttons a{flex:1;min-width:0;padding:10px 8px;gap:8px;font-size:12px}
+      .cards{gap:20px;padding-bottom:20px}.card{padding:25px 23px;min-height:300px}
+      .route-glyph{width:64px;height:64px;top:21px;right:20px}.route-glyph svg{width:50px;height:50px}
+      .card-num{min-height:52px}.card h3{font-size:27px}
+      .proof-assembly{margin:4px 10px 18px 0}
+      .proof-layer--back{transform:translate(12px,14px) rotate(-1deg)}
+      .proof-layer--mid{transform:translate(6px,7px) rotate(-.4deg)}
+      .proof-example{padding:24px}
+    }
+    @media(max-width:750px) and (min-height:701px){
+      .stage:not([data-step="7"]) .copy-column{top:44%}
+    }
+    @media(max-width:350px){
+      .stage-header{left:18px;right:18px;gap:10px}.header-right{gap:0}
+      .stage[data-step="7"] .copy-panel .subcopy{font-size:12px}
+      .stage[data-step="7"] .copy-panel h2{font-size:27px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      #journey{height:auto;min-height:0}
+      .stage{position:relative;height:auto;min-height:0;padding:135px clamp(24px,6.5vw,104px) 64px}
+      .stage[data-step="7"] .copy-column{position:relative;top:auto;left:auto;transform:none;min-height:0;width:min(100%,780px)}
+      .stage[data-step="7"] .copy-panels{height:auto}
+      .card,.card:hover,.card:focus-visible{transform:none!important}
+      .stage-foot,.stage-skip{display:none!important}
+      .dial-holder{opacity:.35}
+    }
 </style>
 </head>
 <body>
@@ -311,7 +418,7 @@
             <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width=".8" opacity=".6"/><path d="M20 3V8M20 32v5M3 20h5M32 20h5" stroke="currentColor" stroke-width="1"/><path d="M20 8L15.5 22.4L20 19L24.5 22.4Z" fill="var(--accent)"/><path d="M20 32L24.5 17.6L20 21L15.5 17.6Z" fill="currentColor" opacity=".5"/></svg></span>
             <span class="brand-name">상권나침반<small>LOCALSCOPE</small></span>
           </div>
-          <div class="header-right"><span class="study-tag">UX STUDY · R1.3 / 독립 시안</span><a class="top-cta" href="#choose" title="업종 또는 자리가 정해진 상태에 맞춰 분석 시작 경로 선택하기">내 조건으로 시작 ↗</a></div>
+          <div class="header-right"><span class="study-tag">UX STUDY · R1.4 / 독립 시안</span><a class="top-cta" href="#choose" title="업종 또는 자리가 정해진 상태에 맞춰 분석 시작 경로 선택하기">내 조건으로 시작 ↗</a></div>
         </header>
         <button id="skipStory" class="stage-skip" type="button">스토리 건너뛰기 <span aria-hidden="true">↗</span></button>
         
@@ -388,7 +495,8 @@
             <article class="copy-panel" data-index="7" aria-hidden="true">
               <p class="caption">상권나침반 · 내가 판단할 수 있도록</p>
               <h2><span class="line">내 업종, 이 자리.</span><span class="line"><em class="title-accent" style="font-style:normal">근거부터 확인하세요.</em></span></h2>
-              <p class="subcopy">판정과 그 이유, 한계와 다음에 확인할 일까지.<br>내 상황에 맞춰 차근차근 살펴보세요.</p>
+              <p class="subcopy">판정의 이유와 한계, 다음에 확인할 일까지.</p>
+              <a class="final-action" href="#choose">내 조건으로 살펴보기 <span aria-hidden="true">↘</span></a>
             </article>
           </div>
           <div class="copy-footer"><span aria-hidden="true"></span>상권을 살펴보는 참고 도구입니다. 매출이나 창업 성공을 보장하지 않습니다.</div>
@@ -401,7 +509,6 @@
             </div>
           </nav>
         </div>
-        <div id="nextHint" class="next-hint"><a href="#choose">내 상황에 맞춰 살펴보기 <span aria-hidden="true">↘</span></a></div>
         <footer class="stage-foot">
           <div class="scroll-cue"><span class="arrow" aria-hidden="true">↓</span><span>내려가며 이유를 확인하세요<span class="reduce-note"> · 모션 최소화 모드</span></span></div>
           <div class="ticks" role="group" aria-label="8개 장면 바로 이동">
@@ -426,16 +533,19 @@
       </div>
       <div class="cards">
         <a class="card" id="route-industry" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종은 정했지만 지역을 못 정한 경우. 공식 홈페이지에서 탐색 경로 선택하기, 새 창">
+          <span class="route-glyph route-glyph--industry" aria-hidden="true"><svg viewBox="0 0 112 112"><path d="M11 78L37 49L65 63L100 25"/><circle cx="11" cy="78" r="6"/><circle cx="37" cy="49" r="6"/><circle cx="65" cy="63" r="6"/><circle cx="100" cy="25" r="8"/></svg></span>
           <span class="card-num">01 — INDUSTRY FIRST</span>
           <div><h3>업종은 정했어요.</h3><p>내 업종은 어느 지역에서 살펴볼까요?<br>업종을 기준으로 후보 지역을 찾아봅니다.</p></div>
           <div><div class="card-bottom"><span>공식 홈페이지에서 경로 선택</span><i aria-hidden="true">↗</i></div><div class="card-note">프리뷰: 지역 탐색의 정확한 URL 미확인</div></div>
         </a>
         <a class="card" id="route-place" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리는 정했지만 업종을 못 정한 경우. 공식 업종 탐색 열기, 새 창">
+          <span class="route-glyph route-glyph--place" aria-hidden="true"><svg viewBox="0 0 112 112"><circle cx="56" cy="51" r="36"/><circle cx="56" cy="51" r="22"/><circle cx="56" cy="51" r="7"/><path d="M56 5v10M56 87v13M9 51h11M92 51h11"/></svg></span>
           <span class="card-num">02 — PLACE FIRST</span>
           <div><h3>자리는 정했어요.</h3><p>이 자리에서 어떤 업종을 살펴볼까요?<br>정해진 위치를 기준으로 찾아봅니다.</p></div>
           <div><div class="card-bottom"><span>자리 기준 업종 찾기</span><i aria-hidden="true">↗</i></div><div class="card-note">공식 공개 경로 /place 연결</div></div>
         </a>
         <a class="card" id="route-both" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종과 자리가 모두 정해진 경우. 공식 홈페이지에서 분석 경로 선택하기, 새 창">
+          <span class="route-glyph route-glyph--both" aria-hidden="true"><svg viewBox="0 0 112 112"><path d="M12 29L56 8L101 30L101 81L56 102L12 81Z"/><path d="M12 29L56 52L101 30M56 52V102"/><circle cx="56" cy="52" r="8"/></svg></span>
           <span class="card-num">03 — READY TO CHECK</span>
           <div><h3>둘 다 정했어요.</h3><p>이 자리가 내 업종에 맞을까요?<br>분석 결과와 그 이유를 확인합니다.</p></div>
           <div><div class="card-bottom"><span>공식 홈페이지에서 분석 시작</span><i aria-hidden="true">↗</i></div><div class="card-note">프리뷰: 후보지 분석의 정확한 URL 미확인</div></div>
@@ -451,12 +561,16 @@
           <p>실제 판정은 한 줄로 끝나지 않습니다. 무엇을 비교했는지, 언제의 자료인지까지 확인해야 합니다.</p>
           <a class="proof-link" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">공식 공개 사례 보기 <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="proof-example">
+        <div class="proof-assembly">
+          <div class="proof-layer proof-layer--back" aria-hidden="true"></div>
+          <div class="proof-layer proof-layer--mid" aria-hidden="true"></div>
+          <div class="proof-example">
           <span class="proof-location">서울 잠실6동 · 주점 · 2026년 10월 공개 사례</span>
           <p class="proof-myth">“술집이 적으니 블루오션이다”</p>
           <div class="proof-answer"><span>공개된 판정</span><strong>술집 공백이 아니라,<br>저녁 손님이 머물지 않는 낮 상권</strong></div>
           <div class="proof-data"><span>판정 근거 예시</span><strong>음식점 중 주점 1.4%</strong><small>공식 공개 페이지의 비교값: 전국 11.6%</small></div>
           <p class="proof-caution">공식 홈페이지의 2026년 10월 사례를 인용한 설명 카드입니다. 개별 점포의 매출이나 성공 가능성을 예측하지 않습니다.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -471,11 +585,10 @@
       const chapterLabel = document.getElementById('chapterLabel');
       const currentStep = document.getElementById('currentStep');
       const needle = document.getElementById('needleGroup');
-      const nextHint = document.getElementById('nextHint');
 
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const labels = ['상권을 고르는 첫 질문','사람이 많으면?','경쟁이 적으면?','내 업종에도 맞을까?','비교할 기준','결론과 이유','모를 땐 유보','근거 확인과 선택'];
-      let target = 0, shown = 0, lastStep = -1, running = false;
+      let target = 0, shown = 0, lastStep = -1, running = false, frame = 0;
       const clamp=(a,min=0,max=1)=>Math.max(min,Math.min(max,a));
       const smooth=(a,b,v)=>{ const t=clamp((v-a)/(b-a)); return t*t*(3-2*t); };
       const mixColor=(a,b,p)=>{const x=a.match(/[0-9a-f]{2}/gi).map(z=>parseInt(z,16));const y=b.match(/[0-9a-f]{2}/gi).map(z=>parseInt(z,16));return `rgb(${x.map((v,i)=>Math.round(v+(y[i]-v)*p)).join(',')})`;};
@@ -491,11 +604,10 @@
       const updateStep=(step)=>{
         if(step===lastStep)return;
         lastStep=step;stage.dataset.step=String(step);
-        panels.forEach((p,i)=>{p.classList.toggle('is-active',i===step);p.classList.toggle('was-before',i<step);p.setAttribute('aria-hidden',i===step?'false':'true');});
+        panels.forEach((p,i)=>{p.classList.toggle('is-active',i===step);p.classList.toggle('was-before',i<step);p.setAttribute('aria-hidden',i===step?'false':'true');p.inert=i!==step;});
         chapterLabel.textContent=`${String(step+1).padStart(2,'0')} / ${labels[step]}`;
         currentStep.textContent=String(step+1).padStart(2,'0');
         buttons.forEach((b,i)=>{if(i===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
-        nextHint.classList.toggle('ready',step===7 || reduceMotion.matches);
       };
       const paint=(p)=>{
         const comfort=smooth(.24,.87,p),tension=1-smooth(.13,.79,p),evidence=smooth(.58,.84,p);
@@ -518,15 +630,15 @@
         const top=journey.getBoundingClientRect().top + window.scrollY;
         const distance=Math.max(1,journey.offsetHeight-window.innerHeight);
         target=clamp((window.scrollY-top)/distance);
-        if(reduceMotion.matches)target=1;
-        if(!running){running=true;requestAnimationFrame(render);}
+        if(reduceMotion.matches){cancelAnimationFrame(frame);running=false;shown=target=1;paint(1);updateStep(7);return;}
+        if(!running){running=true;frame=requestAnimationFrame(render);}
       };
       const render=()=>{
         const diff=target-shown;
         shown+=Math.abs(diff)<.00025?diff:diff*.28;
         paint(shown);
         updateStep(reduceMotion.matches?7:Math.min(7,Math.round(shown*7)));
-        if(Math.abs(target-shown)>.00025){requestAnimationFrame(render);}else{shown=target;paint(shown);updateStep(reduceMotion.matches?7:Math.min(7,Math.round(shown*7)));running=false;}
+        if(Math.abs(target-shown)>.00025){frame=requestAnimationFrame(render);}else{shown=target;paint(shown);updateStep(reduceMotion.matches?7:Math.min(7,Math.round(shown*7)));running=false;}
       };
       const goto=(i)=>{
         if(reduceMotion.matches){document.getElementById('choose').scrollIntoView({behavior:'auto'});return;}
@@ -537,13 +649,19 @@
       buttons.forEach((b)=>b.addEventListener('click',()=>goto(Number(b.dataset.go))));
       const choose = document.getElementById('choose');
       const jumpToChoices = () => {
-        choose.scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth',block:'start'});
+        choose.scrollIntoView({behavior:'instant',block:'start'});
         choose.focus({preventScroll:true});
       };
       document.getElementById('skipStory').addEventListener('click',jumpToChoices);
-      document.querySelector('.jump-link').addEventListener('click', (event) => {event.preventDefault();jumpToChoices();});
+      document.querySelector('.jump-link').addEventListener('click',event=>{if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;event.preventDefault();jumpToChoices();});
+
+      // Native hrefs and modifier clicks are preserved. Local story exits also move focus.
+      document.querySelectorAll('.top-cta,.final-action').forEach(link=>link.addEventListener('click',event=>{
+        if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey||event.button!==0)return;
+        event.preventDefault();jumpToChoices();
+      }));
       window.addEventListener('scroll',readScroll,{passive:true});window.addEventListener('resize',readScroll,{passive:true});
-      reduceMotion.addEventListener('change',()=>{running=false;shown=target=reduceMotion.matches?1:shown;lastStep=-1;readScroll()});
+      reduceMotion.addEventListener('change',()=>{cancelAnimationFrame(frame);running=false;lastStep=-1;readScroll();});
       paint(reduceMotion.matches?1:0);updateStep(reduceMotion.matches?7:0);readScroll();
     })();
   </script>
