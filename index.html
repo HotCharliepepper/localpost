@@ -1,247 +1,319 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#091b23">
-<meta name="description" content="이 자리, 내 업종에도 맞을까? 업종과 후보지의 조건을 판정과 근거로 확인해 보세요.">
-<title>상권나침반 — 내 업종에 맞는 자리인지 먼저 확인하세요.</title>
-<style>
-:root{--navy:#091923;--wine:#48212c;--cream:#f6f3e8;--sage:#dfe9e1;--ink:#183c37;--muted:#668178;--accent:#e8616d;--teal:#71a99f;--font:Pretendard,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--font);background:#e7ece4;color:var(--ink);letter-spacing:-.025em;line-height:1.6}
-a,button{font:inherit}
-a:focus-visible,button:focus-visible{outline:3px solid #e8ac78;outline-offset:5px}
-.skip{position:absolute;top:-100px;left:16px;z-index:40;background:var(--cream);padding:12px;color:var(--ink)}
-.skip:focus{top:14px}
-.hero{background:radial-gradient(ellipse at 82% 37%,rgba(104,39,52,.94),transparent 47%),radial-gradient(ellipse at 52% 36%,rgba(33,28,42,.86),transparent 48%),linear-gradient(112deg,#081b24 8%,#101b26 56%,#251d28 100%);color:#f9f7f0;position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 62%,rgba(111,150,153,.08),transparent 29%),radial-gradient(circle at 30% 30%,rgba(255,255,255,.015),transparent 45%);pointer-events:none}
-.hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(circle,rgba(234,242,230,.52) .5px,transparent 1px);background-size:42px 43px;mask-image:linear-gradient(105deg,transparent 36%,black)}
-.topbar{height:80px;padding:0 clamp(20px,2.8vw,56px);position:relative;z-index:8;display:flex;align-items:center;justify-content:space-between;gap:22px}
-.brand{display:flex;align-items:center;gap:13px;color:#f4f0e6;text-decoration:none;font-size:17px;font-weight:760;line-height:1.18;letter-spacing:-.04em}
-.brand svg{width:36px;height:35px;flex:none}
-.brand small{display:block;color:#a8b9b9;font-size:10px;letter-spacing:.07em;font-weight:520;margin-top:3px}
-.nav{display:flex;gap:24px;align-items:center;font-size:13px}
-.nav a{text-decoration:none}
-.nav a:not(.nav-action){color:#d0d8d4}
-.nav-action{display:inline-flex;align-items:center;gap:23px;background:var(--cream);padding:14px 20px;color:#1d443c;min-height:48px;font-weight:700}
-.nav-action:hover{background:#fff}
-.content{z-index:5;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:calc(100svh - 80px);padding:6vh clamp(20px,3.2vw,68px) 85px;pointer-events:none}
-.content>*{pointer-events:auto}
-.title{font-weight:330;letter-spacing:-.072em;line-height:1.12;font-size:clamp(48px,4.4vw,85px);max-width:690px;margin:0 0 23px;word-break:keep-all}
-.title strong{display:block;font-weight:800;margin-top:8px}
-.subtitle{margin:0 0 29px;color:#bdcbcc;font-size:clamp(15px,1vw,18px)}
-.actions{display:flex;flex-direction:column;align-items:flex-start;gap:15px;max-width:385px}
-.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:26px;border:1px solid transparent;padding:15px 18px;text-decoration:none;min-height:53px;font-size:14px;font-weight:720}
-.btn-primary{background:#f7f4eb;color:#24463d;min-width:214px}
-.btn-primary:hover{background:#fff}
-.btn-secondary{color:#fff;background:transparent;padding-inline:0;border-bottom:1px solid rgba(224,238,228,.24);min-width:230px}
-.btn-secondary:hover{border-bottom-color:#b9dad0}
-.btn-tertiary{color:#b9c8c8;font-size:12px;text-decoration:none;margin-top:2px}
-.btn-tertiary:hover{color:#fff}
-.btn .arr{font-size:22px;font-weight:370;line-height:1}
-.scroll-note{position:absolute;z-index:5;bottom:24px;left:clamp(20px,3.2vw,68px);color:#b8c9c6;font-size:12px;letter-spacing:.02em;text-decoration:none}
-.motion-notice{position:absolute;z-index:5;bottom:23px;right:clamp(20px,3vw,60px);border:1px solid rgba(210,235,227,.22);color:#b2c7c0;padding:7px 11px;border-radius:30px;font-size:10px;pointer-events:none}
-.compass-viewport{position:absolute;z-index:2;width:min(46.5vw,830px);aspect-ratio:1;right:calc(-1 * clamp(55px,7vw,138px));top:51%;transform:translateY(-50%);pointer-events:none;filter:drop-shadow(0 18px 42px rgba(0,0,0,.1))}
-.compass-viewport:before{content:"";position:absolute;inset:-16%;border-radius:50%;background:radial-gradient(circle,rgba(220,100,114,.14) 0,rgba(172,70,85,.06) 45%,transparent 70%);pointer-events:none}
-.dial{width:100%;height:100%;overflow:visible}
-.dial-ring{fill:none;stroke:#82aca8;stroke-opacity:.64;stroke-width:1.5}
-.dial-ring.fine{stroke-width:.7;stroke-opacity:.25}
-.dial-ring.dashed{stroke:#bbd0c2;stroke-width:1;stroke-opacity:.2;stroke-dasharray:2 8}
-.dial-guide{fill:none;stroke:#a9b7b3;stroke-opacity:.18;stroke-width:.8}
-.ticks{stroke:#a2c5bb;stroke-opacity:.57;stroke-width:1}
-.ticks.major{stroke:#ddc89d;stroke-width:2.4}
-.dial text{fill:#b9c5c2;font:11px var(--font);letter-spacing:1.2px}
-.dial .north-label{fill:#f47279;font-size:31px;font-style:italic;font-weight:800;letter-spacing:0}
-.needle-mover{transform-origin:300px 300px;animation:calibrate 1.75s both cubic-bezier(.17,.68,.26,1)}
-@keyframes calibrate{0%{transform:rotate(20deg)}23%{transform:rotate(49deg)}45%{transform:rotate(34deg)}66%{transform:rotate(43deg)}84%{transform:rotate(38.7deg)}100%{transform:rotate(40deg)}}
-.pivot{filter:drop-shadow(0 3px 8px rgba(0,0,0,.4))}
-.main-content{position:relative;overflow:hidden;background:linear-gradient(155deg,#e4ede4,#f5f3ea 60%);padding:100px max(24px,calc((100vw - 1200px)/2)) 86px}
-.main-content:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.23;background:repeating-radial-gradient(ellipse at 87% 5%,transparent 0 44px,rgba(49,105,88,.10) 45px 46px,transparent 47px 72px)}
-.main-content>*{position:relative;z-index:1}
-.kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.16em;font-weight:800;color:#588574;text-transform:uppercase}
-.kicker:before{content:"";width:19px;height:1px;background:#789987}
-.section-title{font-size:clamp(32px,4.6vw,63px);line-height:1.2;letter-spacing:-.075em;font-weight:550;margin:17px 0 14px}
-.section-title em{font-style:normal;font-weight:760;color:#236752}
-.lead{color:#58746a;font-size:16px;max-width:780px;margin:0 0 35px}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.card{background:rgba(255,255,255,.67);border:1px solid #d4e0d4;padding:27px 25px;border-radius:18px;min-height:200px;box-shadow:0 16px 40px rgba(30,64,50,.04)}
-.card .index{font:27px Georgia,serif;color:#7a9987}
-.card h3{font-size:21px;letter-spacing:-.045em;margin:22px 0 9px;line-height:1.3}
-.card p{color:#607a6d;font-size:14px;margin:0;word-break:keep-all}
-.dot-transition{height:17px;width:17px;border-radius:50%;background:#d5b783;border:4px solid #245247;margin:-9px auto 40px;box-shadow:0 0 0 14px rgba(71,119,96,.08)}
-.route{background:#103633;color:#f8f5eb;border-radius:23px;padding:42px 46px;margin-top:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;box-shadow:0 20px 50px rgba(20,52,42,.15)}
-.route h3{font-size:clamp(26px,3.2vw,43px);margin:12px 0 10px;letter-spacing:-.055em;line-height:1.25;font-weight:590}
-.route p{color:#c4d8cd;font-size:14px;margin:0;max-width:700px}
-.route .btn{white-space:nowrap;background:#f5e4c0;color:#244b40;border-radius:100px;min-width:225px;justify-content:center}
-.route .btn:hover{background:#fff0d4}
-.route .kicker{color:#b5d3be}
-.footer{background:#0b292c;color:#bfd1ca;padding:27px clamp(20px,3.2vw,68px);display:flex;gap:20px;justify-content:space-between;font-size:12px}
-.footer a{color:#e8ebdf}
-.demo-label{background:#f4e8d8;border-left:3px solid #bb9367;color:#745740;padding:13px 17px;font-size:13px;margin:20px 0 0;border-radius:0 10px 10px 0}
-@media(max-width:1050px){.compass-viewport{width:58vw;right:-14vw;opacity:.85}.title{font-size:clamp(44px,5vw,65px)}.content{padding-bottom:115px}.cards{gap:10px}.card{padding:21px}}
-@media(max-width:700px){.hero{min-height:0}.topbar{height:72px;padding:0 19px}.nav{gap:12px}.nav a:not(.nav-action){display:none}.nav-action{min-height:42px;padding:10px 12px;font-size:11px;gap:8px}.brand{font-size:14px}.brand svg{width:29px}.content{min-height:0;padding:56px 22px 12px}.title{font-size:clamp(43px,10.1vw,56px);max-width:390px}.subtitle{font-size:14px;margin-bottom:22px}.actions{gap:10px}.btn{min-height:48px;font-size:13px}.compass-viewport{position:relative;top:auto;right:auto;transform:none;display:block;width:min(110vw,470px);margin:0 -38px 40px auto;opacity:1}.motion-notice{display:none}.scroll-note{left:22px;bottom:22px}.main-content{padding:65px 18px}.section-title{font-size:34px}.lead{font-size:14px}.cards{grid-template-columns:1fr}.card{min-height:0;padding:19px 21px}.card h3{margin:8px 0 5px;font-size:19px}.route{grid-template-columns:1fr;padding:25px 22px;gap:22px}.route .btn{width:100%}.footer{padding:24px 20px;flex-direction:column}.scroll-note{font-size:11px}}
-@media(max-width:410px){.compass-viewport{width:114vw;margin-right:-40px}.title{font-size:42px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.needle-mover{animation:none;transform:rotate(40deg)}}
-</style>
-<link rel="stylesheet" href="./r13-live.css">
-<link rel="stylesheet" href="./r14-saas-type.css">
-<link rel="stylesheet" href="./r15-first-answer.css">
-<script src="./r13-live.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#15232a">
+  <meta name="description" content="상권나침반 히어로 UX 8틱 독립 연구 시안. 불편한 확신에서 근거 있는 판정으로 움직이는 스크롤 경험.">
+  <title>상권나침반 — From Friction to Clarity | UX Study R1</title>
+  <style>
+    :root{color-scheme:light;--dark:#121e26;--cream:#f2f0e7;--forest:#153c36;--rust:#e77165;--ink:#f7f1e9;--muted:#d8baba;--accent:#ec7568;--dial-stroke:rgba(242,222,214,.43);--dial-faint:rgba(255,237,229,.12);--comfort:0;--tension:1;--phase:0;--evidence:0;--glass:rgba(25,35,42,.45);--mobile-shift:0px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:#153c36;background:#f2f0e7;font-family: "Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;letter-spacing:-.045em;-webkit-font-smoothing:antialiased}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    button:focus-visible,a:focus-visible{outline:3px solid #e69d4b;outline-offset:5px}
+    ::selection{background:#d5e8c5;color:#123b31}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .jump-link{position:absolute;z-index:100;top:-100px;left:12px;background:#fff;color:#102b26;padding:12px 16px;border-radius:8px;transition:top .2s}
+    .jump-link:focus{top:12px}
+    #journey{height:390svh;min-height:2100px;position:relative;background:var(--dark)}
+    .stage{position:sticky;top:0;height:100svh;min-height:520px;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 63% 50%,#29313a 0%,#101c25 65%,#111820 100%);color:var(--ink)}
+    .stage:after{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(90deg,rgba(9,20,28,.14),transparent 68%);pointer-events:none;opacity:calc(1 - var(--comfort))}
+    .light-wash{position:absolute;z-index:0;inset:-2px;background:radial-gradient(ellipse at 72% 56%,#fcfbf4 0%,#f1f3eb 37%,#e4eee6 75%,#d3e5d9 120%);opacity:var(--comfort);pointer-events:none}
+    .grid-lines{position:absolute;z-index:1;inset:0;background-image:linear-gradient(to right,rgba(175,181,179,.12) 1px,transparent 1px),linear-gradient(to bottom,rgba(175,181,179,.12) 1px,transparent 1px);background-size:clamp(60px,6vw,96px) clamp(60px,6vw,96px);mask-image:linear-gradient(90deg,transparent 15%,black 65%);opacity:.45;pointer-events:none}
+    .red-haze{position:absolute;z-index:1;width:92vw;height:85vh;left:-22vw;top:-5vh;transform:rotate(-22deg) translate3d(calc(var(--phase) * -10vw),0,0);background:radial-gradient(ellipse at 40% 65%,rgba(230,69,77,.30) 0,rgba(191,59,65,.21) 23%,rgba(205,60,71,.05) 61%,transparent 75%);opacity:calc(1 - var(--comfort));filter:blur(10px);pointer-events:none}
+    .red-sweep{position:absolute;z-index:1;left:-13vw;top:58%;width:78vw;height:1px;transform:rotate(-19deg) scaleX(calc(1 - var(--phase)*.8));transform-origin:left center;background:linear-gradient(90deg,transparent,rgba(255,113,108,.33) 40%,rgba(255,113,108,.06));box-shadow:0 0 44px 9px rgba(231,82,80,.06);opacity:calc(1 - var(--comfort));pointer-events:none}
+    .stage-header{position:absolute;z-index:20;left:clamp(24px,6vw,104px);right:clamp(24px,5vw,90px);top:clamp(23px,4.4vh,48px);display:flex;align-items:center;justify-content:space-between;gap:15px}
+    .brand{display:flex;align-items:center;gap:13px;min-width:0}
+    .brand-icon{height:37px;width:37px;flex:none;display:grid;place-items:center;border:1px solid var(--dial-stroke);border-radius:50%;transition:border-color .3s}
+    .brand-icon svg{width:26px;height:26px;overflow:visible}
+    .brand-name{font-size:16px;font-weight:780;letter-spacing:-.065em;white-space:nowrap}
+    .brand-name small{display:block;font-size:9px;letter-spacing:.19em;font-weight:670;opacity:.6;margin-top:3px}
+    .header-right{display:flex;gap:clamp(12px,2.5vw,34px);align-items:center}
+    .study-tag{font-size:10px;letter-spacing:.15em;font-weight:750;opacity:.56;white-space:nowrap}
+    .top-cta{border:1px solid var(--dial-stroke);border-radius:100px;padding:12px 18px;font-size:12px;letter-spacing:-.02em;font-weight:760;white-space:nowrap;transition:background .2s,color .2s}
+    .top-cta:hover{background:var(--ink);color:var(--dark)}
+    .copy-column{position:absolute;z-index:12;left:clamp(25px,9vw,152px);top:49.5%;width:min(54vw,720px);transform:translate3d(calc(var(--tension) * -19px),calc(-50% + var(--tension) * 18px),0) rotate(calc(var(--tension) * -1deg));transform-origin:left center;min-height:440px;pointer-events:none}
+    .copy-meta{display:flex;align-items:center;gap:12px;margin-bottom:27px;color:var(--accent);font-size:11px;letter-spacing:.16em;font-weight:790;white-space:nowrap}
+    .copy-meta:before{content:"";display:block;width:28px;height:1px;background:currentColor}
+    .copy-panels{position:relative;height:285px}
+    .copy-panel{position:absolute;inset:0;opacity:0;transform:translate3d(0,35px,0);transition:opacity .42s cubic-bezier(.2,.7,.2,1),transform .55s cubic-bezier(.2,.7,.2,1);will-change:transform,opacity}
+    .copy-panel.is-active{opacity:1;transform:translate3d(0,0,0);transition-delay:0s}
+    .copy-panel.was-before{transform:translate3d(0,-26px,0)}
+    .copy-panel .caption{font-size:13px;letter-spacing:-.025em;opacity:.77;font-weight:640;margin:0 0 18px}
+    .copy-panel h1,.copy-panel h2{margin:0;font-size:clamp(41px,5.1vw,83px);letter-spacing:-.082em;line-height:1.10;font-weight:780;word-break:keep-all}
+    .copy-panel .line{display:block;white-space:nowrap}
+    .copy-panel .line:nth-of-type(2){transform:translateX(calc(var(--tension) * -18px))}
+    .copy-panel .title-accent{color:var(--accent);transition:color .1s}
+    .copy-panel .subcopy{margin:25px 0 0;font-size:clamp(14px,1.16vw,17px);line-height:1.85;max-width:520px;letter-spacing:-.045em;color:var(--muted);font-weight:460;word-break:keep-all}
+    .copy-footer{display:flex;align-items:center;gap:12px;margin-top:22px;color:var(--muted);font-size:11px;font-weight:630;line-height:1.65;opacity:.8}
+    .copy-footer span{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none}
+    .ghost-words{position:absolute;z-index:3;pointer-events:none;left:4%;top:21%;font-size:clamp(17px,2.1vw,31px);font-weight:540;letter-spacing:-.06em;color:var(--ink);opacity:calc(var(--tension) * .13);transform:translate3d(calc(-1 * var(--phase) * 65px),calc(var(--phase) * 40px),0) rotate(-6deg)}
+    .ghost-words span{display:block;margin-bottom:17px}.ghost-words span:nth-child(2){margin-left:48px}.ghost-words span:nth-child(3){margin-left:10px}
+    .dial-holder{position:absolute;z-index:5;width:min(62vw,960px);height:min(62vw,960px);min-width:510px;min-height:510px;right:-7vw;top:58%;transform:translate3d(calc((1 - var(--phase)) * 13%), -50%,0) scale(calc(1.02 - var(--phase) * .12));will-change:transform;pointer-events:none}
+    .dial-holder:before{content:"";position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle,rgba(235,92,97,.12) 0,rgba(244,111,100,.06) 35%,transparent 70%);box-shadow:0 0 180px 65px rgba(235,90,100,.08);opacity:var(--tension);transform:scale(1.05)}
+    .dial{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 16px 40px rgba(13,27,35,.15))}
+    .dial .ring{fill:none;stroke:var(--dial-stroke);stroke-width:1}.dial .faint{stroke:var(--dial-faint)}
+    .dial .cross{stroke:var(--dial-stroke);stroke-width:1;opacity:.7}
+    .dial .orbital{fill:none;stroke:var(--dial-stroke);stroke-dasharray:2 15;stroke-linecap:round;stroke-width:2;opacity:.55}
+    .dial .dial-index{font:500 9px ui-monospace,monospace;letter-spacing:4px;fill:var(--ink);opacity:.55}
+    .dial .tick{stroke:var(--dial-stroke);stroke-width:1.5;stroke-linecap:round}
+    .dial .tick.major{stroke-width:2.5}
+    .needle-wrap{transform-origin:350px 350px;will-change:transform}
+    .needle-ruby{fill:var(--accent);filter:drop-shadow(0 8px 15px rgba(195,62,67,.18))}.needle-shadow{fill:var(--dial-faint)}
+    .needle-cool{fill:#34695d;opacity:calc(.37 + var(--comfort) * .5)}
+    .needle-core{fill:var(--ink);stroke:var(--dial-stroke);stroke-width:3}
+    .dial-vignette{position:absolute;inset:8%;background:radial-gradient(circle,transparent 28%,rgba(20,35,36,.07) 68%,transparent 73%);border-radius:50%;pointer-events:none}
+    .signal{position:absolute;z-index:7;bottom:18%;right:12%;display:flex;flex-wrap:wrap;gap:8px;width:310px;justify-content:flex-end;opacity:var(--evidence);transform:translate3d(0,calc((1 - var(--evidence)) * 34px),0);pointer-events:none}
+    .signal span{padding:10px 13px;border:1px solid var(--dial-stroke);border-radius:99px;background:rgba(255,255,255,.10);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:11px;letter-spacing:-.025em;font-weight:720}
+    .signal-label{position:absolute;z-index:7;right:15%;top:16%;font:600 10px ui-monospace,monospace;letter-spacing:.15em;opacity:calc(.1 + var(--evidence)*.65);color:var(--ink);text-align:right}
+    .stage-foot{position:absolute;z-index:22;left:clamp(25px,6vw,104px);right:clamp(25px,6vw,104px);bottom:clamp(23px,3.7vh,42px);display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:14px}
+    .scroll-cue{display:flex;gap:14px;align-items:center;color:var(--muted);font-size:11px;letter-spacing:-.025em;opacity:.85;white-space:nowrap}
+    .scroll-cue .arrow{font-size:20px;font-weight:400;line-height:1}
+    .ticks{display:flex;gap:8px;align-items:center;padding:7px 0}
+    .tick-button{width:20px;height:27px;border:0;background:transparent;padding:0;display:grid;place-items:center;cursor:pointer}
+    .tick-button:after{content:"";display:block;width:3px;height:14px;border-radius:2px;background:var(--dial-stroke);opacity:.47;transition:height .3s,background .3s,opacity .3s}
+    .tick-button:hover:after{height:22px;opacity:.85}
+    .tick-button[aria-current="step"]:after{height:25px;width:4px;background:var(--accent);opacity:1}
+    .step-readout{font:600 11px ui-monospace,monospace;letter-spacing:.1em;justify-self:end;color:var(--muted);white-space:nowrap}
+    .step-readout b{font-size:15px;color:var(--ink)}
+    .scroll-meter{position:absolute;z-index:22;bottom:0;left:0;width:100%;height:2px;background:var(--dial-faint)}
+    .scroll-meter div{height:100%;width:calc(var(--phase)*100%);background:var(--accent);transition:background .15s}
+    .stage-skip{position:absolute;z-index:23;top:112px;right:clamp(25px,5vw,90px);background:transparent;color:var(--muted);border:0;padding:7px 0;cursor:pointer;font-size:11px;letter-spacing:-.02em;border-bottom:1px solid var(--dial-faint);font-weight:630}
+    .stage-skip:hover{color:var(--ink)}
+    .next-hint{position:absolute;bottom:16%;left:clamp(25px,9vw,152px);z-index:13;color:var(--ink);opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .55s,transform .55s}
+    .next-hint.ready{opacity:1;transform:translateY(0);pointer-events:auto}
+    .next-hint a{display:inline-flex;align-items:center;gap:16px;border-bottom:1px solid currentColor;padding-bottom:9px;font-size:14px;font-weight:790}
+    .next-hint a:hover{gap:22px}
+    .choices{position:relative;z-index:24;padding:clamp(76px,11vw,156px) clamp(24px,7.3vw,130px) clamp(68px,9vw,140px);background:#f2f0e7;min-height:100svh;color:#183c35}
+    .choices .sup{font:730 11px ui-monospace,monospace;letter-spacing:.17em;color:#638378}
+    .choices-head{display:flex;justify-content:space-between;align-items:end;gap:35px;max-width:1440px;margin:0 auto 44px}
+    .choices h2{font-size:clamp(39px,5vw,75px);letter-spacing:-.08em;line-height:1.17;word-break:keep-all;margin:17px 0 0}
+    .choices-intro{font-size:15px;line-height:1.9;max-width:315px;letter-spacing:-.045em;color:#5b6c66}
+    .cards{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .card{background:#faf9f3;border:1px solid #cbd8cc;min-height:315px;padding:clamp(24px,2.4vw,38px);display:flex;flex-direction:column;justify-content:space-between;border-radius:12px;transition:background .3s,transform .3s,border-color .3s;position:relative;overflow:hidden}
+    .card:hover{transform:translateY(-6px);background:#fff;border-color:#79a796}
+    .card::before{content:"";position:absolute;width:190px;height:190px;border:1px solid #e0eae3;border-radius:50%;right:-76px;top:-81px;box-shadow:0 0 0 35px rgba(219,237,225,.20)}
+    .card-num{font:620 12px ui-monospace,monospace;letter-spacing:.1em;color:#7b9589}
+    .card h3{font-size:clamp(24px,2.3vw,33px);line-height:1.25;letter-spacing:-.065em;margin:0 0 14px;position:relative}
+    .card p{font-size:14px;line-height:1.85;color:#5e7469;margin:0;word-break:keep-all;max-width:270px}
+    .card-bottom{display:flex;justify-content:space-between;gap:10px;align-items:end;font-size:13px;font-weight:780}
+    .card-bottom i{font-size:21px;font-style:normal;line-height:1}
+    .card-note{font-size:10px;color:#657e72;line-height:1.7;margin-top:14px}
+    .choices-tail{max-width:1440px;margin:39px auto 0;padding-top:21px;border-top:1px solid #d8dfd7;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap;font-size:11px;color:#687d72;line-height:1.8}
+    .choices-tail a{text-decoration:underline;text-underline-offset:4px}
+    .reduce-note{display:none}
+    @media (max-width:1100px){.copy-column{left:6.5vw;width:61vw}.copy-panel h1,.copy-panel h2{font-size:clamp(39px,5.5vw,62px)}.dial-holder{right:-14vw;width:74vw;height:74vw;min-width:520px;min-height:520px}.copy-panels{height:270px}.ghost-words{opacity:calc(var(--tension) * .08)}}
+    @media (max-width:750px){#journey{height:305svh;min-height:1600px}.stage{min-height:580px}.stage-header{top:23px;left:23px;right:23px}.brand-icon{width:30px;height:30px}.brand-icon svg{width:22px;height:22px}.brand-name{font-size:14px}.brand-name small{font-size:8px}.header-right{gap:12px}.study-tag{display:none}.top-cta{font-size:11px;padding:11px 12px}.stage-skip{top:83px;right:23px}.copy-column{left:32px;top:43%;width:calc(100% - 58px);min-height:400px;transform:translate3d(calc(var(--tension) * -6px),calc(-50% + var(--tension) * 11px),0) rotate(calc(var(--tension) * -.55deg))}.copy-meta{margin-bottom:16px;font-size:10px}.copy-panel .caption{font-size:12px;margin-bottom:14px}.copy-panel h1,.copy-panel h2{font-size:clamp(37px,9.2vw,59px);line-height:1.18;letter-spacing:-.079em}.copy-panel .line:nth-of-type(2){transform:translateX(calc(var(--tension) * -9px))}.copy-panel .subcopy{font-size:13px;line-height:1.85;margin-top:21px;max-width:330px}.copy-panels{height:255px}.copy-footer{font-size:10px;max-width:330px}.dial-holder{width:600px;height:600px;min-width:0;min-height:0;right:calc(-310px + var(--mobile-shift));top:60%;opacity:.72}.red-haze{left:-55vw;width:150vw;top:14%;height:80vh}.red-sweep{left:-22vw;top:55%;width:110vw}.ghost-words{left:1%;top:17%;font-size:18px;opacity:calc(var(--tension) * .035)}.signal{right:14px;bottom:17%;width:220px;gap:5px}.signal span{font-size:10px;padding:8px 10px}.signal-label{right:18px;top:22%;font-size:9px}.stage-foot{left:24px;right:24px;bottom:30px;grid-template-columns:1fr auto}.scroll-cue{font-size:10px}.ticks{order:3;grid-column:1 / 3;justify-content:center;gap:5px;margin-top:6px}.tick-button{width:23px;height:24px}.tick-button:after{height:10px}.tick-button[aria-current="step"]:after{height:20px}.step-readout{grid-column:2;grid-row:1}.next-hint{left:32px;bottom:18%}.next-hint a{font-size:13px}.choices{padding:80px 22px 90px}.choices-head{display:block}.choices h2{font-size:clamp(34px,9vw,57px)}.choices-intro{max-width:440px;margin-top:23px;font-size:14px}.cards{grid-template-columns:1fr;gap:12px}.card{min-height:220px}.card h3{font-size:29px}.choices-tail{display:block}}
+    @media (max-width:390px){.copy-column{left:22px;width:calc(100% - 42px)}.copy-panel h1,.copy-panel h2{font-size:clamp(33px,9vw,40px)}.copy-panel .subcopy{max-width:298px;font-size:12.5px}.dial-holder{right:calc(-320px + var(--mobile-shift));top:62%;opacity:.63}.brand-name{font-size:13px}.copy-meta{font-size:9px}.scroll-cue{font-size:9px}}
+    @media (max-height:650px) and (min-width:751px){.copy-column{top:50%;min-height:370px}.copy-panels{height:270px}.copy-panel h1,.copy-panel h2{font-size:clamp(40px,4.4vw,66px)}.copy-meta{margin-bottom:13px}.stage-skip{top:76px}.signal{bottom:12%}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#journey{height:100svh;min-height:620px}.stage{min-height:620px}.copy-panel,.copy-panel.is-active,.next-hint,.dial-holder,.red-sweep,.red-haze,.copy-column{transition:none!important;animation:none!important}.stage-skip,.ticks,.scroll-cue{display:none!important}.reduce-note{display:inline}.next-hint{opacity:1;transform:none;pointer-events:auto}.copy-panel:not(:last-child){display:none}.copy-panel:last-child{opacity:1;transform:none;filter:none}}
+  </style>
 </head>
-<body class="launch page-home">
-<a class="skip" href="#pathways">분석 시작 방법으로 건너뛰기</a>
-<section class="hero" id="intro" aria-label="상권나침반 — 질문에서 방향으로">
-<div class="hero-stage" id="cinema-stage" data-phase="question">
-<header class="topbar">
-<a class="brand" href="#intro" aria-label="상권나침반 처음으로"><svg viewBox="0 0 46 42" fill="none" aria-hidden="true"><path d="M2 36L16 7L31 36M36 7V36H45" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>상권나침반<small>LocalScope</small></span></a>
-<nav class="nav" aria-label="주요 이동"><a href="#first-answer">실제 판정 사례</a><a class="nav-action" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-label="무료 분석 — 별도 공식 서비스, 새 탭">무료 분석 <span aria-hidden="true">↗</span></a></nav>
-</header>
-<div class="content">
-<h1 class="title">사람이 많은 자리면<br><strong>잘될까?</strong></h1>
-<p class="subtitle">내 업종에 맞는 자리인지, 판정과 근거로 확인해 보세요.</p>
-<div class="actions">
-<a class="btn btn-primary" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-describedby="official-entry-note">무료로 내 자리 확인하기 <span class="arr" aria-hidden="true">↗</span></a>
-<p class="official-entry-note" id="official-entry-note">별도 공식 서비스 · 새 탭에서 열립니다.</p>
-<a class="btn btn-secondary" href="#first-answer">실제 판정 사례 먼저 보기 <span class="arr" aria-hidden="true">→</span></a>
-<a class="btn-tertiary" href="#pathways">내 상황에 맞게 바로 시작하기 ↓</a>
-
-</div>
-</div>
-<div class="compass-viewport" aria-hidden="true">
-<svg class="dial" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs><radialGradient id="dial-aura"><stop stop-color="#b75462" stop-opacity=".21"/><stop offset="1" stop-color="#b75462" stop-opacity="0"/></radialGradient><linearGradient id="metal"><stop stop-color="#f47b83"/><stop offset="1" stop-color="#c44452"/></linearGradient><linearGradient id="teal"><stop stop-color="#9bc9bd"/><stop offset="1" stop-color="#477b77"/></linearGradient></defs>
-<circle cx="300" cy="300" r="296" fill="url(#dial-aura)"/>
-<circle cx="300" cy="300" r="268" class="dial-ring fine"/>
-<circle cx="300" cy="300" r="230" class="dial-ring"/>
-<circle cx="300" cy="300" r="218" class="dial-ring fine"/>
-<circle cx="300" cy="300" r="191" class="dial-ring dashed"/>
-<circle cx="300" cy="300" r="151" class="dial-ring fine"/>
-<circle cx="300" cy="300" r="112" class="dial-ring"/>
-<path d="M300 16V584 M16 300H584 M100 100L500 500M100 500L500 100" class="dial-guide"/>
-<g class="ticks" id="marks"></g>
-<g stroke="#8cb4aa" stroke-opacity=".26"><path d="M300 69L305 80 295 80Z" fill="#e5d5b5"/><path d="M530 300L520 295 520 305Z" fill="#e5d5b5"/><path d="M300 531L295 521 305 521Z" fill="#e5d5b5"/></g>
-<text x="399" y="94" class="north-label" transform="rotate(15 399 94)">N</text>
-<text x="76" y="318">W</text><text x="278" y="560">S</text>
-<text x="168" y="134" font-size="9">330</text><text x="84" y="237" font-size="9">300</text><text x="75" y="392" font-size="9">240</text>
-<g class="needle-mover">
-<path d="M300 80L327 300L300 279L273 300Z" fill="url(#metal)"/>
-<path d="M300 80L300 279L273 300Z" fill="#fc98a0" opacity=".86"/>
-<path d="M300 520L327 300L300 321L273 300Z" fill="url(#teal)"/>
-<path d="M300 520L300 321L273 300Z" fill="#9dd2c0" opacity=".8"/>
-</g>
-<g class="pivot"><circle cx="300" cy="300" r="17" fill="#102b30" stroke="#f4e1b3" stroke-width="2.5"/><circle cx="300" cy="300" r="9.5" fill="#234b4b" stroke="#91b4ac"/><circle cx="300" cy="300" r="4" fill="#eed49f"/></g>
-</svg>
-</div>
-<a class="scroll-note" href="#motion-start">스크롤해 관점 바꾸기 ↓</a>
-<div class="motion-meter" aria-hidden="true"><span></span></div>
-<div class="scene-overlay" id="scene-overlay" aria-hidden="true" inert>
-  <div class="eyebrow">질문에서 근거로</div>
-  <h2>사람이 많아도<br><strong>내 손님은 다릅니다.</strong></h2>
-  <p>사람이 많다는 사실만으로 충분할까요? 업종에 필요한 수요와 경쟁 조건을 따로 살펴봐야 합니다.</p>
-  <a class="btn" href="#first-answer">실제 판정 사례 확인하기 <span class="arr" aria-hidden="true">↓</span></a>
-</div>
-</div>
-<div class="motion-anchor" id="motion-start" aria-hidden="true"></div>
-</section>
-<main class="main-content r15-content" id="story">
-<div class="dot-transition" aria-hidden="true"></div>
-<section class="first-answer" id="first-answer" aria-labelledby="first-answer-heading" tabindex="-1">
-<h2 class="section-title" id="first-answer-heading">좋다고 생각한 이유,<br><em>맞는지 확인해 볼까요?</em></h2>
-<p class="case-label">공개된 실제 판정 사례 · <strong>내 후보지 결과가 아닙니다.</strong></p>
-<article class="case-report" aria-labelledby="case-heading">
-  <header class="case-header"><h3 id="case-heading">서울 잠실6동 <span>· 주점</span></h3><span class="case-verdict">공식 공개 판정 <strong>주의</strong></span></header>
-  <div class="case-body">
-    <div class="case-reading">
-      <h4>처음에는 이렇게 생각할 수 있어요</h4>
-      <p class="case-belief">주점이 적으니,<br>경쟁도 적지 않을까?</p>
-      <h4>공식 사례는 다르게 읽었습니다</h4>
-      <p>공식 사례는 이 지역을 저녁 손님이 머물지 않는 낮 상권으로 해석합니다. 경쟁이 적어 보인다는 이유만으로 주점에 유리한 자리라고 판단하기 어렵습니다.</p>
-    </div>
-    <figure class="case-evidence">
-      <figcaption>음식점 중 주점 비중</figcaption>
-      <dl class="case-comparison">
-        <div><dt>잠실6동</dt><dd><strong>1.4<span>%</span></strong><span class="comparison-track" aria-hidden="true"><span class="comparison-local"></span></span></dd></div>
-        <div><dt>전국</dt><dd><strong>11.6<span>%</span></strong><span class="comparison-track" aria-hidden="true"><span class="comparison-national"></span></span></dd></div>
-      </dl>
-      <p>낮은 비중이 곧 기회라는 뜻은 아닙니다. 이 숫자만으로 저녁 수요의 유무를 확정할 수는 없습니다.</p>
-      <a class="source-link" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">공식 홈페이지의 잠실6동 사례 확인 <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a>
-      <p class="case-source-date">공식 사례 묶음 표기: 2026년 10월 · 각 동 대표 지점 반경 500m<br>공개 페이지 재확인: 2026년 11월 18일</p>
-    </figure>
-  </div>
-  <div class="case-next">
-    <div><h4>자료는 여기까지 말해 줍니다</h4><p>대표 지점 주변의 공개 사례이며, 잠실6동 전체나 개별 점포의 현재 상황을 뜻하지 않습니다. 개별 원자료의 기준일은 이 발췌에서 확인되지 않았습니다. 매출이나 창업 성공을 보장하지 않습니다.</p></div>
-    <div><h4>그래서 현장에서는</h4><p>후보지의 저녁 시간대에 손님이 실제로 머무는지 살펴보세요. 주변 주점의 영업 시간과 보행 동선도 함께 확인하세요.</p></div>
-  </div>
-</article>
-<details class="r15-details"><summary>이 사례를 내 후보지에도 적용할 수 있나요?</summary><p>그대로 적용할 수는 없습니다. 업종, 위치, 자료 시점이 달라지면 판정도 달라질 수 있습니다. 아래에서 내 상황에 맞는 경로를 골라 공식 서비스의 실제 분석을 시작하세요.</p></details>
-</section>
-<section class="pathways" id="pathways" tabindex="-1" aria-labelledby="pathways-heading">
-<h2 class="section-title" id="pathways-heading">이제 내 자리도<br><em>확인해 볼까요?</em></h2>
-<p class="lead">정해진 것부터 시작하세요. 아래 세 경로는 별도 공식 서비스 <strong>localscope.co.kr</strong>의 새 탭으로 열립니다.</p>
-<div class="path-grid">
-  <a class="path" href="https://localscope.co.kr/explore" target="_blank" rel="noopener noreferrer" aria-label="업종을 정했어요 — 공식 서비스에서 지역 탐색, 새 탭">
-    <strong>업종을 정했어요</strong><p>정한 업종에 맞는 지역을 찾아보세요.</p><span class="path-arrow" aria-hidden="true">↗</span>
-  </a>
-  <a class="path" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리를 정했어요 — 공식 서비스에서 업종 탐색, 새 탭">
-    <strong>자리를 정했어요</strong><p>그 자리에서 고려할 업종을 살펴보세요.</p><span class="path-arrow" aria-hidden="true">↗</span>
-  </a>
-  <a class="path" href="https://localscope.co.kr/analyze" target="_blank" rel="noopener noreferrer" aria-label="둘 다 정했어요 — 공식 서비스에서 업종과 후보지 분석, 새 탭">
-    <strong>둘 다 정했어요</strong><p>고른 업종과 후보지로 분석을 시작하세요.</p><span class="path-arrow" aria-hidden="true">↗</span>
-  </a>
-</div>
-<p class="path-limit">공식 안내상 가입 없이 분석에 진입할 수 있습니다. 가입 후 Free는 월 5회 분석, 판정 1개 전체 공개를 제공합니다. 나머지 판정은 제한된 미리보기이며, 실제 제공 범위는 공식 서비스에서 확인하세요.</p>
-</section>
-<section class="verdict-guide" id="proof" aria-labelledby="proof-heading" tabindex="-1">
-<div class="guide-intro"><h2 id="proof-heading">판정은 출발점입니다.<br>매출을 약속하지 않습니다.</h2><p>좋음·주의뿐 아니라 판단할 수 없는 경우도 확인하세요. 자료가 말해 주는 범위와 현장에서 확인할 일을 함께 알아야 다음 선택이 쉬워집니다.</p></div>
-<ol class="reading-order">
-  <li><h3>판정과 근거를 함께 읽기</h3><p>한 줄 결론 옆에서 근거의 단위, 출처, 기준 시점을 확인하세요.</p></li>
-  <li><h3>어디까지 알 수 있는지 확인하기</h3><p>지역별 제공 범위와 자료의 시차를 살펴보세요. 추정과 관측은 구분해야 합니다.</p></li>
-  <li><h3>현장에서 확인할 일 정하기</h3><p>임대료, 시간대별 동선, 주변 점포의 영업 상황을 직접 살펴보세요.</p></li>
-</ol>
-<details class="r15-details result-spec"><summary>결과 화면의 구성 제안 보기 · 실제 결과 아님</summary>
-<p>아래는 향후 공식 서비스 연동을 위한 정적 구성 제안입니다. 이 페이지에서는 분석을 실행하거나 이용 권한을 부여하지 않습니다.</p>
-<ol><li>한 줄 판정. 근거가 부족하면 ‘판단할 수 없음’을 명시합니다.</li><li>판정 옆에 근거 단위, 출처와 기준 시점을 표시합니다.</li><li>지역 범위, 자료 시차, 추정과 관측의 차이를 설명합니다.</li><li>다음 현장 확인 항목을 제안합니다.</li><li>필요한 경우에만 다른 후보 비교, 상세 근거, 세부 구역 탐색을 안내합니다. 제공 범위는 공식 정책을 따릅니다.</li></ol>
-<dl class="integration-states"><div><dt>불러오는 중</dt><dd>향후 연동 상태: 진행 안내와 중단·재시도 동작은 실제 서비스 계약 확인이 필요합니다.</dd></div><div><dt>결과 없음</dt><dd>향후 연동 상태: 자료가 없는 조건을 알리고 다른 위치·업종을 확인하도록 안내합니다.</dd></div><div><dt>오류</dt><dd>향후 연동 상태: 실패 이유와 가능한 다음 행동을 안내합니다. 분석 횟수 차감 여부는 서버 정책 확인이 필요합니다.</dd></div><div><dt>판단할 수 없음</dt><dd>향후 연동 상태: 부족한 근거와 추가 확인 항목을 제시합니다. 유료 구매로 판정이 보장되지 않습니다.</dd></div></dl>
-</details>
-</section>
-<section class="optional-depth" id="optional-depth" aria-labelledby="depth-heading">
-<h2 class="section-title" id="depth-heading">더 비교해 보고 싶다면,<br><em>필요한 범위를 선택하세요.</em></h2>
-<p class="lead">먼저 무료로 확인해 보세요. 다른 후보나 더 자세한 근거가 필요할 때 이용권을 비교해도 됩니다.</p>
-<div class="access-options">
-<article><h3>Free</h3><p class="access-price">무료</p><p>첫 분석을 시작하고 판정 하나를 끝까지 확인할 때.</p><ul><li>가입 후 월 5회 분석</li><li>판정 1개 전체 공개</li><li>나머지 판정은 제한된 미리보기</li></ul></article>
-<article><h3>Basic</h3><p class="access-price">19,900원 <small>/ 30일 · 기본가</small></p><p>후보와 판정 근거를 더 비교하고 싶을 때.</p><p class="access-note">상세 제공 범위와 적용 가격은 공식 서비스에서 확인하세요.</p></article>
-<article><h3>Pro</h3><p class="access-price">39,900원 <small>/ 30일 · 기본가</small></p><p>더 세밀한 탐색이 필요한지 검토할 때.</p><p class="access-note">상세 제공 범위와 적용 가격은 공식 서비스에서 확인하세요.</p></article>
-</div>
-<p class="pricing-source">공식 공개 기본가 · 2026년 11월 18일 확인 · 자동 갱신 없음. 적용 가능한 프로모션과 최종 결제 조건은 공식 서비스에서 확인하세요.</p>
-<div class="depth-actions"><a class="r15-free-link" href="https://localscope.co.kr/explore" target="_blank" rel="noopener noreferrer">무료로 계속 탐색하기 <span aria-hidden="true">↗</span><span class="sr-only"> (공식 서비스, 새 탭)</span></a><a class="source-link" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">공식 이용권 안내 확인 <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a><a class="source-link" href="https://localscope.co.kr/refund" target="_blank" rel="noopener noreferrer">공식 가격·환불 조건 <span aria-hidden="true">↗</span><span class="sr-only"> (새 탭)</span></a></div>
-</section>
-<section class="weekly-experiment" id="decision" aria-labelledby="decision-heading">
-<div><h2 id="decision-heading">짧은 기간의 이용권도 살펴보고 싶다면</h2><p>7일·14일 이용권은 아직 승인되지 않은 가격 실험입니다. 별도 시안에서 선택 흐름만 살펴볼 수 있습니다.</p></div>
-<a class="experiment-link" href="./r13-weekly/index.html">7일·14일 시안 보기 <span>가격 실험 · 결제 불가</span></a>
-</section>
-</main>
-<footer class="footer"><span>상권나침반 · FIRST ANSWER</span><span>실제 분석은 별도 공식 서비스에서 진행합니다 · <a href="#intro">처음으로</a></span></footer>
-<script>
-(function(){
-"use strict";
-const marks=document.getElementById("marks");
-if(!marks)return;
-const NS="http://www.w3.org/2000/svg";
-const fragment=document.createDocumentFragment();
-for(let i=0;i<120;i++){
- const t=(i*3-90)*Math.PI/180, major=i%10===0;
- const r=major?209:214, end=222;
- const line=document.createElementNS(NS,"line");
- line.setAttribute("x1",String(300+r*Math.cos(t)));
- line.setAttribute("y1",String(300+r*Math.sin(t)));
- line.setAttribute("x2",String(300+end*Math.cos(t)));
- line.setAttribute("y2",String(300+end*Math.sin(t)));
- if(major)line.setAttribute("class","major");
- fragment.appendChild(line);
-}
-marks.appendChild(fragment);
-})();
-</script>
+<body>
+  <a class="jump-link" href="#choose">이야기 건너뛰고 분석 경로 보기</a>
+  <main>
+    <p class="sr-only">상권나침반은 업종과 후보지를 둘러싼 통념을 공공데이터와 비교하고, 판단에 필요한 근거와 한계 및 다음 확인 행동을 안내합니다. 분석은 매출이나 창업 성공을 보장하지 않습니다. 원한다면 이야기 건너뛰기 링크로 세 가지 시작 경로를 선택할 수 있습니다.</p>
+    <section id="journey" aria-label="상권나침반 서비스 소개 — 8단계 스크롤 스토리">
+      <div class="stage" id="stage" data-step="0">
+        <div class="light-wash" aria-hidden="true"></div>
+        <div class="grid-lines" aria-hidden="true"></div>
+        <div class="red-haze" aria-hidden="true"></div>
+        <div class="red-sweep" aria-hidden="true"></div>
+        <div class="ghost-words" aria-hidden="true"><span>손님이 많으니까?</span><span>경쟁이 적으니까?</span><span>왠지 잘될 것 같아서?</span></div>
+        <header class="stage-header">
+          <div class="brand" aria-label="상권나침반 LocalScope">
+            <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width=".8" opacity=".6"/><path d="M20 3V8M20 32v5M3 20h5M32 20h5" stroke="currentColor" stroke-width="1"/><path d="M20 8L15.5 22.4L20 19L24.5 22.4Z" fill="var(--accent)"/><path d="M20 32L24.5 17.6L20 21L15.5 17.6Z" fill="currentColor" opacity=".5"/></svg></span>
+            <span class="brand-name">상권나침반<small>LOCALSCOPE</small></span>
+          </div>
+          <div class="header-right"><span class="study-tag">UX STUDY · R1 / 독립 시안</span><a class="top-cta" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" title="상권나침반 공식 홈페이지 새 창으로 열기">공식 사이트에서 분석 ↗</a></div>
+        </header>
+        <button id="skipStory" class="stage-skip" type="button">스토리 건너뛰기 <span aria-hidden="true">↗</span></button>
+        <div class="dial-holder" id="dialHolder" aria-hidden="true">
+          <svg viewBox="0 0 700 700" class="dial" role="presentation">
+            <defs>
+              <radialGradient id="centerglow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e4fcdd" stop-opacity=".10"/><stop offset="1" stop-color="#e4fcdd" stop-opacity="0"/></radialGradient>
+              <linearGradient id="rubyFill" x1=".5" y1="0" x2=".5" y2="1"><stop offset="0" stop-color="#ffb0a4" stop-opacity=".83"/><stop offset="1" stop-color="#e85f65" stop-opacity=".45"/></linearGradient>
+            </defs>
+            <circle cx="350" cy="350" r="302" class="ring faint"/><circle cx="350" cy="350" r="276" class="ring"/><circle cx="350" cy="350" r="255" class="orbital"/><circle cx="350" cy="350" r="220" class="ring faint"/><circle cx="350" cy="350" r="165" class="ring faint"/><circle cx="350" cy="350" r="104" class="ring faint"/>
+            <path d="M350 18V682M18 350H682" class="cross"/><path d="M116 116L584 584M584 116L116 584" class="cross" opacity=".25"/>
+            <g id="tickMarks"></g>
+            <text class="dial-index" x="355" y="52" text-anchor="middle">N · 00°</text><text class="dial-index" x="654" y="354" text-anchor="middle">E</text><text class="dial-index" x="350" y="658" text-anchor="middle">S</text><text class="dial-index" x="53" y="354" text-anchor="middle">W</text>
+            <circle cx="350" cy="350" r="148" fill="url(#centerglow)"/>
+            <g id="needleGroup" class="needle-wrap">
+              <path d="M350 84L314 344L350 328Z" class="needle-ruby"/><path d="M350 84L386 344L350 328Z" fill="var(--accent)" opacity=".63"/>
+              <path d="M350 616L313 358L350 373Z" class="needle-cool"/><path d="M350 616L387 358L350 373Z" class="needle-shadow"/>
+              <path d="M84 350L344 315L329 350Z" class="needle-shadow"/><path d="M616 350L356 315L371 350Z" class="needle-shadow"/>
+            </g>
+            <circle cx="350" cy="350" r="25" class="needle-core"/><circle cx="350" cy="350" r="10" fill="var(--accent)"/>
+            <circle cx="350" cy="350" r="4" fill="var(--ink)"/>
+          </svg>
+          <div class="dial-vignette"></div>
+        </div>
+        <div class="signal-label" id="signalLabel" aria-hidden="true">CROSS-CHECK<br>INDICATORS</div>
+        <div class="signal" aria-hidden="true"><span>업종</span><span>경쟁 구조</span><span>수요 흐름</span><span>점포 변화</span><span>자료 시점</span></div>
+        <div class="copy-column" id="copyColumn">
+          <div class="copy-meta"><span id="chapterLabel">01 / 질문의 시작</span></div>
+          <div class="copy-panels" id="copyPanels">
+            <article class="copy-panel is-active" data-index="0" aria-hidden="true">
+              <p class="caption">상권나침반은 업종과 후보지를 공공데이터로 판정합니다.</p>
+              <h1><span class="line">이 자리,</span><span class="line"><em class="title-accent" style="font-style:normal">감으로</em> 정해도 될까?</span></h1>
+              <p class="subcopy">사람도 많고 가게도 많은데.<br>정작 내 업종에 맞는 자리인지는 아직 모르겠습니다.</p>
+            </article>
+            <article class="copy-panel" data-index="1" aria-hidden="true">
+              <p class="caption">첫 번째로 떠오르는 생각</p>
+              <h2><span class="line">사람이 많으니까,</span><span class="line">괜찮겠지.</span></h2>
+              <p class="subcopy">하지만 지나가는 사람이 모두 내 고객이 되는 건 아닙니다.</p>
+            </article>
+            <article class="copy-panel" data-index="2" aria-hidden="true">
+              <p class="caption">두 번째로 떠오르는 생각</p>
+              <h2><span class="line">경쟁이 적으니까,</span><span class="line">기회일 거야.</span></h2>
+              <p class="subcopy">가게가 적다는 사실과 수요가 충분하다는 해석은 다를 수 있습니다.</p>
+            </article>
+            <article class="copy-panel" data-index="3" aria-hidden="true">
+              <p class="caption">그 익숙한 계산에 질문 하나</p>
+              <h2><span class="line">그런데,</span><span class="line"><em class="title-accent" style="font-style:normal">내 자리에도</em> 맞을까?</span></h2>
+              <p class="subcopy">동네 전체의 분위기가 내 업종, 내 후보지에서도 같을까요?</p>
+            </article>
+            <article class="copy-panel" data-index="4" aria-hidden="true">
+              <p class="caption">질문이 분명해지면</p>
+              <h2><span class="line">감각 대신,</span><span class="line">비교할 <em class="title-accent" style="font-style:normal">기준부터.</em></span></h2>
+              <p class="subcopy">업종과 후보지를 정하고, 서로 다른 지표를 같은 질문 아래 모읍니다.</p>
+            </article>
+            <article class="copy-panel" data-index="5" aria-hidden="true">
+              <p class="caption">기준 다음에는 확인 가능한 근거</p>
+              <h2><span class="line">답에는,</span><span class="line"><em class="title-accent" style="font-style:normal">이유가</em> 따라야 하니까.</span></h2>
+              <p class="subcopy">경쟁·수요·점포 흐름을 살펴보고, 사용한 근거와 기준 시점을 함께 봅니다.</p>
+            </article>
+            <article class="copy-panel" data-index="6" aria-hidden="true">
+              <p class="caption">필요하면 판단을 유보할 수도 있습니다.</p>
+              <h2><span class="line">맞으면 맞다.</span><span class="line">아니면, <em class="title-accent" style="font-style:normal">다시 본다.</em></span></h2>
+              <p class="subcopy">근거가 부족하거나 엇갈릴 때는 섣불리 확신하지 않습니다.</p>
+            </article>
+            <article class="copy-panel" data-index="7" aria-hidden="true">
+              <p class="caption">상권나침반 · 숫자를 판단의 근거로</p>
+              <h2><span class="line">더 많은 숫자보다,</span><span class="line"><em class="title-accent" style="font-style:normal">더 명확한 판단.</em></span></h2>
+              <p class="subcopy">한 줄 판정, 확인할 수 있는 근거, 그리고 다음 행동까지.<br>내 업종과 내 자리를 더 정확한 질문으로 살펴보세요.</p>
+            </article>
+          </div>
+          <div class="copy-footer"><span aria-hidden="true"></span>상권을 해석하는 참고 도구이며, 개별 매출이나 성공을 보장하지 않습니다.</div>
+        </div>
+        <div id="nextHint" class="next-hint"><a href="#choose">내 상황에 맞게 시작하기 <span aria-hidden="true">↘</span></a></div>
+        <footer class="stage-foot">
+          <div class="scroll-cue"><span class="arrow" aria-hidden="true">↓</span><span>천천히 내려보세요<span class="reduce-note"> · 모션 최소화 모드</span></span></div>
+          <div class="ticks" role="group" aria-label="8개 장면 바로 이동">
+            <button class="tick-button" aria-label="1번째 단계, 질문의 시작" aria-current="step" data-go="0" type="button"></button>
+            <button class="tick-button" aria-label="2번째 단계, 익숙한 계산 하나" data-go="1" type="button"></button>
+            <button class="tick-button" aria-label="3번째 단계, 익숙한 계산 둘" data-go="2" type="button"></button>
+            <button class="tick-button" aria-label="4번째 단계, 질문의 전환" data-go="3" type="button"></button>
+            <button class="tick-button" aria-label="5번째 단계, 기준을 정하다" data-go="4" type="button"></button>
+            <button class="tick-button" aria-label="6번째 단계, 근거 확인" data-go="5" type="button"></button>
+            <button class="tick-button" aria-label="7번째 단계, 판단과 한계" data-go="6" type="button"></button>
+            <button class="tick-button" aria-label="8번째 단계, 다음 행동" data-go="7" type="button"></button>
+          </div>
+          <div class="step-readout" aria-hidden="true"><b id="currentStep">01</b> / 08</div>
+        </footer>
+        <div class="scroll-meter" aria-hidden="true"><div></div></div>
+      </div>
+    </section>
+    <section class="choices" id="choose" tabindex="-1" aria-labelledby="chooseHeading">
+      <div class="choices-head">
+        <div><span class="sup">YOUR NEXT STEP / 08 →</span><h2 id="chooseHeading">지금, 어디까지<br>정해졌나요?</h2></div>
+        <p class="choices-intro">좋은 답은 상황에 따라 달라집니다.<br>내가 이미 알고 있는 것부터 선택하세요. 상권나침반이 검토할 질문을 좁혀줍니다.</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종은 정했지만 지역을 못 정한 경우. 공식 홈페이지에서 탐색 경로 선택하기, 새 창">
+          <span class="card-num">01 — INDUSTRY FIRST</span>
+          <div><h3>업종은 정했어요.</h3><p>어느 지역을 살펴보면 좋을까요?<br>업종 기준으로 동네를 탐색합니다.</p></div>
+          <div><div class="card-bottom"><span>공식 홈페이지에서 경로 선택</span><i aria-hidden="true">↗</i></div><div class="card-note">프리뷰: 지역 탐색의 정확한 URL 미확인</div></div>
+        </a>
+        <a class="card" href="https://localscope.co.kr/place" target="_blank" rel="noopener noreferrer" aria-label="자리는 정했지만 업종을 못 정한 경우. 공식 업종 탐색 열기, 새 창">
+          <span class="card-num">02 — PLACE FIRST</span>
+          <div><h3>자리는 정했어요.</h3><p>이 상권은 어떤 업종과 맞을까요?<br>자리에서 업종을 탐색합니다.</p></div>
+          <div><div class="card-bottom"><span>자리 기준 업종 찾기</span><i aria-hidden="true">↗</i></div><div class="card-note">공식 공개 경로 /place 연결</div></div>
+        </a>
+        <a class="card" href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer" aria-label="업종과 자리가 모두 정해진 경우. 공식 홈페이지에서 분석 경로 선택하기, 새 창">
+          <span class="card-num">03 — READY TO CHECK</span>
+          <div><h3>둘 다 정했어요.</h3><p>이 후보지가 내 업종에 맞을까요?<br>판정과 근거를 확인합니다.</p></div>
+          <div><div class="card-bottom"><span>공식 홈페이지에서 분석 시작</span><i aria-hidden="true">↗</i></div><div class="card-note">프리뷰: 후보지 분석의 정확한 URL 미확인</div></div>
+        </a>
+      </div>
+      <div class="choices-tail"><span>이 화면은 브랜드·히어로 UX의 독립 연구 시안입니다. 실제 데이터/API·요금·권한·로그인과 연동하지 않습니다.</span><span>상권나침반 공식 서비스: <a href="https://localscope.co.kr/" target="_blank" rel="noopener noreferrer">localscope.co.kr ↗</a></span></div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      'use strict';
+      const journey = document.getElementById('journey');
+      const stage = document.getElementById('stage');
+      const panels = [...document.querySelectorAll('.copy-panel')];
+      const buttons = [...document.querySelectorAll('.tick-button')];
+      const chapterLabel = document.getElementById('chapterLabel');
+      const currentStep = document.getElementById('currentStep');
+      const needle = document.getElementById('needleGroup');
+      const nextHint = document.getElementById('nextHint');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const labels = ['질문의 시작','익숙한 계산 하나','익숙한 계산 둘','질문의 전환','기준을 정하다','근거 확인','판단과 한계','다음 행동'];
+      let target = 0, shown = 0, lastStep = -1, running = false;
+      const clamp=(a,min=0,max=1)=>Math.max(min,Math.min(max,a));
+      const smooth=(a,b,v)=>{ const t=clamp((v-a)/(b-a)); return t*t*(3-2*t); };
+      const mixColor=(a,b,p)=>{const x=a.match(/[0-9a-f]{2}/gi).map(z=>parseInt(z,16));const y=b.match(/[0-9a-f]{2}/gi).map(z=>parseInt(z,16));return `rgb(${x.map((v,i)=>Math.round(v+(y[i]-v)*p)).join(',')})`;};
+      const tickMarks=document.getElementById('tickMarks');
+      for(let i=0;i<72;i++){
+        const theta=(i*5-90)*Math.PI/180, major=i%6===0;
+        const inner=major?268:272, outer=major?289:281;
+        const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+        line.setAttribute('x1',(350+Math.cos(theta)*inner).toFixed(2));line.setAttribute('y1',(350+Math.sin(theta)*inner).toFixed(2));
+        line.setAttribute('x2',(350+Math.cos(theta)*outer).toFixed(2));line.setAttribute('y2',(350+Math.sin(theta)*outer).toFixed(2));
+        line.setAttribute('class',`tick${major?' major':''}`);tickMarks.append(line);
+      }
+      const updateStep=(step)=>{
+        if(step===lastStep)return;
+        lastStep=step;stage.dataset.step=String(step);
+        panels.forEach((p,i)=>{p.classList.toggle('is-active',i===step);p.classList.toggle('was-before',i<step);p.setAttribute('aria-hidden',i===step?'false':'true');});
+        chapterLabel.textContent=`${String(step+1).padStart(2,'0')} / ${labels[step]}`;
+        currentStep.textContent=String(step+1).padStart(2,'0');
+        buttons.forEach((b,i)=>{if(i===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
+        nextHint.classList.toggle('ready',step===7 || reduceMotion.matches);
+      };
+      const paint=(p)=>{
+        const comfort=smooth(.24,.87,p),tension=1-smooth(.13,.79,p),evidence=smooth(.58,.84,p);
+        stage.style.setProperty('--phase',p.toFixed(4));stage.style.setProperty('--mobile-shift',`${Math.round(p*90)}px`);stage.style.setProperty('--comfort',comfort.toFixed(4));stage.style.setProperty('--tension',tension.toFixed(4));stage.style.setProperty('--evidence',evidence.toFixed(4));
+        stage.style.setProperty('--ink',mixColor('#f7f1e9','#1c453d',comfort));
+        stage.style.setProperty('--muted',mixColor('#e1bfb8','#4e6c62',comfort));
+        stage.style.setProperty('--accent',mixColor('#ff8175','#3a8975',comfort));
+        stage.style.setProperty('--dial-stroke',mixColor('#806f74','#a7b9ac',comfort));
+        stage.style.setProperty('--dial-faint',mixColor('#3c454d','#d6e1d8',comfort));
+        needle.style.transform=`rotate(${(-75 + 75*smooth(.01,.95,p)).toFixed(2)}deg)`;
+      };
+      const readScroll=()=>{
+        const top=journey.getBoundingClientRect().top + window.scrollY;
+        const distance=Math.max(1,journey.offsetHeight-window.innerHeight);
+        target=clamp((window.scrollY-top)/distance);
+        if(reduceMotion.matches)target=1;
+        if(!running){running=true;requestAnimationFrame(render);}
+      };
+      const render=()=>{
+        const diff=target-shown;
+        shown+=Math.abs(diff)<.00025?diff:diff*.28;
+        paint(shown);
+        updateStep(reduceMotion.matches?7:Math.min(7,Math.round(shown*7)));
+        if(Math.abs(target-shown)>.00025){requestAnimationFrame(render);}else{shown=target;paint(shown);updateStep(reduceMotion.matches?7:Math.min(7,Math.round(shown*7)));running=false;}
+      };
+      const goto=(i)=>{
+        if(reduceMotion.matches){document.getElementById('choose').scrollIntoView({behavior:'auto'});return;}
+        const top=journey.getBoundingClientRect().top+window.scrollY;
+        const distance=Math.max(1,journey.offsetHeight-window.innerHeight);
+        window.scrollTo({top:top+distance*i/7,behavior:'smooth'});
+      };
+      buttons.forEach((b)=>b.addEventListener('click',()=>goto(Number(b.dataset.go))));
+      document.getElementById('skipStory').addEventListener('click',()=>document.getElementById('choose').scrollIntoView({behavior:reduceMotion.matches?'auto':'smooth'}));
+      window.addEventListener('scroll',readScroll,{passive:true});window.addEventListener('resize',readScroll,{passive:true});
+      reduceMotion.addEventListener('change',()=>{shown=target=reduceMotion.matches?1:0;readScroll()});
+      paint(reduceMotion.matches?1:0);updateStep(reduceMotion.matches?7:0);readScroll();
+    })();
+  </script>
 </body>
 </html>
